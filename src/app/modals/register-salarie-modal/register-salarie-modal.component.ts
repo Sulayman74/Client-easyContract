@@ -10,18 +10,17 @@ import { Salarie } from 'src/app/models/salarie';
 })
 export class RegisterSalarieModalComponent implements OnInit {
 
-  registerSalarie !: FormGroup<any>
+  registerSalarie !: FormGroup
   salarie = new Salarie()
 
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', Validators.required)
-  confirmPassword = new FormControl('', Validators.required)
 
   constructor(private _fb :FormBuilder) { }
 
   ngOnInit(): void {
 
-this._fb.group({
+this.registerSalarie = this._fb.group({
 
   civilite : [this.salarie.civilite,Validators.required],
   nom : [this.salarie.nom,Validators.required],
@@ -32,7 +31,6 @@ this._fb.group({
   ville: [this.salarie.ville,Validators.required],
   email: [this.salarie.email,[Validators.email,Validators.required]],
   mdp: [this.salarie.mdp,[Validators.minLength(8),Validators.maxLength(12)]],
-  role : [this.salarie.role],
   nom_jeune_fille : [this.salarie.nom_jeune_fille],
   num_ss:[this.salarie.num_ss,Validators.required],
   date_naissance : [this.salarie.date_naissance, Validators.required],
@@ -57,11 +55,11 @@ this._fb.group({
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
   getErrorMessagePassword() {
-    if (this.confirmPassword.hasError('required')) {
+    if (this.password.hasError('required')) {
       return 'You must enter a value';
     }
 
-    return this.confirmPassword.hasError('confirmPassword') ? 'Not matching passwords' : '';
+    return this.password.hasError('password') ? 'Not matching passwords' : '';
   }
 
 
