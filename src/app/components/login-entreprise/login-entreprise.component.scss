@@ -1,5 +1,5 @@
-$primary-color: #0275d8;
-$secondary-color: #0274d881;
+$primary-color: #225805;
+$secondary-color: #d85f0280;
 $main-police : 'Roboto',
 sans-serif;
 $second-police : 'Montserrat',
@@ -17,23 +17,27 @@ sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: 80vh;
     width: 60%;
-    background: $secondary-color;
+    background: $primary-color;
     border-radius: 5px;
     backdrop-filter: blur(100px);
+    .title{
+        color: bisque;
+        filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.699));
+        font-family: $second-police;
+    }
 
     .formulaire {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
         flex-direction: column;
-        background-color: rgba(255, 255, 255, 0.436);
+        background-color: rgba(255, 255, 255, 0.195);
         width: 50%;
         height: 40%;
         border-radius: 3px;
-        backdrop-filter: blur(20px);
-        background-position: center;
 
         .champs {
 

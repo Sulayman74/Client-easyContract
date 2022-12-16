@@ -1,0 +1,45 @@
+$primary-color: #225805;
+$secondary-color: #d85f0280;
+$main-police : 'Roboto',
+sans-serif;
+$second-police : 'Montserrat',
+sans-serif;
+$poppin-police : 'Poppins',
+sans-serif;
+
+.titre{
+    text-align: center;
+    font-family: $main-police;
+
+}
+
+.container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(128, 128, 128, 0.273);
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+    height: 80vh;
+    flex-direction: column;
+    .title{
+        font-family: $second-police;
+    }
+    .btns{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: space-evenly;
+        width: 20%;
+        height: 13%;
+        button {
+            font-family: $poppin-police;
+            font-weight: 500;
+            transition: all ease 0.3s;
+            &:hover{
+                transform: scale(1.1);
+                color: black;
+            }
+        }
+    }
+}

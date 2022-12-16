@@ -1,8 +1,8 @@
-<p class="h1 titre"> Je me connecte en tant que salarié</p>
+<p class="h1 titre"> Je me connecte en tant qu'entreprise</p>
 
 <section class="container">
-  
-  <form class="formulaire" (ngSubmit)="onSubmit()" [formGroup]="loginFormSalarie">
+    <h1 class="title">LOGIN</h1>
+  <form class="formulaire" (ngSubmit)="onSubmit()" [formGroup]="loginFormSociety">
 
           <mat-form-field class="champs" appearance="outline">
             <mat-label>Email</mat-label>
@@ -41,7 +41,7 @@
         <button
           type="submit"
           mat-flat-button
-          [disabled]="loginFormSalarie.invalid"
+          [disabled]="loginFormSociety.invalid"
           color="warn"
         >
           Sign in
