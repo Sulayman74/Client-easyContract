@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Salarie } from 'src/app/models/salarie';
 
@@ -19,6 +19,8 @@ export class LoginSalarieComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginFormSalarie = this._fb.group({
+      email: [this.salarie.email, [Validators.email, Validators.required]],
+      mdp: [this.salarie.mdp, Validators.required]
 
     })
   }
@@ -27,7 +29,7 @@ export class LoginSalarieComponent implements OnInit {
 
   }
   onClick() {
-    throw new Error('Method not implemented.');
-    }
+
+  }
 
 }

@@ -1,8 +1,10 @@
 import { Observable, Subject } from 'rxjs';
 
+import { Entreprise } from '../models/entreprise';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Salarie } from '../models/salarie';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -50,4 +52,21 @@ export class UsersService {
   getLoggedUser(): Observable<any> {
     return this.loggedUser.asObservable()
   }
+
+
+  //** les CRUD en front pour les requêtes dans la base de données */
+
+  registerSalarie(salarie: Salarie): Observable<any> {
+    console.log(salarie, "Test du register 1");
+    return this._http.post(`${this._apiUrl}/registerWorker`, salarie)
+
+  }
+  registerSociety(society: any): Observable<any> {
+    console.log(society, "Test du register 2");
+    return this._http.post(`${this._apiUrl}/registerSociety`, society)
+
+  }
+
+
+
 }

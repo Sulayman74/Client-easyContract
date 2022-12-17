@@ -7,9 +7,10 @@ import { LoginEntrepriseComponent } from './components/login-entreprise/login-en
 import { LoginSalarieComponent } from './components/login-salarie/login-salarie.component';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RegisterEntrepriseModalComponent } from './modals/register-entreprise-modal/register-entreprise-modal.component';
 import { RegisterSalarieModalComponent } from './modals/register-salarie-modal/register-salarie-modal.component';
 import { SharedModule } from './modules/shared/shared.module';
-import { RegisterEntrepriseModalComponent } from './modals/register-entreprise-modal/register-entreprise-modal.component';
+import { TokenInterceptorProvider } from './helpers/header.interceptor';
 
 @NgModule({
   declarations: [

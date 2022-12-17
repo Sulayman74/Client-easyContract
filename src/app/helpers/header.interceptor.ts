@@ -1,4 +1,5 @@
 import {
+  HTTP_INTERCEPTORS,
   HttpErrorResponse,
   HttpEvent,
   HttpHandler,
@@ -57,4 +58,10 @@ export class HeaderInterceptor implements HttpInterceptor {
 
     return next.handle(request);
   }
+}
+
+export const TokenInterceptorProvider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: HeaderInterceptor,
+  multi: true
 }
