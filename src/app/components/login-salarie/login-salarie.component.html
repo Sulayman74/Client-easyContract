@@ -1,52 +1,32 @@
 <p class="h1 titre"> Je me connecte en tant que salarié</p>
 
 <section class="container">
-  
-  <form class="formulaire" (ngSubmit)="onSubmit()" [formGroup]="loginFormSalarie">
 
-          <mat-form-field class="champs" appearance="outline">
-            <mat-label>Email</mat-label>
-            <input
-              matInput
-              placeholder="Email"
-            
-              required
-            />
-            <mat-icon matSuffix> person_outline</mat-icon>
-          </mat-form-field>
-     
-          <mat-form-field class="champs"  appearance="outline">
-            <mat-label>Password</mat-label>
-            <input
-              matInput
-              placeholder="Password"
-              placeholder="Password"
-              required
-            />
-            <mat-hint>entre 8 et 12 caractères</mat-hint>
-            <mat-icon matSuffix>how_to_reg</mat-icon>
-          </mat-form-field>
-  
-      
-      <mat-card-actions class="btns">
-        <button
-          (click)="onClick()"
-          type="button"
-          mat-raised-button
-          color="primary"
-        >
-          Sign up
-        </button>
+  <form class="formulaire" [formGroup]="loginFormSalarie">
 
-        <button
-          type="submit"
-          mat-flat-button
-          [disabled]="loginFormSalarie.invalid"
-          color="warn"
-        >
-          Sign in
-        </button>
-      </mat-card-actions>
+    <mat-form-field class="champs" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Email" formControlName="email" required />
+      <mat-icon matSuffix> person_outline</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="champs" appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" placeholder="Password" formControlName="mdp" required />
+      <mat-hint>entre 8 et 12 caractères</mat-hint>
+      <mat-icon matSuffix>how_to_reg</mat-icon>
+    </mat-form-field>
+
+
+    <mat-card-actions class="btns">
+      <button (click)="onSignUp()" type="button" mat-raised-button color="primary">
+        Sign up
+      </button>
+
+      <button (click)="onSignIn()" type="button" mat-flat-button [disabled]="loginFormSalarie.invalid" color="warn">
+        Sign in
+      </button>
+    </mat-card-actions>
 
   </form>
 </section>

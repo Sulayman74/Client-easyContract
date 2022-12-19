@@ -1,16 +1,19 @@
 <p class="h1 titre"> Je me connecte en tant qu'entreprise</p>
 
 <section class="container">
+
     <h1 class="title">LOGIN</h1>
-  <form class="formulaire" (ngSubmit)="onSubmit()" [formGroup]="loginFormSociety">
+
+  <form class="formulaire"[formGroup]="loginFormSociety">
 
           <mat-form-field class="champs" appearance="outline">
             <mat-label>Email</mat-label>
             <input
               matInput
               placeholder="Email"
-            
+              formControlName="email"
               required
+              type="email"
             />
             <mat-icon matSuffix> person_outline</mat-icon>
           </mat-form-field>
@@ -20,8 +23,9 @@
             <input
               matInput
               placeholder="Password"
-              placeholder="Password"
+              formControlName="mdp"
               required
+              type="password"
             />
             <mat-hint>entre 8 et 12 caractères</mat-hint>
             <mat-icon matSuffix>how_to_reg</mat-icon>
@@ -30,7 +34,7 @@
       
       <mat-card-actions class="btns">
         <button
-          (click)="onClick()"
+          (click)="onSignUp()"
           type="button"
           mat-raised-button
           color="primary"
@@ -39,7 +43,8 @@
         </button>
 
         <button
-          type="submit"
+        (click)="onSignIn()"
+          type="button"
           mat-flat-button
           [disabled]="loginFormSociety.invalid"
           color="warn"

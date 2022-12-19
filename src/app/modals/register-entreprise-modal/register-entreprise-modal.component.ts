@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Entreprise } from 'src/app/models/entreprise';
+import { MatDialogRef } from '@angular/material/dialog';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -17,8 +18,11 @@ export class RegisterEntrepriseModalComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', Validators.required)
 
-  constructor(private _fb: FormBuilder,
-    private _entrepriseService: UsersService) { }
+  constructor(
+    private _fb: FormBuilder,
+    private _entrepriseService: UsersService,
+    private _dialogRef: MatDialogRef<any>
+  ) { }
 
   ngOnInit(): void {
 
@@ -39,14 +43,15 @@ export class RegisterEntrepriseModalComponent implements OnInit {
     })
   }
 
-  onSubmit(){
+  onSubmit() {
     const formulaire = this.registerSociety.value
     this.entreprise = Object.assign(this.entreprise, formulaire)
 
-    this._entrepriseService.registerSociety(this.entreprise).subscribe((reponse:any)=> {
-
+    this._entrepriseService.registerSociety(this.entreprise).subscribe((reponse: any) => {
+      console.log("test onSubmit register entreprise", reponse);
       this._entrepriseService.setToken(reponse.token)
     })
+    this._dialogRef.close()
   }
 
   // ** méthode message erreur envoyé */

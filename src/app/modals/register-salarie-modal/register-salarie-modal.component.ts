@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validator, Validators } from '@angular/forms';
 
+import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Salarie } from 'src/app/models/salarie';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -17,8 +19,11 @@ export class RegisterSalarieModalComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', Validators.required)
 
-  constructor(private _fb: FormBuilder,
-    private _salarieService: UsersService) { }
+  constructor(
+    private _fb: FormBuilder,
+    private _salarieService: UsersService,
+    private _router :Router,
+    private _dialogRef : MatDialogRef <any>) { }
 
   ngOnInit(): void {
 
@@ -46,13 +51,14 @@ export class RegisterSalarieModalComponent implements OnInit {
 
   onSubmit():void {
     const formulaire = this.registerSalarie.value
-    console.warn(formulaire);
     this.salarie = Object.assign(this.salarie, formulaire)
 
     this._salarieService.registerSalarie(this.salarie).subscribe((reponse: any) => {
       console.log("test onSubmit register salarie", reponse);
       this._salarieService.setToken(reponse.token)
     })
+    this._dialogRef.close()
+
   }
 
   // ** méthode message erreur envoyé */
