@@ -3,8 +3,8 @@
 <section class="container">
     <h1 class="title">Portail d'accueil</h1>      
       <mat-card-actions class="btns">
-        <button
-          (click)="onClick()"
+        <button (click)="onClickEntreprise()"
+          
           type="button"
           mat-raised-button
           color="primary"
@@ -13,12 +13,13 @@
         </button>
 
         <button
-          type="submit"
+        (click)="onClickSalarie()"
+          type="button"
           mat-flat-button
           color="warn"
         >
         Salarie
         </button>
       </mat-card-actions>
-
+    
 </section>

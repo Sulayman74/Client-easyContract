@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import {Router} from '@angular/router';
+
 @Component({
   selector: 'app-accueil',
   templateUrl: './accueil.component.html',
@@ -7,12 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccueilComponent implements OnInit {
 
-  constructor() { }
+  constructor( private _router :Router ) { }
 
   ngOnInit(): void {
+
   }
-  onClick():void {
+
+  onClickSalarie():void {
+  
+    this._router.navigate(['/login-salarie'])
+  }
+
+  onClickEntreprise() {
+    this._router.navigate(['/login-entreprise'])
+    }
     
-  }
 
 }
