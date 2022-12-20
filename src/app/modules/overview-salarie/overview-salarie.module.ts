@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { OverviewSalarieComponent } from 'src/app/components/overview-salarie/overview-salarie.component';
 import { OverviewSalarieRoutingModule } from './overview-salarie-routing.module';
@@ -6,10 +5,10 @@ import { ProfilSalarieComponent } from 'src/app/components/profil-salarie/profil
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [OverviewSalarieComponent,
+  declarations: [
+    OverviewSalarieComponent,
     ProfilSalarieComponent],
   imports: [
-    CommonModule,
     OverviewSalarieRoutingModule,
     SharedModule
   ]

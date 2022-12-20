@@ -18,7 +18,7 @@ import { TokenInterceptorProvider } from './helpers/header.interceptor';
     BrowserModule,
     BrowserAnimationsModule,
     NgbModule,
-    SharedModule,
+    SharedModule
     
   ],
   providers: [],

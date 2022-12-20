@@ -16,6 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -42,10 +43,13 @@ import { RouterModule } from '@angular/router';
     MatCardModule,
     MatChipsModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatToolbarModule,
 
   ],
-  exports:[MatFormFieldModule,
+  exports:[
+    CommonModule,
+    MatFormFieldModule,
     ReactiveFormsModule,
     MatSelectModule,
     MatOptionModule,
@@ -63,7 +67,8 @@ import { RouterModule } from '@angular/router';
     MatCardModule,
     MatChipsModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatToolbarModule
 ]
 })
 export class SharedModule { }

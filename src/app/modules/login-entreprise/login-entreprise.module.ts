@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { LoginEntrepriseComponent } from 'src/app/components/login-entreprise/login-entreprise.component';
 import { LoginEntrepriseRoutingModule } from './login-entreprise-routing.module';
 import { NgModule } from '@angular/core';
@@ -9,7 +8,6 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [LoginEntrepriseComponent,
     RegisterEntrepriseModalComponent],
   imports: [
-    CommonModule,
     LoginEntrepriseRoutingModule,
     SharedModule
   ]

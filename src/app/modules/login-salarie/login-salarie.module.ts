@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { LoginSalarieComponent } from 'src/app/components/login-salarie/login-salarie.component';
 import { LoginSalarieRoutingModule } from './login-salarie-routing.module';
 import { NgModule } from '@angular/core';
@@ -9,7 +8,6 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [LoginSalarieComponent,
     RegisterSalarieModalComponent],
   imports: [
-    CommonModule,
     LoginSalarieRoutingModule,
     SharedModule
   ]
