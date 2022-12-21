@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { Salarie } from 'src/app/models/salarie';
 
 @Component({
   selector: 'app-overview-salarie',
@@ -13,17 +14,26 @@ export class OverviewSalarieComponent implements OnInit {
   monProfil = false;
   mesDocs = false;
   profil = false;
-  constructor(private _router : Router,
+ 
+  salarie = new Salarie()
+
+  constructor(
+    private _router: Router,
     public route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.route.data.subscribe(({ profile }) => {
+      this.salarie = profile.worker.rows[0]
+      console.log("test ici profile",this.salarie);
+    })
   }
 
-  onProfil() : void {
+  onProfil(): void {
     this._router.navigate(['profil-salarie'], { relativeTo: this.route })
     this.profil = !this.profil;
   }
-  onDocs() : void {
-    console.log("hello test","docs");
+  onDocs(): void {
+    console.log("hello test", "docs");
   }
 }

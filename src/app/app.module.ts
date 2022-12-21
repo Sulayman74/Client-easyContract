@@ -21,7 +21,7 @@ import { TokenInterceptorProvider } from './helpers/header.interceptor';
     SharedModule
     
   ],
-  providers: [],
+  providers: [TokenInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

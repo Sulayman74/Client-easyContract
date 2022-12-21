@@ -49,7 +49,7 @@ export class LoginSalarieComponent implements OnInit {
     this._salarieService.loginSalarie(loggedUser).subscribe((results: any) => {
 
       if (results) {
-        localStorage.setItem('tokens', results.tokens)
+        localStorage.setItem('token', results.token)
         this._router.navigate(['/overview-salarie'])
 
       }

@@ -27,7 +27,8 @@
         </button>
 
         <div *ngIf="profil" class="salarie-profil">
-            <router-outlet></router-outlet>
+            <!-- <router-outlet></router-outlet> -->
+            <app-profil-salarie [profilSalarie]="salarie"></app-profil-salarie>
         </div>
     </div>
 

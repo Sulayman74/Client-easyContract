@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
+
 export class UsersService {
 
   private _apiUrl = `${environment.API_URL}api/users`
@@ -20,8 +21,12 @@ export class UsersService {
   constructor(private _router: Router,
     private _http: HttpClient) { }
 
-  getProfile() {
-    return this._http.get(`${this._apiUrl}/profile`)
+  getProfileWorker():Observable<any> {
+    return this._http.get(`${this._apiUrl}/profileWorker`)
+  }
+  
+  getProfileSociety():Observable<any> {
+    return this._http.get(`${this._apiUrl}/profileSociety`)
   }
 
   clearToken() {
