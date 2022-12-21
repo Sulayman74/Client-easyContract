@@ -1,34 +1,19 @@
+<mat-toolbar class="toolbar" color="primary">
 
-<mat-toolbar color="primary">
-  
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span class="h1 titre"> Bienvenue sur EasyContract !!</span>
+  <p class="h1 titre"> Bienvenue sur EasyContract !!</p>
 </mat-toolbar>
 
 <section class="container">
 
-  <h1 class="title">Portail d'accueil</h1>      
+  <h1 class="title">Portail d'accueil</h1>
   <mat-card-actions class="btns">
-    <button (click)="onClickEntreprise()"
-      
-      type="button"
-      mat-raised-button
-      color="primary"
-    >
-    Entreprise
+    <button (click)="onClickEntreprise()" type="button" mat-raised-button color="primary">
+      Entreprise
     </button>
 
-    <button
-    (click)="onClickSalarie()"
-      type="button"
-      mat-flat-button
-      color="warn"
-    >
-    Salarie
+    <button (click)="onClickSalarie()" type="button" mat-flat-button color="warn">
+      Salarie
     </button>
   </mat-card-actions>
-    
+
 </section>
- 

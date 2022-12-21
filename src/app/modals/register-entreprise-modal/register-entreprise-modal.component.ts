@@ -1,8 +1,9 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Entreprise } from 'src/app/models/entreprise';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -21,7 +22,8 @@ export class RegisterEntrepriseModalComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _entrepriseService: UsersService,
-    private _dialogRef: MatDialogRef<any>
+    private _router :Router,
+    private _dialogRef  : MatDialogRef<any>
   ) { }
 
   ngOnInit(): void {
@@ -48,10 +50,11 @@ export class RegisterEntrepriseModalComponent implements OnInit {
     this.entreprise = Object.assign(this.entreprise, formulaire)
 
     this._entrepriseService.registerSociety(this.entreprise).subscribe((reponse: any) => {
-      console.log("test onSubmit register entreprise", reponse);
+      // console.log("test onSubmit register entreprise", reponse);
       this._entrepriseService.setToken(reponse.token)
+      this._router.navigate(['/overview-entreprise'])
     })
-    this._dialogRef.close()
+   this._dialogRef.close();
   }
 
   // ** méthode message erreur envoyé */

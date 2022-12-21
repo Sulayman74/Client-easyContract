@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { UsersService } from 'src/app/services/users.service';
+
 @Component({
   selector: 'app-profil-salarie',
   templateUrl: './profil-salarie.component.html',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilSalarieComponent implements OnInit {
 
-  constructor() { }
+  
+  constructor(
+    private _salarieService: UsersService
+  ) { }
 
   ngOnInit(): void {
+
+
   }
 
 }

@@ -5,8 +5,7 @@ import { Entreprise } from 'src/app/models/entreprise';
 import { MatDialog } from '@angular/material/dialog';
 import { RegisterEntrepriseModalComponent } from 'src/app/modals/register-entreprise-modal/register-entreprise-modal.component';
 import { Router } from '@angular/router';
-
-// import { UsersService } from 'src/app/services/users.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-login-entreprise',
@@ -22,10 +21,10 @@ export class LoginEntrepriseComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _dialog: MatDialog,
-    private _router : Router
-    ) { }
-    
-    //**TODO private _societyService: UsersService */
+    private _router: Router,
+    private _entrepriseService: UsersService
+  ) { }
+
 
   ngOnInit(): void {
     this.loginFormSociety = this._fb.group({
@@ -41,17 +40,26 @@ export class LoginEntrepriseComponent implements OnInit {
       {
         width: '100%',
         height: '100%',
-        
       });
-      
-    // modal.afterClosed().subscribe((responseFromModal: any) => {
-    //   console.warn("test afterclosed", responseFromModal);
+    
+  }
+  onSignIn(): void {
 
-    // })
+    let loggedUser = this.loginFormSociety.value
+
+    this.entreprise = Object.assign(this.entreprise, loggedUser)
+
+    this._entrepriseService.loginEntreprise(loggedUser).subscribe((results: any) => {
+
+      if (results) {
+        localStorage.setItem('tokens', results.tokens)
+        this._router.navigate(['/overview-entreprise'])
+      }
+
+
+    })
+
   }
-  onSignIn(): void  {
-  
-    this._router.navigate(['/overview-entreprise'])
-  }
+
 
 }

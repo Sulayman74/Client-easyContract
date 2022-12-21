@@ -1,0 +1,34 @@
+.container-fluid {
+    width: 100%;
+    height: 100vh;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    background-color: rgba(245, 245, 245, 0.506);
+    border-radius: 3px;
+
+    .sidenav-content {
+        display: flex;
+        height: 100%;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .tiroir {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column wrap;
+        max-width: 230px;
+        padding: 20px;
+        background-color: beige;
+        border-radius: 3px;
+
+        .contenu-tiroir {
+            display: block;
+            margin: 50px 0;
+            padding: 5px;
+        }
+
+        button {
+            margin-top: 15px;
+        }
+    }
+}

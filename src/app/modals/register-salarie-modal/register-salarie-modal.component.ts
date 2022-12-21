@@ -13,7 +13,7 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class RegisterSalarieModalComponent implements OnInit {
 
-  registerSalarie !: FormGroup
+  registerSalarie !: FormGroup<any>
   salarie = new Salarie()
 
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -54,7 +54,7 @@ export class RegisterSalarieModalComponent implements OnInit {
     this.salarie = Object.assign(this.salarie, formulaire)
 
     this._salarieService.registerSalarie(this.salarie).subscribe((reponse: any) => {
-      console.log("test onSubmit register salarie", reponse);
+      // console.log("test onSubmit register salarie", reponse);
       this._salarieService.setToken(reponse.token)
     })
     this._dialogRef.close()

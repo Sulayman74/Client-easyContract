@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { RegisterSalarieModalComponent } from 'src/app/modals/register-salarie-modal/register-salarie-modal.component';
 import { Router } from '@angular/router';
 import { Salarie } from 'src/app/models/salarie';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-login-salarie',
@@ -17,9 +18,11 @@ export class LoginSalarieComponent implements OnInit {
   loginFormSalarie !: FormGroup<any>;
   salarie = new Salarie();
 
-  constructor(private _fb: FormBuilder,
+  constructor(
+    private _fb: FormBuilder,
     private _dialog: MatDialog,
-    private _router : Router) { }
+    private _router: Router,
+    private _salarieService: UsersService) { }
 
   ngOnInit(): void {
     this.loginFormSalarie = this._fb.group({
@@ -34,14 +37,26 @@ export class LoginSalarieComponent implements OnInit {
       {
         width: '100%',
         height: '100%',
-        
+
       });
 
   }
 
-  onSignIn(): void  {
-    
-    this._router.navigate(['/overview-salarie'])
+  onSignIn(): void {
+    let loggedUser = this.loginFormSalarie.value
+    this.salarie = Object.assign(this.salarie, loggedUser)
+
+    this._salarieService.loginSalarie(loggedUser).subscribe((results: any) => {
+
+      if (results) {
+        localStorage.setItem('tokens', results.tokens)
+        this._router.navigate(['/overview-salarie'])
+
+      }
+
+    })
+
+
   }
 
 }

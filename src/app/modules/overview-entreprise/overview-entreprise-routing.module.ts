@@ -7,7 +7,7 @@ import { ProfilEntrepriseComponent } from 'src/app/components/profil-entreprise/
 const routes: Routes = [{
   path: "", component: OverviewEntrepriseComponent,
   children: [
-    { path: "profile-entreprise", component: ProfilEntrepriseComponent }
+    { path: "profil-entreprise", component: ProfilEntrepriseComponent }
   ]
 }];
 

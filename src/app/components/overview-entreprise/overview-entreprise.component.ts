@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-overview-entreprise',
   templateUrl: './overview-entreprise.component.html',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OverviewEntrepriseComponent implements OnInit {
 
-  constructor() { }
+  monProfil = false;
+  mesDocs = false;
+  profil = false;
+
+  constructor(private _router: Router) { }
 
   ngOnInit(): void {
   }
 
+  onProfil(): void {
+    this._router.navigate(['overview-entreprise/profil-entreprise'])
+    this.profil = !this.profil
+  }
+  onDocs():void {
+    console.log('hello');
+  }
 }

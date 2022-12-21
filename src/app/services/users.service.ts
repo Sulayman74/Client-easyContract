@@ -56,17 +56,36 @@ export class UsersService {
 
   //** les CRUD en front pour les requêtes dans la base de données */
 
+
+  // ** ------------ LOGIN -------------------- ** //
+
+  loginEntreprise(log : Entreprise): Observable<any> {
+    // console.log(log);
+    return this._http.post(`${this._apiUrl}/loginSociety`,log)
+  }
+  loginSalarie(log : Salarie): Observable<any> {
+    // console.log(log);
+    return this._http.post(`${this._apiUrl}/loginWorker`,log)
+  }
+
+
+  // ------------ REGISTER -------------------- //
   registerSalarie(salarie: Salarie): Observable<any> {
-    console.log(salarie, "Test du register 1");
+    // console.log(salarie, "Test du register 1");
     return this._http.post(`${this._apiUrl}/registerWorker`, salarie)
 
   }
   registerSociety(society: any): Observable<any> {
-    console.log(society, "Test du register 2");
+    // console.log(society, "Test du register 2");
     return this._http.post(`${this._apiUrl}/registerSociety`, society)
 
   }
 
+  // **---------------------- UPDATE ------------------- */
 
+  updateSalarie(salarie: any): Observable<any> {
+    // console.log(salarie, "test update salarié");
+    return this._http.put(`${this._apiUrl}/updateWorker`, { id: salarie })
+  }
 
 }

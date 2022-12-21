@@ -1,1 +1,14 @@
-<p>profil-entreprise works!</p>
+<p class="h1 titre"> profil entreprise </p>
+
+<form *ngFor="let item of test">
+    <mat-form-field >
+        <input type="text" matInput [value]="item.nom">
+    </mat-form-field>
+    <mat-form-field >
+        <input type="text" matInput [value]="item.prenom">
+    </mat-form-field>
+    <mat-form-field >
+        <input type="text" matInput [value]="item.email">
+    </mat-form-field>
+ 
+</form>
