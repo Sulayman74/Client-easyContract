@@ -41,10 +41,10 @@ export class HeaderInterceptor implements HttpInterceptor {
               message = "Bad Request bro"
               break;
             case 401:
-              message = "Unauthorized sis"
+              message = "Password or mail not correct"
               break;
             case 404:
-              message = "Vous êtes pas bien connecté"
+              message = "Vous n'êtes pas bien connecté"
               break;
 
             default: message = "Erreur de connexion"

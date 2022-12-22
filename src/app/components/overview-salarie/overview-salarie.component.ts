@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Salarie } from 'src/app/models/salarie';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-overview-salarie',
@@ -10,6 +11,7 @@ import { Salarie } from 'src/app/models/salarie';
   styleUrls: ['./overview-salarie.component.scss']
 })
 export class OverviewSalarieComponent implements OnInit {
+
 
   monProfil = false;
   mesDocs = false;
@@ -19,13 +21,14 @@ export class OverviewSalarieComponent implements OnInit {
 
   constructor(
     private _router: Router,
-    public route: ActivatedRoute) { }
+    public route: ActivatedRoute,
+    private _salarieService : UsersService) { }
 
   ngOnInit(): void {
 
     this.route.data.subscribe(({ profile }) => {
       this.salarie = profile.worker.rows[0]
-      console.log("test ici profile",this.salarie);
+      console.log(profile,"test ici profile",this.salarie);
     })
   }
 
@@ -36,4 +39,9 @@ export class OverviewSalarieComponent implements OnInit {
   onDocs(): void {
     console.log("hello test", "docs");
   }
+  onLogOut() {
+    
+    this._salarieService.clearToken()
+
+    }
 }

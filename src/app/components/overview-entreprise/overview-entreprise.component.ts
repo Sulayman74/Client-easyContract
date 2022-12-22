@@ -1,6 +1,7 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
-import { Router } from '@angular/router';
+import { Entreprise } from 'src/app/models/entreprise';
 
 @Component({
   selector: 'app-overview-entreprise',
@@ -13,16 +14,24 @@ export class OverviewEntrepriseComponent implements OnInit {
   mesDocs = false;
   profil = false;
 
-  constructor(private _router: Router) { }
+  entreprise = new Entreprise();
+
+  constructor(
+    public route: ActivatedRoute,
+    private _router: Router) { }
 
   ngOnInit(): void {
+    // this.route.data.subscribe(({ profil }) => {
+    //   this.entreprise = profil
+    //   console.log("test ici profil", this.entreprise);
+    // })
   }
 
   onProfil(): void {
-    this._router.navigate(['overview-entreprise/profil-entreprise'])
+    this._router.navigate(['overview-entreprise/profil-entreprise'], { relativeTo: this.route })
     this.profil = !this.profil
   }
-  onDocs():void {
+  onDocs(): void {
     console.log('hello');
   }
 }

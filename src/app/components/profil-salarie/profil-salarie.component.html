@@ -1,13 +1,80 @@
-<p class="h1 titre text-primary"> profil salarié</p>
+<section id="main-container">
 
-<div *ngIf="profilSalarie">
-  <p>
-    {{profilSalarie.civilite}}
-  </p>  
-  <p>
-    {{profilSalarie.civilite}}
-  </p>  
-  <p>
-    {{profilSalarie.civilite}}
-  </p>  
-</div>
+
+  <p class="h1 titre text-primary"> Mon Profil</p>
+
+  <div *ngIf="profilSalarie">
+    <mat-form-field appearance="standard">
+
+      <input type="text" matInput [value]="profilSalarie.civilite" readonly>
+
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+
+      <input type="text" matInput [value]="profilSalarie.nom" readonly>
+
+    </mat-form-field>
+    <div *ngIf="profilSalarie.nom_jeune_fille? profilSalarie.nom_jeune_fille : null">
+      <mat-form-field appearance="standard">
+
+        <input placeholder="nom de jeune fille" type="text" matInput [value]="profilSalarie.nom_jeune_fille" readonly>
+
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="standard">
+
+      <input type="text" matInput [value]="profilSalarie.prenom" readonly>
+
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Email</mat-label>
+      <input type="text" matInput [value]="profilSalarie.email" readonly>
+
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Telephone</mat-label>
+
+      <input type="text" matInput [value]="profilSalarie.telephone" readonly>
+
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Numéro de sécurité sociale</mat-label>
+      <input type="text" matInput [value]="profilSalarie.num_ss" readonly>
+
+    </mat-form-field>
+
+    <div class="adresse">
+      <mat-form-field appearance="outline">
+        <mat-label>Adresse</mat-label>
+        <p><input type="text" matInput [value]="profilSalarie.rue" readonly></p>
+        <p><input matInput type="text" [value]="profilSalarie.cp" readonly></p>
+        <p><input matInput type="text" [value]="profilSalarie.ville" readonly></p>
+
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Date de naissance</mat-label>
+      <input type="text" [value]="profilSalarie.date_naissance | date: 'shortDate' " matInput readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Lieu de naissance</mat-label>
+      <input type="text" matInput [value]="profilSalarie.lieu_naissance" readonly>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Pays de naissance</mat-label>
+
+      <input type="text" matInput [value]="profilSalarie.pays_naissance" readonly>
+    </mat-form-field>
+  </div>
+
+  <button id="edit" mat-raised-button color="primary">
+    <mat-icon>edit</mat-icon>
+  </button>
+
+
+
+</section>
