@@ -1,5 +1,5 @@
 # EasyContract
-
+## le côté Frontend via Angular
 EasyContract est une application web entièrement gérée qui facilite la création des contrats de travail entre entreprise et salariés. Il est conçu pour aider les entreprises à créer des contrats basés sur leurs besoins et à les conserver en toute sécurité.
 
 ## Fonctionnalités
