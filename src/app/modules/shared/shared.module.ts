@@ -1,4 +1,7 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { CommonModule } from '@angular/common';
+import { EditModalComponent } from 'src/app/modals/edit-modal/edit-modal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatBadgeModule } from '@angular/material/badge';
@@ -18,11 +21,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [],
+  declarations: [EditModalComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -45,9 +47,10 @@ import { RouterModule } from '@angular/router';
     MatDialogModule,
     MatIconModule,
     MatToolbarModule,
+    FormsModule
 
   ],
-  exports:[
+  exports: [
     CommonModule,
     MatFormFieldModule,
     ReactiveFormsModule,
@@ -68,7 +71,8 @@ import { RouterModule } from '@angular/router';
     MatChipsModule,
     MatDialogModule,
     MatIconModule,
-    MatToolbarModule
-]
+    MatToolbarModule,
+    FormsModule
+  ]
 })
 export class SharedModule { }

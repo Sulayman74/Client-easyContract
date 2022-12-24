@@ -18,14 +18,15 @@ export class UsersService {
   currentUser = new Subject<any>()
   loggedUser = new Subject<any>()
 
-  constructor(private _router: Router,
+  constructor(
+    private _router: Router,
     private _http: HttpClient) { }
 
-  getProfileWorker():Observable<any> {
+  getProfileWorker(): Observable<any> {
     return this._http.get(`${this._apiUrl}/profileWorker`)
   }
-  
-  getProfileSociety():Observable<any> {
+
+  getProfileSociety(): Observable<any> {
     return this._http.get(`${this._apiUrl}/profileSociety`)
   }
 
@@ -64,13 +65,13 @@ export class UsersService {
 
   // ** ------------ LOGIN -------------------- ** //
 
-  loginEntreprise(log : Entreprise): Observable<any> {
+  loginEntreprise(log: Entreprise): Observable<any> {
     // console.log(log);
-    return this._http.post(`${this._apiUrl}/loginSociety`,log)
+    return this._http.post(`${this._apiUrl}/loginSociety`, log)
   }
-  loginSalarie(log : Salarie): Observable<any> {
+  loginSalarie(log: Salarie): Observable<any> {
     // console.log(log);
-    return this._http.post(`${this._apiUrl}/loginWorker`,log)
+    return this._http.post(`${this._apiUrl}/loginWorker`, log)
   }
 
 
@@ -90,7 +91,7 @@ export class UsersService {
 
   updateSalarie(salarie: any): Observable<any> {
     // console.log(salarie, "test update salarié");
-    return this._http.put(`${this._apiUrl}/updateWorker`, { id: salarie })
+    return this._http.put(`${this._apiUrl}/updateWorker`, salarie)
   }
 
 }

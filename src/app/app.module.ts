@@ -11,7 +11,7 @@ import { TokenInterceptorProvider } from './helpers/header.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
-    AccueilComponent
+    AccueilComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -19,7 +19,7 @@ import { TokenInterceptorProvider } from './helpers/header.interceptor';
     BrowserAnimationsModule,
     NgbModule,
     SharedModule
-    
+
   ],
   providers: [TokenInterceptorProvider],
   bootstrap: [AppComponent]
