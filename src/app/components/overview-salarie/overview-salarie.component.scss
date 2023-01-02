@@ -1,51 +1,62 @@
 .toolbar {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: 50px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 50px;
 }
 
 .container-fluid {
-    margin: 0;
-    width: 100%;
-    height: 88vh;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    background-color: rgba(245, 245, 245, 0.506);
+  margin: 0;
+  width: 100%;
+  height: 88vh;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: rgba(245, 245, 245, 0.506);
+  border-radius: 3px;
+
+  .sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    .bgi {
+      background-image: url(https://hospitality-on.com/sites/default/files/2018-04/advice-advise-advisor-7097.jpg);
+      height: 100%;
+      width: 100%;
+      filter: blur(10px);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: absolute;
+      z-index: -1;
+    }
+
+    .salarie-profil {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .tiroir {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column wrap;
+    max-width: 230px;
+    padding: 20px;
+    background-color: white;
     border-radius: 3px;
 
-    .sidenav-content {
-        display: flex;
-        height: 100%;
-        align-items: flex-start;
-        justify-content: flex-start;
-
-        .salarie-profil {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-        }
+    .contenu-tiroir {
+      display: block;
+      margin: 50px 0;
+      padding: 5px;
     }
 
-    .tiroir {
-        display: flex;
-        justify-content: space-evenly;
-        flex-direction: column wrap;
-        max-width: 230px;
-        padding: 20px;
-        background-color: white;
-        border-radius: 3px;
-
-        .contenu-tiroir {
-            display: block;
-            margin: 50px 0;
-            padding: 5px;
-        }
-
-        button {
-            margin-top: 15px;
-        }
+    button {
+      margin-top: 15px;
     }
+  }
 }

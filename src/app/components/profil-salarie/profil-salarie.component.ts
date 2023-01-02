@@ -4,6 +4,7 @@ import { EditModalComponent } from 'src/app/modals/edit-modal/edit-modal.compone
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Salarie } from 'src/app/models/salarie';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -23,14 +24,21 @@ export class ProfilSalarieComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log("je suis dans le profil salarie", this.profilSalarie);
+ 
   }
+
   onEdit() {
-    this._dialog.open(EditModalComponent, {
+    let dialogRef = this._dialog.open(EditModalComponent, {
       width: "50%",
       height: "80%",
       data: this.profilSalarie
     })
+    
+    dialogRef.afterClosed().subscribe((values:any)=>{
+      console.log("valeur attendues de la modal",values);
+    })
+
+
   }
 
 }

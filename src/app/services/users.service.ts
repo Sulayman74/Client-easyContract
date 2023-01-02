@@ -90,8 +90,8 @@ export class UsersService {
   // **---------------------- UPDATE ------------------- */
 
   updateSalarie(salarie: any): Observable<any> {
-    // console.log(salarie, "test update salarié");
-    return this._http.put(`${this._apiUrl}/updateWorker`, salarie)
+    console.log("test update salarié",salarie);
+    return this._http.put<Salarie>(`${this._apiUrl}/updateWorker`, salarie)
   }
 
 }

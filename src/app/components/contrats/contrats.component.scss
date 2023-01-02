@@ -1,0 +1,30 @@
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 87vh;
+    width: 66vw;
+
+    .formulaire {
+        
+        background-color: rgba(124, 77, 6, 0.322);
+        backdrop-filter: blur(20px);
+        border-radius: 3px;
+        height: 100%;
+        width: 50%;
+
+        form {
+            color: azure;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            .mat-form-field{
+                width: 30%;
+            }
+       
+        }
+    }
+}

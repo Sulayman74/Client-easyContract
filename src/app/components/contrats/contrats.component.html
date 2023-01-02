@@ -1,0 +1,54 @@
+<section class="container-fluid">
+
+  <div class="formulaire">
+    <form [formGroup]="contrats" (ngSubmit)="(onSubmit)">
+
+      <mat-form-field>
+        <mat-label>entreprise</mat-label>
+        <input type="text" matInput formControlName="fki_entreprise">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>salarie</mat-label>
+        <input type="text" matInput formControlName="fki_salarie">
+      </mat-form-field>
+
+
+      <mat-radio-group aria-label="Select an option" formControlName="type_contrat">
+        <mat-radio-button value="CDD">CDD</mat-radio-button>
+        <mat-radio-button value="CDI">CDI</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-radio-group aria-label="Select an option" formControlName="is_fulltime">
+        <mat-radio-button value="temps plein">temps plein</mat-radio-button>
+        <mat-radio-button value="temps partiel">temps partiel</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field>
+        <mat-label>date de début</mat-label>
+        <input type="date" matInput formControlName="date_debut">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>date de fin</mat-label>
+        <input type="date" matInput formControlName="date_fin">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>periode d'essai</mat-label>
+        <input type="texte" matInput formControlName="periode_essai">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>motif de recrutement</mat-label>
+        <input type="text" matInput formControlName="motif">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>fonction</mat-label>
+        <input type="text" matInput formControlName="fonction">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>statut</mat-label>
+        <input type="text" matInput formControlName="statut">
+      </mat-form-field>
+
+    </form>
+  </div>
+</section>

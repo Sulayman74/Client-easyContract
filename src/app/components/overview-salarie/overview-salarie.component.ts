@@ -16,32 +16,38 @@ export class OverviewSalarieComponent implements OnInit {
   monProfil = false;
   mesDocs = false;
   profil = false;
- 
+  contrats = false;
+
+  @Input() profilSalarie!: any
+
   salarie = new Salarie()
 
   constructor(
     private _router: Router,
     public route: ActivatedRoute,
-    private _salarieService : UsersService) { }
+    private _salarieService: UsersService) { }
 
   ngOnInit(): void {
 
     this.route.data.subscribe(({ profile }) => {
       this.salarie = profile.worker.rows[0]
-      console.log(profile,"test ici profile",this.salarie);
+      console.log(profile, "test ici profile", this.salarie);
     })
   }
 
   onProfil(): void {
     this._router.navigate(['profil-salarie'], { relativeTo: this.route })
     this.profil = !this.profil;
+    this.contrats = false
   }
   onDocs(): void {
-    console.log("hello test", "docs");
+    this._router.navigate(['contrats'], { relativeTo: this.route })
+    this.contrats = !this.contrats;
+    this.profil = false
   }
   onLogOut() {
-    
+
     this._salarieService.clearToken()
 
-    }
+  }
 }

@@ -1,20 +1,31 @@
-#main-container{
+.formulaire {
+  background-color: rgba(255, 235, 205, 0.411);
+  backdrop-filter: blur(10px);
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  #main-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
-    height: 30vh;
-    width: 45vw;
-    #edit{
-        padding: 5px 45px;
-        transition: all ease 0.4s;
-        
-        &:hover{
-            background-color: whitesmoke;
-            box-shadow: 5px 3px 2px black;
-            .mat-icon{
-                color: black;
-            }
-        }
+    justify-content: space-around;
+    padding: 10px 20px;
+    height: 100%;
+    .mat-form-field {
+      padding: 0 80px;
     }
+    #edit {
+      padding: 5px 45px;
+      transition: all ease 0.4s;
+
+      &:hover {
+        background-color: whitesmoke;
+        box-shadow: 5px 3px 2px black;
+        .mat-icon {
+          color: black;
+        }
+      }
+    }
+  }
 }

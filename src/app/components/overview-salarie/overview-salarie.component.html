@@ -1,48 +1,55 @@
 <mat-toolbar class="toolbar" color="primary">
-    <button type="button" mat-button (click)="drawer.toggle()">
-
-        <mat-icon> menu</mat-icon>
-    </button>
-    <p class="h1">Portail Salarie</p>
+  <button type="button" mat-button (click)="drawer.toggle()">
+    <mat-icon> menu</mat-icon>
+  </button>
+  <p class="h1">Portail Salarie</p>
 </mat-toolbar>
 <mat-drawer-container class="container-fluid" autosize>
-    <mat-drawer #drawer class="tiroir" mode="over">
-        <div class="contenu-tiroir">
-            <button (click)="monProfil = !monProfil" mat-raised-button>
-                Paramètres du compte
-            </button>
+  <mat-drawer #drawer class="tiroir" mode="over">
+    <div class="contenu-tiroir">
+      <button (click)="monProfil = !monProfil" mat-raised-button>
+        Paramètres du compte
+      </button>
 
-            <button *ngIf="monProfil" (click)="onProfil()" mat-flat-button id="profil" color="warn"> Gérer mon
-                profil</button>
+      <button
+        *ngIf="monProfil"
+        (click)="onProfil()"
+        mat-flat-button
+        id="profil"
+        color="warn"
+      >
+        Gérer mon profil
+      </button>
 
-            <button mat-raised-button (click)="mesDocs = !mesDocs">
-                Mes documents
-            </button>
+      <button mat-raised-button (click)="mesDocs = !mesDocs">
+        Mes documents
+      </button>
 
-            <button *ngIf="mesDocs" (click)="onDocs()" mat-flat-button id="docs" color="accent"> Gérer mes
-                documents</button>
-            <div class="deconnexion">
-                <button mat-mini-fab color="warn" (click)="onLogOut()">
-                    <mat-icon>close</mat-icon>
-
-                </button>
-            </div>
-
-        </div>
-
-
-    </mat-drawer>
-
-    <div class="sidenav-content">
-    
-
-        <div *ngIf="profil" class="salarie-profil">
-            <!-- <router-outlet></router-outlet> -->
-            <app-profil-salarie [profilSalarie]="salarie"></app-profil-salarie>
-        </div>
+      <button
+        *ngIf="mesDocs"
+        (click)="onDocs()"
+        mat-flat-button
+        id="docs"
+        color="accent"
+      >
+        Gérer mes documents
+      </button>
+      <div class="deconnexion">
+        <button mat-mini-fab color="warn" (click)="onLogOut()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
     </div>
+  </mat-drawer>
 
-
-
+  <div class="sidenav-content">
+    <div class="bgi"></div>
+    <div *ngIf="profil" class="salarie-profil">
+      <!-- <router-outlet></router-outlet> -->
+      <app-profil-salarie [profilSalarie]="salarie"></app-profil-salarie>
+    </div>
+    <div *ngIf="contrats" class="contrats">
+      <app-contrats></app-contrats>
+    </div>
+  </div>
 </mat-drawer-container>
-

@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatOptionModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatRadioModule} from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -47,7 +48,8 @@ import { RouterModule } from '@angular/router';
     MatDialogModule,
     MatIconModule,
     MatToolbarModule,
-    FormsModule
+    FormsModule,
+    MatRadioModule
 
   ],
   exports: [
@@ -72,7 +74,8 @@ import { RouterModule } from '@angular/router';
     MatDialogModule,
     MatIconModule,
     MatToolbarModule,
-    FormsModule
+    FormsModule,
+    MatRadioModule
   ]
 })
 export class SharedModule { }

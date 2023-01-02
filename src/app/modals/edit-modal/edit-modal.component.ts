@@ -2,7 +2,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { Salarie } from 'src/app/models/salarie';
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -16,26 +16,28 @@ export class EditModalComponent implements OnInit {
 
   salarie = new Salarie();
 
-  constructor(private _salarieService: UsersService,
-    @Inject(MAT_DIALOG_DATA) public data: Salarie,
-    private _fb: FormBuilder) { }
+  constructor(
+    private _salarieService: UsersService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private _fb: FormBuilder,
+    private _dialogRef: MatDialogRef<any>) { }
 
   ngOnInit(): void {
 
     this.editForm = this._fb.group({
-      civilite: this.salarie.civilite,
-      nom: this.salarie.nom,
-      prenom: this.salarie.prenom,
-      nom_jeune_fille: this.salarie.nom_jeune_fille,
-      telephone: this.salarie.telephone,
-      rue: this.salarie.rue,
-      ville: this.salarie.ville,
-      cp: this.salarie.cp,
-      mdp: this.salarie.mdp,
-      num_ss: this.salarie.num_ss,
-      pays_naissance: this.salarie.pays_naissance,
-      lieu_naissance: this.salarie.lieu_naissance,
-      date_naissance: this.salarie.date_naissance
+      civilite: this.data.civilite,
+      nom: this.data.nom,
+      prenom: this.data.prenom,
+      nom_jeune_fille: this.data.nom_jeune_fille,
+      telephone: this.data.telephone,
+      email: this.data.email,
+      rue: this.data.rue,
+      ville: this.data.ville,
+      cp: this.data.cp,
+      num_ss: this.data.num_ss,
+      pays_naissance: this.data.pays_naissance,
+      lieu_naissance: this.data.lieu_naissance,
+      date_naissance: this.data.date_naissance
     })
   }
 
@@ -45,8 +47,10 @@ export class EditModalComponent implements OnInit {
 
 
     this._salarieService.updateSalarie(formulaire).subscribe((reponse: any) => {
-      console.log("reponse", reponse);
+      console.warn("test de la reponse", reponse);
     })
+    this._dialogRef.close()
+
   }
 
 }
