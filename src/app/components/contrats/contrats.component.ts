@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Contrat } from 'src/app/models/contrat';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-contrats',
@@ -11,13 +12,15 @@ import { Contrat } from 'src/app/models/contrat';
 export class ContratsComponent implements OnInit {
 
 
-  contrats !: FormGroup<any>
+  formContrat !: FormGroup<any>
   contrat = new Contrat();
-
-  constructor(private _fb: FormBuilder) { }
+  salaries !: any[]
+  constructor(
+    private _fb: FormBuilder,
+    private _salarieService: UsersService) { }
 
   ngOnInit(): void {
-    this.contrats = this._fb.group({
+    this.formContrat = this._fb.group({
       fki_entreprise: [this.contrat.fki_entreprise, Validators.required],
       fki_salarie: [this.contrat.fki_salarie, Validators.required],
       type_contrat: this.contrat.type_contrat,
@@ -28,6 +31,10 @@ export class ContratsComponent implements OnInit {
       motif: this.contrat.motif,
       fonction: this.contrat.fonction,
       statut: this.contrat.statut
+    })
+    this._salarieService.getWorkers().subscribe((values:any[])=> {
+      this.salaries = values
+      console.log("test values salarie all", this.salaries);
     })
   }
 

@@ -16,9 +16,9 @@ export class OverviewSalarieComponent implements OnInit {
   monProfil = false;
   mesDocs = false;
   profil = false;
-  contrats = false;
 
-  @Input() profilSalarie!: any
+
+  // @Input() profilSalarie!: any
 
   salarie = new Salarie()
 
@@ -38,12 +38,10 @@ export class OverviewSalarieComponent implements OnInit {
   onProfil(): void {
     this._router.navigate(['profil-salarie'], { relativeTo: this.route })
     this.profil = !this.profil;
-    this.contrats = false
+    
   }
   onDocs(): void {
-    this._router.navigate(['contrats'], { relativeTo: this.route })
-    this.contrats = !this.contrats;
-    this.profil = false
+    console.log("hello");
   }
   onLogOut() {
 

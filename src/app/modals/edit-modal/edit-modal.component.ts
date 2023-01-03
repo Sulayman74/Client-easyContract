@@ -46,10 +46,13 @@ export class EditModalComponent implements OnInit {
     this.salarie = Object.assign(this.salarie, formulaire)
 
 
-    this._salarieService.updateSalarie(formulaire).subscribe((reponse: any) => {
-      console.warn("test de la reponse", reponse);
+    this._salarieService.updateSalarie(formulaire).subscribe((reponse: Salarie) => {
+
+      this.data = reponse
+      console.warn("test de la reponse", this.data);
+
+      this._dialogRef.close({ profil: this.data })
     })
-    this._dialogRef.close()
 
   }
 

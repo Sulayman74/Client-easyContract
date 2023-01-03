@@ -1,7 +1,8 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Entreprise } from 'src/app/models/entreprise';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-overview-entreprise',
@@ -13,25 +14,38 @@ export class OverviewEntrepriseComponent implements OnInit {
   monProfil = false;
   mesDocs = false;
   profil = false;
+  contrats = false;
+
+  
 
   entreprise = new Entreprise();
 
   constructor(
     public route: ActivatedRoute,
-    private _router: Router) { }
+    private _router: Router,
+    private _entrepriseService : UsersService) { }
 
   ngOnInit(): void {
-    // this.route.data.subscribe(({ profil }) => {
-    //   this.entreprise = profil
-    //   console.log("test ici profil", this.entreprise);
-    // })
+    this.route.data.subscribe(({ profilSociety }) => {
+      this.entreprise = profilSociety.society
+      console.log("test ici profil 15555", this.entreprise);
+    })
   }
 
   onProfil(): void {
-    this._router.navigate(['overview-entreprise/profil-entreprise'], { relativeTo: this.route })
+    this._router.navigate(['profil-entreprise'], { relativeTo: this.route })
     this.profil = !this.profil
+    this.contrats = false
   }
   onDocs(): void {
-    console.log('hello');
+    this._router.navigate(['contrats'], { relativeTo: this.route })
+    this.contrats = !this.contrats;
+    this.profil = false
+  }
+
+  onLogOut() {
+
+    this._entrepriseService.clearToken()
+
   }
 }

@@ -52,7 +52,7 @@ export class LoginEntrepriseComponent implements OnInit {
     this._entrepriseService.loginEntreprise(loggedUser).subscribe((results: any) => {
 
       if (results) {
-        localStorage.setItem('tokens', results.tokens)
+        localStorage.setItem('token', results.token)
         this._router.navigate(['/overview-entreprise'])
       }
 

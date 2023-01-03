@@ -1,4 +1,3 @@
-import { ContratsComponent } from 'src/app/components/contrats/contrats.component';
 import { NgModule } from '@angular/core';
 import { OverviewSalarieComponent } from 'src/app/components/overview-salarie/overview-salarie.component';
 import { OverviewSalarieRoutingModule } from './overview-salarie-routing.module';
@@ -8,8 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 @NgModule({
   declarations: [
     OverviewSalarieComponent,
-    ProfilSalarieComponent,
-    ContratsComponent],
+    ProfilSalarieComponent],
   imports: [
     OverviewSalarieRoutingModule,
     SharedModule

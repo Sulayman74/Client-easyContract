@@ -10,8 +10,7 @@ const routes: Routes = [
   {
     path: '', component: OverviewSalarieComponent, resolve: { profile: ProfilSalarieResolver },
     children: [
-      { path: 'profil-salarie', component: ProfilSalarieComponent },
-      { path: 'contrats', component: ContratsComponent }
+      { path: 'profil-salarie', component: ProfilSalarieComponent }
     ]
   }
 ];

@@ -63,6 +63,23 @@ export class UsersService {
   //** les CRUD en front pour les requêtes dans la base de données */
 
 
+  // **  Je recupère tous les utilisateurs */
+  getAllUsers(): Observable<any> {
+    return this._http.get(`${this._apiUrl}/allUsers`)
+
+  }
+
+  // **  Je recupère tous les salaries*/
+  getWorkers(): Observable<any> {
+    return this._http.get(`${this._apiUrl}/workers`)
+
+  }
+  // **  Je recupère toutes les entreprises  */
+
+  getSocieties(): Observable<any> {
+    return this._http.get(`${this._apiUrl}/societies`)
+  }
+
   // ** ------------ LOGIN -------------------- ** //
 
   loginEntreprise(log: Entreprise): Observable<any> {
@@ -89,9 +106,13 @@ export class UsersService {
 
   // **---------------------- UPDATE ------------------- */
 
-  updateSalarie(salarie: any): Observable<any> {
-    console.log("test update salarié",salarie);
+  updateSalarie(salarie: Salarie): Observable<any> {
+    // console.log("test update salarié",salarie);
     return this._http.put<Salarie>(`${this._apiUrl}/updateWorker`, salarie)
+  }
+  updateSociety(society: Entreprise): Observable<any> {
+    // console.log("test update entreprise",society);
+    return this._http.put<Entreprise>(`${this._apiUrl}/updateSociety`, society)
   }
 
 }

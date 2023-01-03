@@ -3,8 +3,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { EditModalComponent } from 'src/app/modals/edit-modal/edit-modal.component';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Salarie } from 'src/app/models/salarie';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -17,6 +15,7 @@ export class ProfilSalarieComponent implements OnInit {
   profil !: FormGroup<any>
 
   @Input() profilSalarie!: any
+  // newValues!: any
 
   constructor(
     private _salarieService: UsersService,
@@ -24,7 +23,7 @@ export class ProfilSalarieComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
- 
+
   }
 
   onEdit() {
@@ -33,10 +32,13 @@ export class ProfilSalarieComponent implements OnInit {
       height: "80%",
       data: this.profilSalarie
     })
-    
-    dialogRef.afterClosed().subscribe((values:any)=>{
-      console.log("valeur attendues de la modal",values);
+    dialogRef.afterClosed().subscribe((profil: any) => {
+      this.profilSalarie = profil.profil.newDatas
+      console.log(this.profilSalarie);
+      // this.newValues = profil.profil.newDatas
+      // console.log(this.newValues);
     })
+
 
 
   }

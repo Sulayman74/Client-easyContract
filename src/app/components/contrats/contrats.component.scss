@@ -11,7 +11,7 @@
         backdrop-filter: blur(20px);
         border-radius: 3px;
         height: 100%;
-        width: 50%;
+        width: 80%;
 
         form {
             color: azure;
@@ -23,6 +23,18 @@
             width: 100%;
             .mat-form-field{
                 width: 30%;
+            }
+            .radio{
+                padding: 0 0 20px 0;
+                display: flex;
+                justify-content: center;
+                align-content: space-around;
+                flex-direction: column wrap;
+                height: 10%;
+                width: 10%;
+                .mat-radio-group {
+                    padding: 10px;
+                }
             }
        
         }

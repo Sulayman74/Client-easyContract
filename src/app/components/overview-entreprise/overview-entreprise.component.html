@@ -1,5 +1,9 @@
-<p>overview-entreprise works!</p>
-
+<mat-toolbar class="toolbar" color="primary">
+    <button type="button" mat-button (click)="drawer.toggle()">
+        <mat-icon> menu</mat-icon>
+    </button>
+    <p class="h1">Portail Entreprise</p>
+</mat-toolbar>
 <mat-drawer-container class="container-fluid" autosize>
     <mat-drawer #drawer class="tiroir" mode="push">
         <div class="contenu-tiroir">
@@ -7,28 +11,32 @@
                 Paramètres du compte
             </button>
 
-            <button *ngIf="monProfil"  (click)="onProfil()" mat-raised-button id="profil" color="primary"> Gérer mon
+            <button *ngIf="monProfil" (click)="onProfil()" mat-raised-button id="profil" color="primary"> Gérer mon
                 profil</button>
 
             <button mat-raised-button (click)="mesDocs = !mesDocs">
                 Mes documents
             </button>
 
-            <button *ngIf="mesDocs" (click)="onDocs()" mat-raised-button id="docs" color="warn"> Gérer mes
-                documents</button>
-
+            <button *ngIf="mesDocs" (click)="onDocs()" mat-raised-button id="docs" color="warn"> Génerer un
+                contrat</button>
+            <div class="deconnexion">
+                <button mat-mini-fab color="warn" (click)="onLogOut()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
         </div>
 
 
     </mat-drawer>
 
     <div class="sidenav-content">
-        <button type="button" mat-button (click)="drawer.toggle()">
-            <mat-icon> menu</mat-icon>
-        </button>
-
         <div *ngIf="profil" class="entreprise-profil">
-            <router-outlet></router-outlet>
+            <app-profil-entreprise
+            ></app-profil-entreprise>
+        </div>
+        <div *ngIf="contrats" class="contrats">
+            <app-contrats></app-contrats>
         </div>
     </div>
 
