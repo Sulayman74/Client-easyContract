@@ -18,7 +18,6 @@ export class ProfilSalarieComponent implements OnInit {
   // newValues!: any
 
   constructor(
-    private _salarieService: UsersService,
     private _dialog: MatDialog
   ) { }
 
