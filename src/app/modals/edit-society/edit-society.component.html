@@ -1,0 +1,55 @@
+<p class="h1 text-primary">Modifier votre profil</p>
+
+<section class="edit-container">
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Civilite</mat-label>
+      <input type="text" matInput formControlName="civilite" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Nom</mat-label>
+      <input type="text" matInput formControlName="nom" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Raison Sociale</mat-label>
+      <input type="text"  matInput formControlName="raison_sociale" />
+    </mat-form-field>
+   
+    <mat-form-field appearance="fill">
+      <mat-label>Prénom</mat-label>
+      <input type="text" matInput formControlName="prenom" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label >Email</mat-label>
+      <input type="email" matInput formControlName="email" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Telephone</mat-label>
+      <input type="text" matInput formControlName="telephone" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Rue</mat-label>
+      <input type="text" matInput formControlName="rue" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Ville</mat-label>
+      <input type="text" matInput formControlName="ville" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Code Postal</mat-label>
+      <input type="text" matInput formControlName="cp" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Numéro de Siret</mat-label>
+      <input type="text" matInput formControlName="siret" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Code APE</mat-label>
+      <input type="text" matInput formControlName="code_ape" />
+    </mat-form-field>
+
+    <button mat-raised-button color="accent" type="submit">
+      <mat-icon>done_outline</mat-icon>
+    </button>
+  </form>
+</section>
