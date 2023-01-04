@@ -1,9 +1,25 @@
 .toolbar {
-  margin-top: 10px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 50px;
+  height: fit-content;
+
+  .titres{
+    p{
+      margin: 0;
+      padding: 0;
+    }
+    .h4{
+      color: black;
+      font-weight: bold;
+      filter: drop-shadow(2px 1px 1px white);
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
 }
 
 .container-fluid {

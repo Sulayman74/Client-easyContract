@@ -18,8 +18,6 @@ export class OverviewSalarieComponent implements OnInit {
   profil = false;
 
 
-  // @Input() profilSalarie!: any
-
   salarie = new Salarie()
 
   constructor(
@@ -30,7 +28,7 @@ export class OverviewSalarieComponent implements OnInit {
   ngOnInit(): void {
 
     this.route.data.subscribe(({ profile }) => {
-      this.salarie = profile.worker.rows[0]
+      this.salarie = profile.worker
       console.log(profile, "test ici profile", this.salarie);
     })
   }

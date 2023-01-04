@@ -2,7 +2,10 @@
   <button type="button" mat-button (click)="drawer.toggle()">
     <mat-icon> menu</mat-icon>
   </button>
-  <p class="h1">Portail Salarie</p>
+  <div class="titres">
+    <p class="h4">Portail Salarie</p>
+    <p>{{salarie.nom}}</p> <p>{{salarie.prenom}}</p>
+  </div>
 </mat-toolbar>
 <mat-drawer-container class="container-fluid" autosize>
   <mat-drawer #drawer class="tiroir" mode="over">
@@ -11,13 +14,7 @@
         Paramètres du compte
       </button>
 
-      <button
-        *ngIf="monProfil"
-        (click)="onProfil()"
-        mat-flat-button
-        id="profil"
-        color="warn"
-      >
+      <button *ngIf="monProfil" (click)="onProfil()" mat-flat-button id="profil" color="warn">
         Gérer mon profil
       </button>
 
@@ -25,13 +22,7 @@
         Mes documents
       </button>
 
-      <button
-        *ngIf="mesDocs"
-        (click)="onDocs()"
-        mat-flat-button
-        id="docs"
-        color="accent"
-      >
+      <button *ngIf="mesDocs" (click)="onDocs()" mat-flat-button id="docs" color="accent">
         Gérer mes documents
       </button>
       <div class="deconnexion">
