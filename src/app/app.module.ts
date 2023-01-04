@@ -8,11 +8,13 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from './modules/shared/shared.module';
 import { TokenInterceptorProvider } from './helpers/header.interceptor';
+import { EditSocietyComponent } from './modals/edit-society/edit-society.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
+    EditSocietyComponent,
   ],
   imports: [
     AppRoutingModule,
