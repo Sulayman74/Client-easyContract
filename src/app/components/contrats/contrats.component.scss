@@ -6,7 +6,7 @@
     width: 66vw;
 
     .formulaire {
-        
+
         background-color: rgba(124, 77, 6, 0.322);
         backdrop-filter: blur(20px);
         border-radius: 3px;
@@ -21,10 +21,12 @@
             flex-direction: column;
             height: 100%;
             width: 100%;
-            .mat-form-field{
+
+            .mat-form-field {
                 width: 30%;
             }
-            .radio{
+
+            .radio {
                 padding: 0 0 20px 0;
                 display: flex;
                 justify-content: center;
@@ -32,11 +34,22 @@
                 flex-direction: column wrap;
                 height: 10%;
                 width: 10%;
+
                 .mat-radio-group {
                     padding: 10px;
                 }
             }
-       
+
+        }
+
+        button {
+            transition: all 0.3s ease;
+
+            &:hover {
+               transform: scale(1.05);
+               box-shadow: 2px 2px 2px black;
+               color: black;
+            }
         }
     }
 }

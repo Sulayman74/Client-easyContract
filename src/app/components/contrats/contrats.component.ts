@@ -15,9 +15,11 @@ export class ContratsComponent implements OnInit {
   formContrat !: FormGroup<any>
   contrat = new Contrat();
   salaries !: any[]
+  entreprises !: any[]
+
   constructor(
     private _fb: FormBuilder,
-    private _salarieService: UsersService) { }
+    private _usersService: UsersService) { }
 
   ngOnInit(): void {
     this.formContrat = this._fb.group({
@@ -32,13 +34,22 @@ export class ContratsComponent implements OnInit {
       fonction: this.contrat.fonction,
       statut: this.contrat.statut
     })
-    this._salarieService.getWorkers().subscribe((values:any[])=> {
-      this.salaries = values
+    this._usersService.getWorkers().subscribe((values:any)=> {
+      this.salaries = values.salaries
       console.log("test values salarie all", this.salaries);
     })
+    this._usersService.getSocieties().subscribe((values:any)=> {
+      this.entreprises = values.societes
+      console.log("test values entreprise all", this.entreprises);
+    })
+
+
+  
   }
 
   onSubmit() {
-    console.log("hello World");
+  const contrat = this.formContrat.value
+     console.log("hello World", contrat);
+   
   }
 }

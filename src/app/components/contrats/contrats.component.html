@@ -1,32 +1,39 @@
 <section class="container-fluid">
 
   <div class="formulaire">
-    <form [formGroup]="formContrat" (ngSubmit)="(onSubmit)">
+    <form [formGroup]="formContrat" (ngSubmit)="onSubmit()">
 
       <mat-form-field>
         <mat-label>Entreprise</mat-label>
         <mat-select formControlName="fki_entreprise">
-          <mat-option *ngFor="let salarie of salaries" [value]="salarie.salarie_id"></mat-option>
-          </mat-select>
+          <mat-option *ngFor="let item of entreprises" [value]="item.entreprise_id">
+            {{item.raison_sociale}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Salarie</mat-label>
-        <input type="text" matInput formControlName="fki_salarie">
+        <mat-select formControlName="fki_salarie">
+
+          <mat-option *ngFor="let item of salaries" [value]="item.salarie_id">
+            {{item.nom}} {{item.prenom}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
 
-<div class="radio">
+      <div class="radio">
 
-  <mat-radio-group aria-label="Select an option" formControlName="type_contrat">
-    <mat-radio-button value="CDD">CDD</mat-radio-button>
-    <mat-radio-button value="CDI">CDI</mat-radio-button>
-  </mat-radio-group>
-  
-  <mat-radio-group aria-label="Select an option" formControlName="is_fulltime">
-    <mat-radio-button value="temps plein">Temps plein</mat-radio-button>
-    <mat-radio-button value="temps partiel">Temps partiel</mat-radio-button>
-  </mat-radio-group>
-</div>
+        <mat-radio-group aria-label="Select an option" formControlName="type_contrat">
+          <mat-radio-button value="CDD">CDD</mat-radio-button>
+          <mat-radio-button value="CDI">CDI</mat-radio-button>
+        </mat-radio-group>
+
+        <mat-radio-group aria-label="Select an option" formControlName="is_fulltime">
+          <mat-radio-button value="temps plein">Temps plein</mat-radio-button>
+          <mat-radio-button value="temps partiel">Temps partiel</mat-radio-button>
+        </mat-radio-group>
+      </div>
 
       <mat-form-field>
         <mat-label>Date de début</mat-label>
@@ -53,6 +60,7 @@
         <input type="text" matInput formControlName="statut">
       </mat-form-field>
 
+      <button mat-raised-button color="accent">Génerer un contrat</button>
     </form>
   </div>
 </section>
