@@ -28,7 +28,6 @@ export class OverviewEntrepriseComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.subscribe(({ profilSociety }) => {
       this.entreprise = profilSociety.society
-      console.log("test ici profil 15555", this.entreprise);
     })
   }
 

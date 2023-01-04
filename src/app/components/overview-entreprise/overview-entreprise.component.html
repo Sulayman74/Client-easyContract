@@ -2,7 +2,10 @@
     <button type="button" mat-button (click)="drawer.toggle()">
         <mat-icon> menu</mat-icon>
     </button>
-    <p class="h1">Portail Entreprise</p>
+    <div class="titres">
+        <p class="h4">Portail Entreprise</p>
+        <p>{{entreprise.raison_sociale}}</p>
+      </div>
 </mat-toolbar>
 <mat-drawer-container class="container-fluid" autosize>
     <mat-drawer #drawer class="tiroir" mode="push">
@@ -32,8 +35,7 @@
 
     <div class="sidenav-content">
         <div *ngIf="profil" class="entreprise-profil">
-            <app-profil-entreprise
-            ></app-profil-entreprise>
+            <app-profil-entreprise [profilEntreprise]="entreprise"></app-profil-entreprise>
         </div>
         <div *ngIf="contrats" class="contrats">
             <app-contrats></app-contrats>
