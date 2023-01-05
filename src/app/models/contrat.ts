@@ -8,6 +8,7 @@ export class Contrat {
     date_fin !: Date
     periode_essai !: string
     motif !: string
+    remuneration !: number
     fonction !: string
     statut !: string
 

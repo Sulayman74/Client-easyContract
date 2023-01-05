@@ -4,12 +4,7 @@
     <form [formGroup]="formContrat" (ngSubmit)="onSubmit()">
 
       <mat-form-field>
-        <mat-label>Entreprise</mat-label>
-        <mat-select formControlName="fki_entreprise">
-          <mat-option *ngFor="let item of entreprises" [value]="item.entreprise_id">
-            {{item.raison_sociale}}
-          </mat-option>
-        </mat-select>
+        <input type="text" matInput [value]="profilEntreprise.raison_sociale" matInput readonly>
       </mat-form-field>
 
       <mat-form-field>
@@ -30,8 +25,8 @@
         </mat-radio-group>
 
         <mat-radio-group aria-label="Select an option" formControlName="is_fulltime">
-          <mat-radio-button value="temps plein">Temps plein</mat-radio-button>
-          <mat-radio-button value="temps partiel">Temps partiel</mat-radio-button>
+          <mat-radio-button value=true>Temps plein</mat-radio-button>
+          <mat-radio-button value=false>Temps partiel</mat-radio-button>
         </mat-radio-group>
       </div>
 
@@ -39,7 +34,7 @@
         <mat-label>Date de début</mat-label>
         <input type="date" matInput formControlName="date_debut">
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field *ngIf="formContrat.value.type_contrat == 'CDD'">
         <mat-label>Date de fin</mat-label>
         <input type="date" matInput formControlName="date_fin">
       </mat-form-field>
@@ -49,7 +44,19 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Motif de recrutement</mat-label>
-        <input type="text" matInput formControlName="motif">
+        <mat-select *ngFor="let item of motifs">
+          <mat-option [value]="item.motif1">
+          {{item.motif1}}
+          </mat-option>
+          <mat-option [value]="item.motif2">
+          {{item.motif2}}
+          </mat-option>
+        </mat-select>
+
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Remunération</mat-label>
+        <input type="text" matInput formControlName="remuneration">
       </mat-form-field>
       <mat-form-field>
         <mat-label>Fonction</mat-label>
