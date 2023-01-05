@@ -4,12 +4,14 @@ import { OverviewEntrepriseComponent } from 'src/app/components/overview-entrepr
 import { OverviewEntrepriseRoutingModule } from './overview-entreprise-routing.module';
 import { ProfilEntrepriseComponent } from 'src/app/components/profil-entreprise/profil-entreprise.component';
 import { SharedModule } from '../shared/shared.module';
+import { ShowContractsComponent } from 'src/app/components/show-contracts/show-contracts.component';
 
 @NgModule({
   declarations: [
     OverviewEntrepriseComponent,
     ProfilEntrepriseComponent,
-    ContratsComponent
+    ContratsComponent,
+    ShowContractsComponent,
   ],
   imports: [
     OverviewEntrepriseRoutingModule,

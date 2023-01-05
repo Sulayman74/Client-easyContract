@@ -15,6 +15,7 @@ export class OverviewEntrepriseComponent implements OnInit {
   mesDocs = false;
   profil = false;
   contrats = false;
+  showContracts = false;
 
   
 
@@ -35,11 +36,19 @@ export class OverviewEntrepriseComponent implements OnInit {
     this._router.navigate(['profil-entreprise'], { relativeTo: this.route })
     this.profil = !this.profil
     this.contrats = false
+    this.showContracts = false
   }
   onDocs(): void {
     this._router.navigate(['contrats'], { relativeTo: this.route })
     this.contrats = !this.contrats;
     this.profil = false
+    this.showContracts = false
+  }
+  onContrat(): void {
+    this._router.navigate(['show-contracts'], { relativeTo: this.route })
+    this.profil = false
+    this.contrats = false
+    this.showContracts = !this.showContracts
   }
 
   onLogOut() {

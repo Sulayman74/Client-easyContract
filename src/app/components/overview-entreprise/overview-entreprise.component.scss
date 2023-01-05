@@ -1,58 +1,69 @@
 .toolbar {
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: fit-content;
-  
-    .titres{
-      p{
-        margin: 0;
-        padding: 0;
-      }
-      .h4{
-        color: black;
-        font-weight: bold;
-        filter: drop-shadow(2px 1px 1px white);
-      }
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: fit-content;
+
+  .titres {
+    p {
+      margin: 0;
+      padding: 0;
     }
+
+    .h4 {
+      color: black;
+      font-weight: bold;
+      filter: drop-shadow(2px 1px 1px white);
+    }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
   }
+}
 
 .container-fluid {
-    width: 100%;
-    height: 100vh;
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    background-color: rgba(245, 245, 245, 0.506);
+  width: 100%;
+  height: 100vh;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: rgba(245, 245, 245, 0.506);
+  border-radius: 3px;
+
+  .sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .tiroir {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column wrap;
+    max-width: 230px;
+    padding: 20px;
+    background-color: beige;
     border-radius: 3px;
 
-    .sidenav-content {
-        display: flex;
-        height: 100%;
-        align-items: flex-start;
-        justify-content: flex-start;
+    .contenu-tiroir {
+      display: block;
+      margin: 50px 0;
+      padding: 5px;
     }
 
-    .tiroir {
-        display: flex;
-        justify-content: space-evenly;
-        flex-direction: column wrap;
-        max-width: 230px;
-        padding: 20px;
-        background-color: beige;
-        border-radius: 3px;
+    button {
+      margin-top: 15px;
 
-        .contenu-tiroir {
-            display: block;
-            margin: 50px 0;
-            padding: 5px;
-        }
 
-        button {
-            margin-top: 15px;
-        }
     }
+  }
+}
+
+#contrat {
+  padding: 3px 0;
+ white-space: pre-line;
+  font-size: 1em;
+  line-height: 18px;
 }

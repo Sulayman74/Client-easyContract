@@ -5,7 +5,7 @@
     <div class="titres">
         <p class="h4">Portail Entreprise</p>
         <p>{{entreprise.raison_sociale}}</p>
-      </div>
+    </div>
 </mat-toolbar>
 <mat-drawer-container class="container-fluid" autosize>
     <mat-drawer #drawer class="tiroir" mode="push">
@@ -23,6 +23,8 @@
 
             <button *ngIf="mesDocs" (click)="onDocs()" mat-raised-button id="docs" color="warn"> Génerer un
                 contrat</button>
+            <button *ngIf="mesDocs" (click)="onContrat()" mat-raised-button id="contrat" color="accent"> Visualiser les
+                informations contrats</button>
             <div class="deconnexion">
                 <button mat-mini-fab color="warn" (click)="onLogOut()">
                     <mat-icon>close</mat-icon>
@@ -38,7 +40,11 @@
             <app-profil-entreprise [profilEntreprise]="entreprise"></app-profil-entreprise>
         </div>
         <div *ngIf="contrats" class="contrats">
-            <app-contrats></app-contrats>
+            <app-contrats [profilEntreprise]="entreprise"></app-contrats>
+        </div>
+        <div *ngIf="showContracts" class="show-contracts">
+            <app-show-contracts ></app-show-contracts>
+
         </div>
     </div>
 

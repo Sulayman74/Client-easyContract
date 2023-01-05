@@ -39,8 +39,6 @@ export class ProfilEntrepriseComponent implements OnInit {
     dialogRef.afterClosed().subscribe((profil: any) => {
       this.profilEntreprise = profil.profil.newDatas
       console.log(this.profilEntreprise);
-      // this.newValues = profil.profil.newDatas
-      // console.log(this.newValues);
     })
 
   }
