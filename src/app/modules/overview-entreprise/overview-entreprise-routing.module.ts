@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 
 import { ContratsComponent } from 'src/app/components/contrats/contrats.component';
+import { MesSalariesComponent } from 'src/app/components/mes-salaries/mes-salaries.component';
 import { NgModule } from '@angular/core';
 import { OverviewEntrepriseComponent } from 'src/app/components/overview-entreprise/overview-entreprise.component';
 import { ProfilEntrepriseComponent } from 'src/app/components/profil-entreprise/profil-entreprise.component';
@@ -12,7 +13,8 @@ const routes: Routes = [{
   children: [
     { path: "profil-entreprise", component: ProfilEntrepriseComponent },
     { path: 'contrats', component: ContratsComponent },
-    { path: 'show-contracts', component: ShowContractsComponent }
+    { path: 'show-contracts', component: ShowContractsComponent },
+    { path: 'mes-salaries', component: MesSalariesComponent }
   ]
 }];
 
