@@ -32,7 +32,6 @@ export class UsersService {
 
   clearToken() {
     localStorage.removeItem('token')
-    this._router.navigate((['/login-salarie']))
   }
 
   static getToken() {
@@ -41,7 +40,7 @@ export class UsersService {
 
   setToken(token: string) {
     localStorage.setItem('token', token)
-    this._router.navigate(['overview-salarie'])
+
   }
 
   setCurrentUser(user: any): void {
