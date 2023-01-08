@@ -22,8 +22,8 @@ export class RegisterEntrepriseModalComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _entrepriseService: UsersService,
-    private _router :Router,
-    private _dialogRef  : MatDialogRef<any>
+    private _router: Router,
+    private _dialogRef: MatDialogRef<any>
   ) { }
 
   ngOnInit(): void {
@@ -52,9 +52,9 @@ export class RegisterEntrepriseModalComponent implements OnInit {
     this._entrepriseService.registerSociety(this.entreprise).subscribe((reponse: any) => {
       // console.log("test onSubmit register entreprise", reponse);
       this._entrepriseService.setToken(reponse.token)
-      this._router.navigate(['/overview-entreprise'])
     })
-   this._dialogRef.close();
+
+    this._dialogRef.close();
   }
 
   // ** méthode message erreur envoyé */

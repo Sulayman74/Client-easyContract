@@ -1,7 +1,7 @@
-<p class="h1 text-primary">Modifier votre profil</p>
-
 <section class="edit-container">
-  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  <p class="h1 text-primary">Modifier votre profil</p>
+
+  <form [formGroup]="editForm">
     <mat-form-field appearance="fill">
       <mat-label>Civilite</mat-label>
       <input type="text" matInput formControlName="civilite" />
@@ -12,15 +12,15 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Raison Sociale</mat-label>
-      <input type="text"  matInput formControlName="raison_sociale" />
+      <input type="text" matInput formControlName="raison_sociale" />
     </mat-form-field>
-   
+
     <mat-form-field appearance="fill">
       <mat-label>Prénom</mat-label>
       <input type="text" matInput formControlName="prenom" />
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label >Email</mat-label>
+      <mat-label>Email</mat-label>
       <input type="email" matInput formControlName="email" />
     </mat-form-field>
     <mat-form-field appearance="fill">
@@ -47,9 +47,10 @@
       <mat-label>Code APE</mat-label>
       <input type="text" matInput formControlName="code_ape" />
     </mat-form-field>
-
-    <button mat-raised-button color="accent" type="submit">
+  </form>
+  <div class="my-button">
+    <button mat-raised-button color="accent" type="submit" (click)="onSubmit()">
       <mat-icon>done_outline</mat-icon>
     </button>
-  </form>
+  </div>
 </section>

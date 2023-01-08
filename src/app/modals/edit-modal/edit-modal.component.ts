@@ -4,6 +4,7 @@ import { Salarie } from 'src/app/models/salarie';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UsersService } from 'src/app/services/users.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-modal',
@@ -20,7 +21,8 @@ export class EditModalComponent implements OnInit {
     private _salarieService: UsersService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _fb: FormBuilder,
-    private _dialogRef: MatDialogRef<any>) { }
+    private _dialogRef: MatDialogRef<any>,
+    public snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
 
@@ -44,13 +46,8 @@ export class EditModalComponent implements OnInit {
   onSubmit() {
     const formulaire = this.editForm.value
     this.salarie = Object.assign(this.salarie, formulaire)
-
-
     this._salarieService.updateSalarie(formulaire).subscribe((reponse: Salarie) => {
-
       this.data = reponse
-      console.warn("test de la reponse", this.data);
-
       this._dialogRef.close({ profil: this.data })
     })
 

@@ -20,7 +20,7 @@
       <input type="text" matInput formControlName="prenom" />
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label >Email</mat-label>
+      <mat-label>Email</mat-label>
       <input type="email" matInput formControlName="email" />
     </mat-form-field>
     <mat-form-field appearance="fill">
@@ -56,12 +56,14 @@
         formControlName="lieu_naissance"
       />
     </mat-form-field>
-<div>
-  <mat-label>Date de naissance</mat-label>
-  <p>{{data.date_naissance | date : "shortDate"}}</p>
-</div>
-    <button mat-raised-button color="accent" type="submit">
-      <mat-icon>done_outline</mat-icon>
-    </button>
+    <div>
+      <mat-label>Date de naissance</mat-label>
+      <p>{{ data.date_naissance | date : "shortDate" }}</p>
+    </div>
+    <div class="bouton">
+      <button mat-raised-button color="accent" type="submit">
+        <mat-icon>done_outline</mat-icon>
+      </button>
+    </div>
   </form>
 </section>

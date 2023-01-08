@@ -26,7 +26,7 @@ export class EditSocietyComponent implements OnInit {
 
     this.editForm = this._fb.group({
       civilite: this.data.civilite,
-      raison_sociale : this.data.raison_sociale,
+      raison_sociale: this.data.raison_sociale,
       nom: this.data.nom,
       prenom: this.data.prenom,
       telephone: this.data.telephone,
@@ -36,12 +36,14 @@ export class EditSocietyComponent implements OnInit {
       cp: this.data.cp,
       siret: this.data.siret,
       code_ape: this.data.code_ape
+
     })
 
   }
 
 
   onSubmit() {
+
     const formulaire = this.editForm.value
     this.entreprise = Object.assign(this.entreprise, formulaire)
 
@@ -49,8 +51,6 @@ export class EditSocietyComponent implements OnInit {
     this._entrepriseService.updateSociety(formulaire).subscribe((reponse: Entreprise) => {
 
       this.data = reponse
-      console.warn("test de la reponse", this.data);
-
       this._dialogRef.close({ profil: this.data })
     })
 
