@@ -15,6 +15,10 @@ export class RegisterSalarieModalComponent implements OnInit {
 
   registerSalarie !: FormGroup<any>
   salarie = new Salarie()
+  civilites = [{
+    title1: "Monsieur",
+    title2: "Madame"
+  }]
 
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', Validators.required)
@@ -22,8 +26,8 @@ export class RegisterSalarieModalComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _salarieService: UsersService,
-    private _router :Router,
-    private _dialogRef : MatDialogRef <any>) { }
+    private _router: Router,
+    private _dialogRef: MatDialogRef<any>) { }
 
   ngOnInit(): void {
 
@@ -49,13 +53,14 @@ export class RegisterSalarieModalComponent implements OnInit {
 
   }
 
-  onSubmit():void {
+  onSubmit(): void {
     const formulaire = this.registerSalarie.value
     this.salarie = Object.assign(this.salarie, formulaire)
 
     this._salarieService.registerSalarie(this.salarie).subscribe((reponse: any) => {
       // console.log("test onSubmit register salarie", reponse);
       this._salarieService.setToken(reponse.token)
+
     })
     this._dialogRef.close()
 

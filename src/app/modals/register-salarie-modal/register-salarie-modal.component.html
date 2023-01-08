@@ -1,110 +1,169 @@
 <section class="container-fluid">
-    <h1 id="title">Formulaire d'inscription</h1>
-    <form [formGroup]="registerSalarie" (ngSubmit)="onSubmit()">
-       
-                <mat-form-field appearance="outline">
-                    <mat-label>Civilité</mat-label>
-                    <input type="text" matInput placeholder="Enter your name" formControlName="civilite" />
-                    <mat-icon matSuffix>person</mat-icon>
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Nom</mat-label>
-                    <input matInput placeholder="Enter your first name" formControlName="nom" type="text" />
-                    <mat-icon matSuffix>person_outline</mat-icon>
-                </mat-form-field>
+  <h1 id="title">Formulaire d'inscription</h1>
+  <form [formGroup]="registerSalarie" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Civilité</mat-label>
+      <mat-select formControlName="civilite" *ngFor="let item of civilites">
+        <mat-option [value]="item.title1">Monsieur</mat-option>
+        <mat-option [value]="item.title2">Madame</mat-option>
+      </mat-select>
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Nom</mat-label>
+      <input
+        matInput
+        placeholder="Enter your first name"
+        formControlName="nom"
+        type="text"
+      />
+      <mat-icon matSuffix>person_outline</mat-icon>
+    </mat-form-field>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Prénom</mat-label>
-                    <input matInput placeholder="your pseudo" formControlName="prenom" />
-                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                </mat-form-field>
+    <mat-form-field
+      *ngIf="registerSalarie.value.civilite == 'Madame'"
+      appearance="outline"
+    >
+      <mat-label>Nom de jeune fille</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="enter your phone number"
+        formControlName="nom_jeune_fille"
+      />
+      <mat-icon matSuffix>person_outline</mat-icon>
+    </mat-form-field>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Téléphone</mat-label>
-                    <input matInput placeholder="phoneNumber" formControlName="telephone" required />
-                    <mat-icon matSuffix>phone</mat-icon>
-                </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Prénom</mat-label>
+      <input matInput placeholder="your pseudo" formControlName="prenom" />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Rue</mat-label>
-                    <input type="text" matInput placeholder="la rue" formControlName="rue" />
-                    <mat-icon matSuffix>location_on</mat-icon>
-                </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Téléphone</mat-label>
+      <input
+        matInput
+        placeholder="phoneNumber"
+        formControlName="telephone"
+        required
+      />
+      <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Code Postale</mat-label>
-                    <input type="text" matInput placeholder="Enter your post code" formControlName="cp" />
-                    <mat-icon matSuffix> map</mat-icon>
-                </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Rue</mat-label>
+      <input type="text" matInput placeholder="la rue" formControlName="rue" />
+      <mat-icon matSuffix>location_on</mat-icon>
+    </mat-form-field>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Ville</mat-label>
-                    <input type="text" matInput placeholder="Enter your City" formControlName="ville" />
-                    <mat-icon matSuffix> streetview</mat-icon>
-                </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Code Postale</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Enter your post code"
+        formControlName="cp"
+      />
+      <mat-icon matSuffix> map</mat-icon>
+    </mat-form-field>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Email</mat-label>
-                    <input matInput placeholder="Enter your email" formControlName="email" type="email" required />
-                    <mat-error *ngIf="email.invalid">{{
-                        getErrorMessageMail()
-                        }}</mat-error>
-                    <mat-icon matSuffix>mail</mat-icon>
-                </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Ville</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Enter your City"
+        formControlName="ville"
+      />
+      <mat-icon matSuffix> streetview</mat-icon>
+    </mat-form-field>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Password</mat-label>
-                    <input type="password" matInput
-                    placeholder="password" formControlName="mdp"
-                    required>
-                    <mat-icon matSuffix>fingerprint</mat-icon>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        placeholder="Enter your email"
+        formControlName="email"
+        type="email"
+        required
+      />
+      <mat-error *ngIf="email.invalid">{{ getErrorMessageMail() }}</mat-error>
+      <mat-icon matSuffix>mail</mat-icon>
+    </mat-form-field>
 
-                    <mat-hint> entre 8 et 12 caractères</mat-hint>
-                    <mat-error *ngIf="password.invalid">{{
-                        getErrorMessagePassword()
-                        }}</mat-error>
-                </mat-form-field>
-            
-                <mat-form-field appearance="outline">
-                    <mat-label>Nom de jeune fille</mat-label>
-                    <input type="text" matInput placeholder="enter your phone number" formControlName="nom_jeune_fille" />
-                    <mat-icon matSuffix>person_outline</mat-icon>
-                </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        type="password"
+        matInput
+        placeholder="password"
+        formControlName="mdp"
+        required
+      />
+      <mat-icon matSuffix>fingerprint</mat-icon>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Numéro de sécurité sociale</mat-label>
-                    <input type="text" matInput placeholder="numéro de sécurité sociale" formControlName="num_ss" />
-                    <mat-icon matSuffix>person</mat-icon>
-                </mat-form-field>
+      <mat-hint> entre 8 et 12 caractères</mat-hint>
+      <mat-error *ngIf="password.invalid">{{
+        getErrorMessagePassword()
+      }}</mat-error>
+    </mat-form-field>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Date de naissance</mat-label>
-                    <input type="date" matInput placeholder="Date De Naissance" formControlName="date_naissance" />
-                </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Numéro de sécurité sociale</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="numéro de sécurité sociale"
+        formControlName="num_ss"
+      />
+      <mat-icon matSuffix>person</mat-icon>
+    </mat-form-field>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Pays de naissance</mat-label>
-                    <input matInput type="text" placeholder="Pays de naissance" formControlName="pays_naissance" />
-                    <mat-icon matSuffix>home</mat-icon>
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Lieu de naissance</mat-label>
-                    <input matInput type="text" placeholder="ville de naissance" formControlName="lieu_naissance" />
-                    <mat-icon matSuffix>home</mat-icon>
-                </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Date de naissance</mat-label>
+      <input
+        type="date"
+        matInput
+        placeholder="Date De Naissance"
+        formControlName="date_naissance"
+      />
+    </mat-form-field>
 
-        
-       
-            <button class="valider" type="submit" mat-raised-button color="primary" [disabled]="registerSalarie.invalid">
-                Valider
-        </button>
-    </form>
+    <mat-form-field appearance="outline">
+      <mat-label>Pays de naissance</mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="Pays de naissance"
+        formControlName="pays_naissance"
+      />
+      <mat-icon matSuffix>home</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Lieu de naissance</mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="ville de naissance"
+        formControlName="lieu_naissance"
+      />
+      <mat-icon matSuffix>home</mat-icon>
+    </mat-form-field>
+  </form>
+  <button
+    class="valider"
+    type="submit"
+    mat-raised-button
+    color="primary"
+    [disabled]="registerSalarie.invalid"
+  >
+    Valider
+  </button>
 </section>
-
 
 <!--TODO remettre cette option pour le bouton afin de griser la validation si il manque des informations dans le formulaire  -->
 <!-- [disabled]="registerSalarie.invalid" -->
-
 
 <!--TODO pour après le MVP rajouter un autocomplete qui cherche sur une API les pays-->
 
