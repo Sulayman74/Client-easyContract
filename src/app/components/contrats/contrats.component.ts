@@ -5,6 +5,7 @@ import { Contrat } from 'src/app/models/contrat';
 import { DataService } from 'src/app/services/data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsersService } from 'src/app/services/users.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contrats',
@@ -15,11 +16,16 @@ export class ContratsComponent implements OnInit {
 
   @Input() profilEntreprise!: any
   formContrat !: FormGroup<any>
+
   contrat = new Contrat();
+
   salaries !: any[]
   entreprises !: any[]
-  motifs = [{ motif1:'Remplacement', motif2:'Accroissement activité'}]
-  
+
+  minDate = new Date()
+  motifs = [{ motif1: 'Remplacement', motif2: 'Accroissement activité' }]
+  status = [{ statut1: 'Employé qualifié', statut2: "Ouvrier", statut3: "Cadre" }]
+
 
   constructor(
     private _fb: FormBuilder,
@@ -28,6 +34,8 @@ export class ContratsComponent implements OnInit {
     public snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
+
+    console.log(this.minDate);
     this.formContrat = this._fb.group({
       fki_entreprise: this.profilEntreprise.entreprise_id,
       fki_salarie: [this.contrat.fki_salarie, Validators.required],
@@ -41,16 +49,15 @@ export class ContratsComponent implements OnInit {
       fonction: this.contrat.fonction,
       statut: this.contrat.statut
     })
+
     this._usersService.getWorkers().subscribe((values: any) => {
       this.salaries = values.salaries
-      // console.log("test values salarie all", this.salaries);
     })
+
     this._usersService.getSocieties().subscribe((values: any) => {
       this.entreprises = values.societes
       // console.log("test values entreprise all", this.entreprises);
     })
-
-
 
   }
 
@@ -59,20 +66,19 @@ export class ContratsComponent implements OnInit {
     this.contrat = Object.assign(this.contrat, contratForm)
 
     this._contrat.createContract(this.contrat).subscribe((reponse: any) => {
-      
+
       const salarie = reponse.salarie.rows
       const contrat = reponse.contract.contrat_id
-      console.warn(salarie, contrat);
+      // console.warn(salarie, contrat);
 
       /** je fais ici pour recevoir les données du salarie pour la snack bar  */
-      let monSalarie = salarie.map((value:any)=>{
-        console.log(value);
-        if(value.contrat_id == reponse.contract.contrat_id) {
-          this.snackbar.open(`Vous avez bien créé un contrat avec ${value.nom}`, "OK")
-        }
-       ;
+      let monSalarie = salarie.map((value: any) => {
+        // console.log(value);
+        if (value.contrat_id == reponse.contract.contrat_id) {
+          this.snackbar.open(`Vous avez bien créé un contrat avec ${value.civilite} ${value.nom}`, "OK", { duration: 3000 })
+        };
       })
-      
+
       this.formContrat.reset();
 
     })

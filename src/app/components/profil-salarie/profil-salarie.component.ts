@@ -3,7 +3,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { EditModalComponent } from 'src/app/modals/edit-modal/edit-modal.component';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-profil-salarie',
@@ -12,10 +11,8 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class ProfilSalarieComponent implements OnInit {
 
-  profil !: FormGroup<any>
 
   @Input() profilSalarie!: any
-  // newValues!: any
 
   constructor(
     private _dialog: MatDialog
@@ -33,9 +30,7 @@ export class ProfilSalarieComponent implements OnInit {
     })
     dialogRef.afterClosed().subscribe((profil: any) => {
       this.profilSalarie = profil.profil.newDatas
-      console.log(this.profilSalarie);
-      // this.newValues = profil.profil.newDatas
-      // console.log(this.newValues);
+
     })
 
 

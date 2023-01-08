@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { EditSocietyComponent } from 'src/app/modals/edit-society/edit-society.component';
-import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -11,21 +10,15 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ProfilEntrepriseComponent implements OnInit {
 
-  
-  
+
+
   @Input() profilEntreprise!: any
 
   constructor(
     private _dialog: MatDialog,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-    
-
-  }
-
-  onSubmit(): void {
-    
 
 
   }
@@ -42,7 +35,7 @@ export class ProfilEntrepriseComponent implements OnInit {
     })
 
   }
-  
+
 
 
 

@@ -50,7 +50,7 @@ export class HeaderInterceptor implements HttpInterceptor {
             default: message = "Erreur de connexion"
               break;
           }
-          this._snackbar.open(message, "ok")
+          this._snackbar.open(message, "OK", { duration: 2000 })
           return next.handle(modifiedReq)
         })
       )

@@ -1,1 +1,34 @@
-<p>show-contracts works!</p>
+<section class="main">
+  <h1>Mes Contrats</h1>
+  <div class="container">
+    <div class="cards">
+      <div *ngFor="let item of onlyMy">
+        <mat-card class="card">
+          <mat-card-title class="titre-main">Aperçu du Contrat</mat-card-title>
+          <mat-card-header>
+            <mat-card-title id="civilite">Civilite</mat-card-title>
+            <mat-card-subtitle>
+              <p>{{ item.civilite }} {{ item.nom }}</p></mat-card-subtitle
+            >
+          </mat-card-header>
+          <mat-card-header id="fonction">
+            <mat-card-title>Fonction Et Statut</mat-card-title>
+            <mat-card-subtitle>
+              <p>{{ item.fonction }} {{ item.statut }}</p></mat-card-subtitle
+            >
+          </mat-card-header>
+          <mat-card-header id="date">
+            <mat-card-title>Date de contrat</mat-card-title>
+            <mat-card-subtitle>
+              {{ item.date_debut | date : "dd/MM/yyyy" }}
+            </mat-card-subtitle>
+
+            <mat-card-subtitle *ngIf="item.date_fin">
+              au {{ item.date_fin | date : "dd/MM/yyyy" }}
+            </mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</section>

@@ -6,8 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./mes-salaries.component.scss']
 })
 export class MesSalariesComponent implements OnInit {
+  @Input() profilEntreprise !: any
 
-  @Input() profilSalarie !: any
   constructor() { }
 
   ngOnInit(): void {

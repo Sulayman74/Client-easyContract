@@ -1,73 +1,79 @@
-
 <div class="formulaire">
-    <section id="main-container">
-      <p class="h1 titre text-primary">Mon Profil</p>
-      <div>
-        <mat-form-field appearance="standard">
-          <mat-label>Civilite</mat-label>
-          <input type="text" matInput [value]="profilEntreprise.civilite " readonly />
-        </mat-form-field>
-        <mat-form-field appearance="standard">
-          <mat-label>Nom</mat-label>
-          <input type="text" matInput [value]="profilEntreprise.nom" readonly />
-        </mat-form-field>
-        <mat-form-field appearance="standard">
-            <mat-label>Raison Sociale</mat-label>
-            <input type="text" matInput [value]="profilEntreprise.raison_sociale" readonly />
-          </mat-form-field>
+  <p class="h1 titre text-primary">Mon Profil</p>
+  <section id="main-container">
+    <mat-form-field appearance="standard">
+      <mat-label>Civilite</mat-label>
+      <input
+        type="text"
+        matInput
+        [value]="profilEntreprise.civilite"
+        readonly
+      />
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Nom</mat-label>
+      <input type="text" matInput [value]="profilEntreprise.nom" readonly />
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Raison Sociale</mat-label>
+      <input
+        type="text"
+        matInput
+        [value]="profilEntreprise.raison_sociale"
+        readonly
+      />
+    </mat-form-field>
 
-        <mat-form-field appearance="standard">
-          <mat-label>Prenom</mat-label>
-          <input type="text" matInput [value]="profilEntreprise.prenom" readonly />
-        </mat-form-field>
-        <mat-form-field appearance="standard">
-          <mat-label>Email</mat-label>
-          <input type="text" matInput [value]="profilEntreprise.email" readonly />
-        </mat-form-field>
-        <mat-form-field appearance="standard">
-          <mat-label>Telephone</mat-label>
-  
+    <mat-form-field appearance="standard">
+      <mat-label>Prenom</mat-label>
+      <input type="text" matInput [value]="profilEntreprise.prenom" readonly />
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Email</mat-label>
+      <input type="text" matInput [value]="profilEntreprise.email" readonly />
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Telephone</mat-label>
+
+      <input
+        type="text"
+        matInput
+        [value]="profilEntreprise.telephone"
+        readonly
+      />
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Numéro de Siret</mat-label>
+      <input type="text" matInput [value]="profilEntreprise.siret" readonly />
+    </mat-form-field>
+
+    <div class="adresse">
+      <mat-form-field appearance="outline">
+        <mat-label>Adresse</mat-label>
+        <p>
+          <input type="text" matInput [value]="profilEntreprise.rue" readonly />
+        </p>
+        <p>
+          <input matInput type="text" [value]="profilEntreprise.cp" readonly />
+        </p>
+        <p>
           <input
-            type="text"
             matInput
-            [value]="profilEntreprise.telephone"
+            type="text"
+            [value]="profilEntreprise.ville"
             readonly
           />
-        </mat-form-field>
-        <mat-form-field appearance="standard">
-          <mat-label>Numéro de Siret</mat-label>
-          <input type="text" matInput [value]="profilEntreprise.siret" readonly />
-        </mat-form-field>
-  
-        <div class="adresse">
-          <mat-form-field appearance="outline">
-            <mat-label>Adresse</mat-label>
-            <p>
-              <input type="text" matInput [value]="profilEntreprise.rue" readonly />
-            </p>
-            <p>
-              <input matInput type="text" [value]="profilEntreprise.cp" readonly />
-            </p>
-            <p>
-              <input
-                matInput
-                type="text"
-                [value]="profilEntreprise.ville"
-                readonly
-              />
-            </p>
-          </mat-form-field>
-        </div>
-  <mat-form-field appearance="standard">
-    <mat-label>Code APE</mat-label>
-    <input type="text" matInput [value]="profilEntreprise.code_ape">
-  </mat-form-field>
-       
-      </div>
-  
-      <button (click)="onEdit()" id="edit" mat-raised-button color="primary">
-        <mat-icon>edit</mat-icon>
-      </button>
-    </section>
+        </p>
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="standard">
+      <mat-label>Code APE</mat-label>
+      <input type="text" matInput [value]="profilEntreprise.code_ape" />
+    </mat-form-field>
+  </section>
+  <div class="button-edition">
+    <button (click)="onEdit()" id="edit" mat-raised-button color="primary">
+      <mat-icon>edit</mat-icon>
+    </button>
   </div>
-  
+</div>

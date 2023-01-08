@@ -16,6 +16,7 @@ export class OverviewSalarieComponent implements OnInit {
   monProfil = false;
   mesDocs = false;
   profil = false;
+  contrats = false;
 
 
   salarie = new Salarie()
@@ -29,21 +30,25 @@ export class OverviewSalarieComponent implements OnInit {
 
     this.route.data.subscribe(({ profile }) => {
       this.salarie = profile.worker
-      console.log(profile, "test ici profile", this.salarie);
+      // console.log(profile, "test ici profile", this.salarie);
     })
   }
 
   onProfil(): void {
     this._router.navigate(['profil-salarie'], { relativeTo: this.route })
     this.profil = !this.profil;
-    
+    this.contrats = false
+
   }
   onDocs(): void {
-    console.log("hello");
+    this._router.navigate(['mes-contrats'], { relativeTo: this.route })
+    this.contrats = !this.contrats
+    this.profil = false
   }
   onLogOut() {
 
     this._salarieService.clearToken()
+    this._router.navigate(['/accueil'])
 
   }
 }
