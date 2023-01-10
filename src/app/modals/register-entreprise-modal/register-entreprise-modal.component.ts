@@ -16,6 +16,11 @@ export class RegisterEntrepriseModalComponent implements OnInit {
   registerSociety !: FormGroup<any>
   entreprise = new Entreprise()
 
+  civilites = [{
+    title1: "Monsieur",
+    title2: "Madame"
+  }]
+
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', Validators.required)
 

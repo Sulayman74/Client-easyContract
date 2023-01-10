@@ -3,12 +3,10 @@
   <form [formGroup]="registerSociety" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="outline">
       <mat-label>Civilité</mat-label>
-      <input
-        type="text"
-        matInput
-        placeholder="civilité"
-        formControlName="civilite"
-      />
+     <mat-select formControlName="civilite" *ngFor="let item of civilites">
+        <mat-option [value]="item.title1">Monsieur</mat-option>
+        <mat-option [value]="item.title2">Madame</mat-option>
+      </mat-select>
       <mat-icon matSuffix>person</mat-icon>
     </mat-form-field>
     <mat-form-field appearance="outline">
@@ -123,17 +121,17 @@
       />
       <mat-icon matSuffix>home</mat-icon>
     </mat-form-field>
-
-    <button
-      class="valider"
-      type="submit"
-      mat-raised-button
-      color="primary"
-      [disabled]="registerSociety.invalid"
-    >
-      Valider
-    </button>
   </form>
+  
+      <button
+        class="valider"
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="registerSociety.invalid"
+      >
+        Valider
+      </button>
 </section>
 
 <!-- TODO option disabled du bouton [disabled]="registerSociety.invalid" -->
