@@ -1,5 +1,5 @@
 .main {
-  width: 90vw;
+  width: 65vw;
   height: 90vh;
   .container {
     display: flex;
@@ -24,11 +24,14 @@
         filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.65));
         transition: all 0.3s ease;
         &:hover {
-          transform: scale(1.03);
+          transform: scale(0.99);
           color: black;
         }
       }
     }
+  }
+  #btn-detail{
+    width: fit-content;
   }
   #fonction {
     align-self: center;

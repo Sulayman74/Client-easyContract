@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import { DetailsModalComponent } from 'src/app/modals/details-modal/details-modal.component';
+import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-show-contracts',
@@ -16,10 +19,12 @@ export class ShowContractsComponent implements OnInit {
   entreprise !: any
   onlyMyContracts !: any
 
-
+  searchBar = new FormControl()
+  contratTab!: any[];
   constructor(
     private _dataService: DataService,
-    public route: ActivatedRoute) { }
+    public route: ActivatedRoute,
+    private _matDialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -46,8 +51,23 @@ export class ShowContractsComponent implements OnInit {
         }
       })
       console.log("tableauFiltre", this.onlyMyContracts);
-
+// Spread du tableau pour la search bar et j'itere dessus pour l'html //
+      this.contratTab = [...this.onlyMyContracts]
+    })
+    /**  la Search bar */
+     this.searchBar.valueChanges.subscribe((resultSearch: any) => {
+      this.contratTab = this.onlyMyContracts.filter((infoContrat: any) => {
+        return infoContrat.fonction.toLowerCase().includes(resultSearch.toLowerCase()) || infoContrat.nom.toLowerCase().includes(resultSearch.toLowerCase()) || infoContrat.prenom.toLowerCase().includes(resultSearch.toLowerCase())
+      })
     })
   }
 
+  onDetails(): void {
+    let dialog = this._matDialog.open(DetailsModalComponent,
+      {
+        height : '60%',
+        width : '50%',
+        data : this.onlyMyContracts
+      })
+  }
 }

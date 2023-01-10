@@ -1,8 +1,13 @@
 <section class="main">
+  <div class="search_box">
+
+    <input matInput type="search" placeholder="Recherchez un contrat..." class="search" [formControl]="searchBar" />
+
+</div>
   <h1>Mes Contrats</h1>
   <div class="container">
     <div class="cards">
-      <div *ngFor="let item of onlyMyContracts">
+      <div *ngFor="let item of contratTab">
         <mat-card class="card">
           <mat-card-title class="titre-main">Aperçu du Contrat</mat-card-title>
           <mat-card-header>
@@ -27,8 +32,10 @@
               au {{ item.date_fin | date : "dd/MM/yyyy" }}
             </mat-card-subtitle>
           </mat-card-header>
+          <button id="btn-detail" mat-raised-button (click)="onDetails()">details</button>
         </mat-card>
       </div>
     </div>
   </div>
+ 
 </section>
