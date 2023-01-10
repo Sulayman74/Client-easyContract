@@ -125,6 +125,7 @@
       <input
         type="date"
         matInput
+        [max]="maxDate | date : 'yyyy-MM-dd'"
         placeholder="Date De Naissance"
         formControlName="date_naissance"
       />

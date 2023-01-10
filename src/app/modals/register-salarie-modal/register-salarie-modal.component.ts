@@ -15,6 +15,10 @@ export class RegisterSalarieModalComponent implements OnInit {
 
   registerSalarie !: FormGroup<any>
   salarie = new Salarie()
+
+
+  maxDate = new Date(new Date().getFullYear() - 16, new Date().getMonth(), new Date().getDate())
+
   civilites = [{
     title1: "Monsieur",
     title2: "Madame"
