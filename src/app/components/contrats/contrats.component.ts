@@ -5,7 +5,6 @@ import { Contrat } from 'src/app/models/contrat';
 import { DataService } from 'src/app/services/data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsersService } from 'src/app/services/users.service';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contrats',
@@ -22,7 +21,8 @@ export class ContratsComponent implements OnInit {
   salaries !: any[]
   entreprises !: any[]
 
-  minDate = new Date()
+  date = new Date()
+  formatDate= this.date.toDateString()
   motifs = [{ motif1: 'Remplacement', motif2: 'Accroissement activité' }]
   status = [{ statut1: 'Employé qualifié', statut2: "Ouvrier", statut3: "Cadre" }]
 
@@ -31,11 +31,11 @@ export class ContratsComponent implements OnInit {
     private _fb: FormBuilder,
     private _usersService: UsersService,
     private _contrat: DataService,
-    public snackbar: MatSnackBar) { }
+    public snackbar: MatSnackBar,
+    private _countriesService : DataService) { }
 
   ngOnInit(): void {
-
-    console.log(this.minDate);
+console.log(this.formatDate);
     this.formContrat = this._fb.group({
       fki_entreprise: this.profilEntreprise.entreprise_id,
       fki_salarie: [this.contrat.fki_salarie, Validators.required],
@@ -61,6 +61,7 @@ export class ContratsComponent implements OnInit {
 
   }
 
+
   /** Je crée ici le contrat grâce à cette méthode */
   onSubmit() {
     const contratForm = this.formContrat.value
@@ -80,7 +81,6 @@ export class ContratsComponent implements OnInit {
           return contratID
         };
       })
-      console.log("test contratID", contratID);
       this.formContrat.reset();
 
     })

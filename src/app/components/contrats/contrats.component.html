@@ -1,4 +1,5 @@
 <section class="contenant">
+
   <div class="formulaire">
     <form [formGroup]="formContrat" (ngSubmit)="onSubmit()">
       <mat-form-field>
@@ -48,7 +49,7 @@
         <mat-label>Date de début</mat-label>
         <input
           type="date"
-          [min]="minDate"
+          [min]="formatDate  | date:'yyyy-MM-dd'"
           matInput
           formControlName="date_debut"
         />
@@ -57,7 +58,7 @@
         <mat-label>Date de fin</mat-label>
         <input
           type="date"
-          [min]="minDate"
+          [min]="formatDate  | date:'yyyy-MM-dd'"
           matInput
           formControlName="date_fin"
         />
