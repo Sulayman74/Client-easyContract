@@ -12,7 +12,8 @@ import { TokenInterceptorProvider } from './helpers/header.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
-    AccueilComponent
+    AccueilComponent,
+   
   ],
   imports: [
     AppRoutingModule,
