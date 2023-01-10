@@ -1,6 +1,7 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
+import { DetailsModalComponent } from 'src/app/modals/details-modal/details-modal.component';
 import { EditModalComponent } from 'src/app/modals/edit-modal/edit-modal.component';
 import { EditSocietyComponent } from 'src/app/modals/edit-society/edit-society.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -29,6 +30,7 @@ import { RouterModule } from '@angular/router';
   declarations: [
     EditModalComponent,
     EditSocietyComponent,
+    DetailsModalComponent
   ],
   imports: [
     CommonModule,
