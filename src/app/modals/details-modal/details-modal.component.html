@@ -1,0 +1,90 @@
+<p>contratails-modal works!</p>
+
+<div *ngFor="let item of contrat" >
+
+    <p>{{item.civilite}}</p>
+    <p>{{item.nom}}</p>
+    <p>{{item.prenom}}</p>
+    <p>{{item.fonction}}</p>
+</div>
+
+<div class="container">
+    <h2 mat-dialog-title>Contrat de Travail</h2>
+  <mat-dialog-content class="mat-typography">
+    <h3>Fait à Annemasse le <strong>{{todayString | date:'dd MMMM yyyy'}}</strong>  </h3>
+   <!-- <div *ngFor="let salarie of allSalarie" >
+    <p *ngIf="contrat.con == salarie.salarie_id" >
+      Ce contrat a été établi entre la société : 
+      <strong>{{entreprise.raison_sociale}}</strong> représenté par 
+      <strong>{{entreprise.civilite }} {{entreprise.nom }} {{entreprise.prenom }}</strong>, 
+      d'une part, et 
+      <strong>{{salarie.civilite }} {{salarie.nom }} {{salarie.prenom}}</strong>
+      , d'autre part.
+    </p>
+   </div> -->
+  
+    <h3>Type de contrat de travail</h3>
+    <p>
+      Le type de contrat de travail sera un  <strong>{{contrat.type_contrat}}</strong>
+    </p>
+  
+    <h3>Durée hebdomadaire</h3>
+    <p *ngIf="contrat.is_fulltime" >
+      Il est convenu que la durée de travail mensuel sera à <strong>Temp Plein</strong>
+    </p>
+    <p *ngIf="!contrat.is_fulltime" >
+      Il est convenu que la durée de travail mensuel sera à <strong>Temp Partiel</strong>
+    </p>
+  
+    <h3>Date de début du contrat</h3>
+    <p>Le contrat débutera le : <strong>{{contrat.date_debut | date: 'dd MM YYYY'}}</strong>
+  
+    </p>
+  
+    <h3 *ngIf="contrat.date_fin" >Date de fin du contrat</h3>
+  
+    <p *ngIf="contrat.date_fin">
+      Etant convenu qu'il s'agit d'un contrat en CDD, Ce dernier prendra fin le <strong>{{contrat.date_fin | date: 'dd MM YYYY'}}</strong> 
+    </p>
+  
+    <h3>Periode d'essai</h3>
+  
+    <p>La période d'essai pour ce travail est de : <strong>{{contrat.periode_essai}}</strong> </p>
+  
+    <p>
+      Au cours de cette période, le contrat pourra être rompu par l'une
+      ou l'autre partie, à tout moment, sous réserve du respect du délai
+      de prévenance prévu.</p>
+  
+    <h3>Motif</h3>
+  
+    <p>
+      Le présent contrat a été crée suite a un(e) : <strong> {{contrat.motif}} </strong>
+    </p>
+  
+    <h3>Rémunération</h3>
+    
+    <p>
+      Le salaire mensuel Brut sera de : <strong> {{contrat.remuneration}} </strong>
+    </p>
+  
+    <h3>Fonction occupée</h3>
+  
+    <p>La fonction occupée pour ce travail sera : <strong> {{contrat.fonction}} </strong> </p>
+  
+    <h3>Statut</h3>
+  
+    <p>
+      Vous aurez le statut de : <strong> {{contrat.statut}} </strong>, sous réserve d'évolution de votre carrière.
+    </p>
+  
+  
+    
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <!-- <button mat-button mat-dialog-close>Annuler</button> -->
+    <button mat-button [mat-dialog-close]="true">Fermer</button>
+    <button mat-button (click)="printPage()" >Imprimer</button>
+    <button mat-button>Télécharger</button>
+  </mat-dialog-actions>
+  </div>

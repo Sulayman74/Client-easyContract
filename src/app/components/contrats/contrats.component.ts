@@ -61,6 +61,7 @@ export class ContratsComponent implements OnInit {
 
   }
 
+  /** Je crée ici le contrat grâce à cette méthode */
   onSubmit() {
     const contratForm = this.formContrat.value
     this.contrat = Object.assign(this.contrat, contratForm)
@@ -68,7 +69,7 @@ export class ContratsComponent implements OnInit {
     this._contrat.createContract(this.contrat).subscribe((reponse: any) => {
 
       const salarie = reponse.salarie.rows
-      const contrat = reponse.contract.contrat_id
+      const contratID = reponse.contract.contrat_id
       // console.warn(salarie, contrat);
 
       /** je fais ici pour recevoir les données du salarie pour la snack bar  */
@@ -76,9 +77,10 @@ export class ContratsComponent implements OnInit {
         // console.log(value);
         if (value.contrat_id == reponse.contract.contrat_id) {
           this.snackbar.open(`Vous avez bien créé un contrat avec ${value.civilite} ${value.nom}`, "OK", { duration: 3000 })
+          return contratID
         };
       })
-
+      console.log("test contratID", contratID);
       this.formContrat.reset();
 
     })
