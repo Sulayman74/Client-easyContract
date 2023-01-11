@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 
+import { AuthGuardEntrepriseGuard } from 'src/app/helpers/auth-guard-entreprise.guard';
 import { ContratsComponent } from 'src/app/components/contrats/contrats.component';
 import { MesSalariesComponent } from 'src/app/components/mes-salaries/mes-salaries.component';
 import { NgModule } from '@angular/core';
@@ -9,12 +10,12 @@ import { ShowContractsComponent } from 'src/app/components/show-contracts/show-c
 import { UsersResolver } from 'src/app/helpers/users.resolver';
 
 const routes: Routes = [{
-  path: "", component: OverviewEntrepriseComponent, resolve: { profilSociety: UsersResolver },
+  path: "", component: OverviewEntrepriseComponent, resolve: { profilSociety: UsersResolver }, canActivate:[AuthGuardEntrepriseGuard],
   children: [
-    { path: "profil-entreprise", component: ProfilEntrepriseComponent },
-    { path: 'contrats', component: ContratsComponent },
-    { path: 'show-contracts', component: ShowContractsComponent },
-    { path: 'mes-salaries', component: MesSalariesComponent }
+    { path: "profil-entreprise", component: ProfilEntrepriseComponent, canActivate:[AuthGuardEntrepriseGuard] },
+    { path: 'contrats', component: ContratsComponent, canActivate:[AuthGuardEntrepriseGuard] },
+    { path: 'show-contracts', component: ShowContractsComponent, canActivate:[AuthGuardEntrepriseGuard] },
+    { path: 'mes-salaries', component: MesSalariesComponent, canActivate:[AuthGuardEntrepriseGuard] }
   ]
 }];
 
