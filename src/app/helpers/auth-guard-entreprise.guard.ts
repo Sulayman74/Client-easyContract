@@ -8,7 +8,8 @@ import { UsersService } from '../services/users.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuardEntrepriseGuard implements CanActivate {
+
 
   constructor(
     private _authGuard: UsersService,
@@ -19,16 +20,14 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    let isSalarie = !this._authGuard.getRole()
+    let isSociety = this._authGuard.getRole()
     let isAuth = this._authGuard.isAuthenticated()
 
-    if (isAuth && isSalarie) {
+    if (isAuth && isSociety) {
       return true
     }
-    
-    this._snackbar.open("Vous n'êtes pas connecté en tant que salarie, vous n'avez pas l'accès à cette page", "OK", { duration: 2500 })
+    this._snackbar.open("Vous n'êtes pas connecté en tant qu'entreprise, vous n'avez pas l'accès à cette page", "OK", { duration: 2500 })
     return this._router.navigate(["/accueil"])
-
   }
 
 }
