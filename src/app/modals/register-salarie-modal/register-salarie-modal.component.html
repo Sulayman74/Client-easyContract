@@ -1,6 +1,6 @@
 <section class="container-fluid">
   <h1 id="title">Formulaire d'inscription</h1>
-  <form [formGroup]="registerSalarie" (ngSubmit)="onSubmit()">
+  <form [formGroup]="registerSalarie">
     <mat-form-field appearance="outline">
       <mat-label>Civilité</mat-label>
       <mat-select formControlName="civilite" *ngFor="let item of civilites">
@@ -13,7 +13,7 @@
       <mat-label>Nom</mat-label>
       <input
         matInput
-        placeholder="Enter your first name"
+        placeholder="Votre nom"
         formControlName="nom"
         type="text"
       />
@@ -28,7 +28,7 @@
       <input
         type="text"
         matInput
-        placeholder="enter your phone number"
+        placeholder="Votre nom de jeune fille"
         formControlName="nom_jeune_fille"
       />
       <mat-icon matSuffix>person_outline</mat-icon>
@@ -36,7 +36,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Prénom</mat-label>
-      <input matInput placeholder="your pseudo" formControlName="prenom" />
+      <input matInput placeholder="Votre prenom" formControlName="prenom" />
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
     </mat-form-field>
 
@@ -44,7 +44,7 @@
       <mat-label>Téléphone</mat-label>
       <input
         matInput
-        placeholder="phoneNumber"
+        placeholder="Votre numéro de téléphone"
         formControlName="telephone"
         required
       />
@@ -62,10 +62,10 @@
       <input
         type="text"
         matInput
-        placeholder="Enter your post code"
+        placeholder="Entrez votre code postale"
         formControlName="cp"
       />
-      <mat-icon matSuffix> map</mat-icon>
+      <mat-icon matSuffix>map</mat-icon>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -73,7 +73,7 @@
       <input
         type="text"
         matInput
-        placeholder="Enter your City"
+        placeholder="Votre ville"
         formControlName="ville"
       />
       <mat-icon matSuffix> streetview</mat-icon>
@@ -83,7 +83,7 @@
       <mat-label>Email</mat-label>
       <input
         matInput
-        placeholder="Enter your email"
+        placeholder="Votre mail"
         formControlName="email"
         type="email"
         required
@@ -97,7 +97,7 @@
       <input
         type="password"
         matInput
-        placeholder="password"
+        placeholder="Votre password"
         formControlName="mdp"
         required
       />
@@ -128,8 +128,9 @@
         [max]="maxDate | date : 'yyyy-MM-dd'"
         placeholder="Date De Naissance"
         formControlName="date_naissance"
-      />
-    </mat-form-field>
+        />
+      </mat-form-field>
+      <!--  -->
 
     <mat-form-field appearance="outline">
       <mat-label>Pays de naissance</mat-label>
@@ -154,7 +155,7 @@
   </form>
   <button
     class="valider"
-    type="submit"
+    (click)="onSubmit()"
     mat-raised-button
     color="primary"
     [disabled]="registerSalarie.invalid"
