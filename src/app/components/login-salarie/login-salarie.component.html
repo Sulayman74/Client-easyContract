@@ -17,7 +17,6 @@
       <mat-icon matSuffix>how_to_reg</mat-icon>
     </mat-form-field>
 
-
     <mat-card-actions class="btns">
       <button (click)="onSignUp()" type="button" mat-raised-button color="primary">
         Sign up
@@ -27,6 +26,11 @@
         Sign in
       </button>
     </mat-card-actions>
+    <div class="spinner" *ngIf="show">
+    <mat-progress-spinner mode="indeterminate">
+      
+    </mat-progress-spinner>
+  </div>
 
   </form>
 </section>
