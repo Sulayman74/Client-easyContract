@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NavigationCancel, NavigationEnd, NavigationStart, Router } from '@angular/router';
 
 import { MatDialog } from '@angular/material/dialog';
 import { RegisterSalarieModalComponent } from 'src/app/modals/register-salarie-modal/register-salarie-modal.component';
-import { Router } from '@angular/router';
 import { Salarie } from 'src/app/models/salarie';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -14,14 +14,14 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class LoginSalarieComponent implements OnInit {
 
-
+  show: boolean = false
   loginFormSalarie !: FormGroup<any>;
   salarie = new Salarie();
 
   constructor(
     private _fb: FormBuilder,
     private _dialog: MatDialog,
-    private _router: Router,
+    public router: Router,
     private _salarieService: UsersService) { }
 
   ngOnInit(): void {
@@ -47,11 +47,13 @@ export class LoginSalarieComponent implements OnInit {
     this.salarie = Object.assign(this.salarie, loggedUser)
 
     this._salarieService.loginSalarie(loggedUser).subscribe((results: any) => {
-
+      this.show = true
+      let role = results.datas.role
       if (results) {
         localStorage.setItem('token', results.token)
-        this._router.navigate(['/overview-salarie'])
-
+        localStorage.setItem('role',role)
+        this.router.navigate(['/overview-salarie'])
+       
       }
 
     })

@@ -41,7 +41,7 @@ export class LoginEntrepriseComponent implements OnInit {
         width: '100%',
         height: '100%',
       });
-    
+
   }
   onSignIn(): void {
 
@@ -50,9 +50,11 @@ export class LoginEntrepriseComponent implements OnInit {
     this.entreprise = Object.assign(this.entreprise, loggedUser)
 
     this._entrepriseService.loginEntreprise(loggedUser).subscribe((results: any) => {
-
+      
+      let role = results.datas.role
       if (results) {
         localStorage.setItem('token', results.token)
+        localStorage.setItem('role',role)
         this._router.navigate(['/overview-entreprise'])
       }
 

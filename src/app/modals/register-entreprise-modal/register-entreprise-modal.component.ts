@@ -55,8 +55,10 @@ export class RegisterEntrepriseModalComponent implements OnInit {
     this.entreprise = Object.assign(this.entreprise, formulaire)
 
     this._entrepriseService.registerSociety(this.entreprise).subscribe((reponse: any) => {
-      // console.log("test onSubmit register entreprise", reponse);
-      this._entrepriseService.setToken(reponse.token)
+      let token = reponse.token
+      let role = reponse.addASociety.role
+      this._entrepriseService.setToken(token)
+      this._entrepriseService.setRole(role)
     })
 
     this._dialogRef.close();

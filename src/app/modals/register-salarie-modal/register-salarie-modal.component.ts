@@ -62,8 +62,12 @@ export class RegisterSalarieModalComponent implements OnInit {
     this.salarie = Object.assign(this.salarie, formulaire)
 
     this._salarieService.registerSalarie(this.salarie).subscribe((reponse: any) => {
-      // console.log("test onSubmit register salarie", reponse);
-      this._salarieService.setToken(reponse.token)
+
+      let token = reponse.token
+      let role = reponse.registerAWorker.role
+
+      this._salarieService.setToken(token)
+      this._salarieService.setRole(role)
 
     })
     this._dialogRef.close()
