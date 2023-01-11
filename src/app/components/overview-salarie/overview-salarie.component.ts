@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class OverviewSalarieComponent implements OnInit {
 
-
+  show: boolean = true
   monProfil = false;
   mesDocs = false;
   profil = false;
@@ -27,17 +27,24 @@ export class OverviewSalarieComponent implements OnInit {
     private _salarieService: UsersService) { }
 
   ngOnInit(): void {
-
     this.route.data.subscribe(({ profile }) => {
-      this.salarie = profile.worker
+      if (profile) {
+
+        this.show = false
+
+        this.salarie = profile.worker
+
+      }
       // console.log(profile, "test ici profile", this.salarie);
     })
   }
 
   onProfil(): void {
+
     this._router.navigate(['profil-salarie'], { relativeTo: this.route })
     this.profil = !this.profil;
     this.contrats = false
+
 
   }
   onDocs(): void {
@@ -46,7 +53,6 @@ export class OverviewSalarieComponent implements OnInit {
     this.profil = false
   }
   onLogOut() {
-
     this._salarieService.clearToken()
     this._router.navigate(['/accueil'])
 

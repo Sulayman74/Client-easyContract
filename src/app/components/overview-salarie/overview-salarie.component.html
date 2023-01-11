@@ -15,13 +15,7 @@
         Paramètres du compte
       </button>
 
-      <button
-        *ngIf="monProfil"
-        (click)="onProfil()"
-        mat-flat-button
-        id="profil"
-        color="warn"
-      >
+      <button *ngIf="monProfil" (click)="onProfil()" mat-flat-button id="profil" color="warn">
         Gérer mon profil
       </button>
 
@@ -29,13 +23,7 @@
         Mes documents
       </button>
 
-      <button
-        *ngIf="mesDocs"
-        (click)="onDocs()"
-        mat-flat-button
-        id="docs"
-        color="accent"
-      >
+      <button *ngIf="mesDocs" (click)="onDocs()" mat-flat-button id="docs" color="accent">
         Gérer mes documents
       </button>
       <div class="deconnexion">
@@ -47,6 +35,10 @@
   </mat-drawer>
 
   <div class="sidenav-content">
+    <div class="spinner" *ngIf="show">
+      <mat-spinner mode="indeterminate">
+      </mat-spinner>
+    </div>
     <div class="bgi"></div>
     <div *ngIf="profil" class="salarie-profil">
       <!-- <router-outlet></router-outlet> -->
