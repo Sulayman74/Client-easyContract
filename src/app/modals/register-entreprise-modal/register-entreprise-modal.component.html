@@ -1,6 +1,6 @@
 <section class="container-fluid">
   <h1 id="title">Formulaire d'inscription</h1>
-  <form [formGroup]="registerSociety" (ngSubmit)="onSubmit()">
+  <form [formGroup]="registerSociety">
     <mat-form-field appearance="outline">
       <mat-label>Civilité</mat-label>
      <mat-select formControlName="civilite" *ngFor="let item of civilites">
@@ -125,7 +125,7 @@
   
       <button
         class="valider"
-        type="submit"
+        (click)="onSubmit()"
         mat-raised-button
         color="primary"
         [disabled]="registerSociety.invalid"
