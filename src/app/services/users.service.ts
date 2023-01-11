@@ -32,15 +32,28 @@ export class UsersService {
 
   clearToken() {
     localStorage.removeItem('token')
+    localStorage.removeItem('role')
   }
 
   static getToken() {
     return localStorage.getItem('token')
   }
 
+  setRole(role: string) {
+    localStorage.setItem('role', role)
+  }
   setToken(token: string) {
     localStorage.setItem('token', token)
 
+  }
+
+  isAuthenticated(): boolean {
+    const isAuth = localStorage.getItem('token')
+    return !!isAuth
+  }
+  getRole(): boolean{
+    const role:boolean = (localStorage.getItem('role') == 'true')
+    return role
   }
 
   setCurrentUser(user: any): void {
