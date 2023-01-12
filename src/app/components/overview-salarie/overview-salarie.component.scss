@@ -1,20 +1,22 @@
 .toolbar {
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: fit-content;
+  height: auto;
+  width: 100%;
 
-  .titres{
-    p{
+  .titres {
+    p {
       margin: 0;
       padding: 0;
     }
-    .h4{
+
+    .h4 {
       color: black;
       font-weight: bold;
       filter: drop-shadow(2px 1px 1px white);
     }
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,6 +25,7 @@
 }
 
 .container-fluid {
+padding: 0;
   margin: 0;
   width: 100%;
   height: 88vh;
@@ -35,17 +38,17 @@
     height: 100%;
     align-items: flex-start;
     justify-content: flex-start;
-    .bgi {
-      background-image: url(https://hospitality-on.com/sites/default/files/2018-04/advice-advise-advisor-7097.jpg);
-      height: 100%;
-      width: 100%;
-      filter: blur(1px);
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-      position: absolute;
-      z-index: -1;
-    }
+    // .bgi {
+    //   background-image: url(https://hospitality-on.com/sites/default/files/2018-04/advice-advise-advisor-7097.jpg);
+    //   height: 100%;
+    //   width: 100%;
+    //   filter: blur(1px);
+    //   background-position: center;
+    //   background-size: cover;
+    //   background-repeat: no-repeat;
+    //   position: absolute;
+    //   z-index: -1;
+    // }
 
     .salarie-profil {
       display: flex;
@@ -58,17 +61,16 @@
 
   .tiroir {
     display: flex;
-    justify-content: space-evenly;
-    flex-direction: column wrap;
-    max-width: 230px;
+   
+    width: clamp(100%, 20%, 200px) ;
     padding: 20px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     border-radius: 3px;
 
     .contenu-tiroir {
-      display: block;
-      margin: 50px 0;
-      padding: 5px;
+      display: flex;
+      justify-content: center;
+      flex-flow: column wrap;
     }
 
     button {
@@ -83,3 +85,4 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+

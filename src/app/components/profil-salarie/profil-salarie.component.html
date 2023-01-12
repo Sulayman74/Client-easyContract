@@ -1,7 +1,7 @@
-<div class="formulaire">
-  <section id="main-container">
-    <p class="h1 titre text-primary">Mon Profil</p>
-    <div>
+<div id="main-container">
+  <p class="h1 titre text-primary">Mon Profil</p>
+  <section class="formulaire">
+    <div class="form">
       <mat-form-field appearance="standard">
         <mat-label>Civilite</mat-label>
         <input type="text" matInput [value]="profilSalarie.civilite " readonly />
@@ -10,20 +10,13 @@
         <mat-label>Nom</mat-label>
         <input type="text" matInput [value]="profilSalarie.nom" readonly />
       </mat-form-field>
-      <div
-        *ngIf="
+      <div *ngIf="
           profilSalarie.nom_jeune_fille ? profilSalarie.nom_jeune_fille : null
-        "
-      >
+        ">
         <mat-form-field appearance="standard">
           <mat-label>Nom de jeune fille</mat-label>
-          <input
-            placeholder="nom de jeune fille"
-            type="text"
-            matInput
-            [value]="profilSalarie.nom_jeune_fille"
-            readonly
-          />
+          <input placeholder="nom de jeune fille" type="text" matInput [value]="profilSalarie.nom_jeune_fille"
+            readonly />
         </mat-form-field>
       </div>
       <mat-form-field appearance="standard">
@@ -37,12 +30,7 @@
       <mat-form-field appearance="standard">
         <mat-label>Telephone</mat-label>
 
-        <input
-          type="text"
-          matInput
-          [value]="profilSalarie.telephone"
-          readonly
-        />
+        <input type="text" matInput [value]="profilSalarie.telephone" readonly />
       </mat-form-field>
       <mat-form-field appearance="standard">
         <mat-label>Numéro de sécurité sociale</mat-label>
@@ -59,50 +47,32 @@
             <input matInput type="text" [value]="profilSalarie.cp" readonly />
           </p>
           <p>
-            <input
-              matInput
-              type="text"
-              [value]="profilSalarie.ville"
-              readonly
-            />
+            <input matInput type="text" [value]="profilSalarie.ville" readonly />
           </p>
         </mat-form-field>
       </div>
 
       <mat-form-field appearance="standard">
         <mat-label>Date de naissance</mat-label>
-        <input
-          type="text"
-          [value]="profilSalarie.date_naissance | date : 'shortDate'"
-          matInput
-          readonly
-        />
+        <input type="text" [value]="profilSalarie.date_naissance | date : 'shortDate'" matInput readonly />
       </mat-form-field>
 
       <mat-form-field appearance="standard">
         <mat-label>Lieu de naissance</mat-label>
-        <input
-          type="text"
-          matInput
-          [value]="profilSalarie.lieu_naissance"
-          readonly
-        />
+        <input type="text" matInput [value]="profilSalarie.lieu_naissance" readonly />
       </mat-form-field>
 
       <mat-form-field appearance="standard">
         <mat-label>Pays de naissance</mat-label>
 
-        <input
-          type="text"
-          matInput
-          [value]="profilSalarie.pays_naissance"
-          readonly
-        />
+        <input type="text" matInput [value]="profilSalarie.pays_naissance" readonly />
       </mat-form-field>
     </div>
-
-    <button (click)="onEdit()" id="edit" mat-raised-button color="primary">
-      <mat-icon>edit</mat-icon>
-    </button>
+    <div class="btn-edit">
+      <button (click)="onEdit()" id="edit" mat-raised-button color="primary">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    
   </section>
 </div>

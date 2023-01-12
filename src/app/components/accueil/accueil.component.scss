@@ -46,15 +46,16 @@ sans-serif;
         }
     }
 
-    .btns {
+    .boutons {
         display: flex;
         flex-direction: column;
         align-content: center;
         justify-content: space-evenly;
-        width: 20%;
+        width: fit-content;
         height: 13%;
 
         button {
+            box-sizing: border-box;
             font-family: $poppin-police;
             font-weight: 500;
             transition: all ease 0.3s;

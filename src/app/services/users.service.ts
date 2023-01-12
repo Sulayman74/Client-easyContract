@@ -51,6 +51,7 @@ export class UsersService {
     const isAuth = localStorage.getItem('token')
     return !!isAuth
   }
+  
   getRole(): boolean{
     const role:boolean = (localStorage.getItem('role') == 'true')
     return role

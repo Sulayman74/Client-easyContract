@@ -14,7 +14,7 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class LoginEntrepriseComponent implements OnInit {
 
-
+  show: boolean = false
   loginFormSociety !: FormGroup<any>;
   entreprise = new Entreprise();
 
@@ -34,7 +34,9 @@ export class LoginEntrepriseComponent implements OnInit {
     })
   }
 
-
+  onNavigate(): void {
+    this._router.navigate(["../"])
+  }
   onSignUp(): void {
     const modal = this._dialog.open(RegisterEntrepriseModalComponent,
       {
@@ -45,16 +47,18 @@ export class LoginEntrepriseComponent implements OnInit {
   }
   onSignIn(): void {
 
+    this.show = true
+
     let loggedUser = this.loginFormSociety.value
 
     this.entreprise = Object.assign(this.entreprise, loggedUser)
 
     this._entrepriseService.loginEntreprise(loggedUser).subscribe((results: any) => {
-      
+
       let role = results.datas.role
       if (results) {
         localStorage.setItem('token', results.token)
-        localStorage.setItem('role',role)
+        localStorage.setItem('role', role)
         this._router.navigate(['/overview-entreprise'])
       }
 

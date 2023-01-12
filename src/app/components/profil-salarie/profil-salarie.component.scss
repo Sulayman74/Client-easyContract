@@ -1,31 +1,45 @@
-.formulaire {
-  background-color: rgba(255, 235, 205, 0.411);
-  backdrop-filter: blur(10px);
-  border-radius: 3px;
+#main-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  #main-container {
+
+  .formulaire {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    padding: 10px 20px;
-    height: 100%;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+    .form {
+      box-sizing: content-box;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      // background-color: #fff;
+    }
+
     .mat-form-field {
       padding: 0 80px;
     }
-    #edit {
-      padding: 5px 45px;
-      transition: all ease 0.4s;
 
-      &:hover {
-        background-color: whitesmoke;
-        box-shadow: 5px 3px 2px black;
-        .mat-icon {
-          color: black;
-        }
-      }
+  }
+
+  .btn-edit {
+    margin: 5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    #edit {
+      padding: 0 50px;
     }
+  }
+
+}
+
+@media screen and (max-width : 480px) {
+  #main-container {
+    margin-top:250px;
   }
 }

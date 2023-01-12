@@ -8,7 +8,8 @@ $poppin-police : 'Poppins',
 sans-serif;
 
 .titre {
-    padding: 10px 0;
+    margin-top: 60px;
+    padding: 30px 0;
     text-align: center;
     filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.699));
 }
@@ -20,27 +21,19 @@ sans-serif;
     flex-direction: column;
     height: 80vh;
     width: 60%;
-    background: $primary-color;
     border-radius: 5px;
-    backdrop-filter: blur(100px);
-    .title{
-        color: bisque;
-        filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.699));
-        font-family: $second-police;
-    }
 
     .formulaire {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
         flex-direction: column;
-        background-color: rgba(255, 255, 255, 0.195);
-        width: 50%;
-        height: 40%;
-        border-radius: 3px;
+        background-color: rgba(255, 255, 255, 0.725);
+        width: 100%;
+        height: 50%;
 
         .champs {
-
+            width: 100%;
             background-color: transparent;
             font-family: $main-police;
         }
@@ -49,11 +42,13 @@ sans-serif;
             display: flex;
             justify-content: space-evenly;
             width: 100%;
+
             button {
                 font-family: $poppin-police;
                 font-weight: 500;
                 transition: all ease 0.3s;
-                &:hover{
+
+                &:hover {
                     transform: scale(1.1);
                     color: black;
                 }
@@ -62,3 +57,19 @@ sans-serif;
     }
 
 }
+
+.btn-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 25%;
+
+
+}
+
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }

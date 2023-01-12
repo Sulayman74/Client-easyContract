@@ -24,6 +24,8 @@ export class LoginSalarieComponent implements OnInit {
     public router: Router,
     private _salarieService: UsersService) { }
 
+
+
   ngOnInit(): void {
     this.loginFormSalarie = this._fb.group({
       email: [this.salarie.email, [Validators.email, Validators.required]],
@@ -31,6 +33,12 @@ export class LoginSalarieComponent implements OnInit {
 
     })
   }
+
+onNavigate(): void{
+  this.router.navigate(["../"])
+    
+}
+
 
   onSignUp(): void {
     const modal = this._dialog.open(RegisterSalarieModalComponent,

@@ -17,6 +17,7 @@
       <button
         *ngIf="monProfil"
         (click)="onProfil()"
+        (click)="drawer.toggle()"
         mat-raised-button
         id="profil"
         color="primary"
@@ -31,6 +32,7 @@
       <button
         *ngIf="mesDocs"
         (click)="onDocs()"
+        (click)="drawer.toggle()"
         mat-raised-button
         id="docs"
         color="warn"
@@ -40,6 +42,7 @@
       <button
         *ngIf="mesDocs"
         (click)="onContrat()"
+        (click)="drawer.toggle()"
         mat-raised-button
         id="contrat"
         color="accent"
@@ -49,6 +52,7 @@
       <button
         *ngIf="mesDocs"
         (click)="onSalarie()"
+        (click)="drawer.toggle()"
         mat-raised-button
         id="salarie"
         color="primary"

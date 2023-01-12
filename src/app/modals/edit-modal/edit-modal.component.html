@@ -1,7 +1,8 @@
-<p class="h1 text-primary">Modifier votre profil</p>
-
+<div class="title">
+  <p class="h2 text-primary">Modifier votre profil</p>
+</div>
 <section class="edit-container">
-  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  <form class="formulaire" [formGroup]="editForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="fill">
       <mat-label>Civilite</mat-label>
       <input type="text" matInput formControlName="civilite" />
@@ -49,12 +50,7 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Lieu de Naissance</mat-label>
-      <input
-        placeholder="Ville de naissance"
-        type="text"
-        matInput
-        formControlName="lieu_naissance"
-      />
+      <input placeholder="Ville de naissance" type="text" matInput formControlName="lieu_naissance" />
     </mat-form-field>
     <div>
       <mat-label>Date de naissance</mat-label>
