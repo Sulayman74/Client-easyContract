@@ -14,12 +14,12 @@ sans-serif;
     filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.699));
 }
 
-.container {
+.main-content{
     display: flex;
     align-items: center;
     justify-content: center;
     height: 80vh;
-    width: 60%;
+    width: 100%;
     border-radius: 5px;
    
 
@@ -28,12 +28,12 @@ sans-serif;
         align-items: center;
         justify-content: space-evenly;
         flex-direction: column;
-        width: 100%;
+        // width: 50%;
         height: 50%;
-        background-position: center;
+        // background-position: center;
 
         .champs {
-            width: 80%;
+            width: 100%;
             background-color: transparent;
             font-family: $main-police;
         }

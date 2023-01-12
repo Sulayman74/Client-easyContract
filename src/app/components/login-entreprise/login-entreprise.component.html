@@ -4,22 +4,21 @@
 </div>
 
 
-<section class="container">
+<section class="main-content">
   <form class="formulaire" [formGroup]="loginFormSociety">
-    <div class="remplir">
-      <mat-form-field class="champs" appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Email" formControlName="email" required type="email" />
-        <mat-icon matSuffix> person_outline</mat-icon>
-      </mat-form-field>
 
-      <mat-form-field class="champs" appearance="outline">
-        <mat-label>Password</mat-label>
-        <input matInput placeholder="Password" formControlName="mdp" required type="password" />
-        <mat-hint>entre 8 et 12 caractères</mat-hint>
-        <mat-icon matSuffix>how_to_reg</mat-icon>
-      </mat-form-field>
-    </div>
+    <mat-form-field class="champs" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Email" formControlName="email" required type="email" />
+      <mat-icon matSuffix> person_outline</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="champs" appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Password" formControlName="mdp" required type="password" />
+      <mat-hint>entre 8 et 12 caractères</mat-hint>
+      <mat-icon matSuffix>how_to_reg</mat-icon>
+    </mat-form-field>
 
 
 
@@ -35,7 +34,7 @@
 
     <div class="spinner" *ngIf="show">
       <mat-progress-spinner mode="indeterminate">
-        
+
       </mat-progress-spinner>
     </div>
   </form>
