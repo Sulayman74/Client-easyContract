@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class DataService {
 
-  private _apiUrl = `${environment.API_URL}api/contracts`
+  private _apiUrl = `${environment.API_URL}/api/contracts`
   urlEuropeCountries = "https://restcountries.com/v3.1/region/europe"
 
   constructor(

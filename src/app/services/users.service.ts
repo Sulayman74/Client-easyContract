@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 
 export class UsersService {
 
-  private _apiUrl = `${environment.API_URL}api/users`
+  private _apiUrl = `${environment.API_URL}/api/users`
 
   currentUser = new Subject<any>()
   loggedUser = new Subject<any>()
