@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavigationCancel, NavigationEnd, NavigationStart, Router } from '@angular/router';
 
 import { MatDialog } from '@angular/material/dialog';
 import { RegisterSalarieModalComponent } from 'src/app/modals/register-salarie-modal/register-salarie-modal.component';
+import { Router } from '@angular/router';
 import { Salarie } from 'src/app/models/salarie';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -34,10 +34,10 @@ export class LoginSalarieComponent implements OnInit {
     })
   }
 
-onNavigate(): void{
-  this.router.navigate(["../"])
-    
-}
+  onNavigate(): void {
+    this.router.navigate(["../"])
+
+  }
 
 
   onSignUp(): void {
@@ -59,9 +59,9 @@ onNavigate(): void{
       let role = results.datas.role
       if (results) {
         localStorage.setItem('token', results.token)
-        localStorage.setItem('role',role)
+        localStorage.setItem('role', role)
         this.router.navigate(['/overview-salarie'])
-       
+
       }
 
     })

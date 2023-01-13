@@ -29,14 +29,20 @@ $poppin-police: "Poppins", sans-serif;
   height: 80vh;
   width: 100%;
   position: relative;
-
+  .espace-salarie {
+    transition: all ease-out 0.3s;
+    &:hover {
+      color: white;
+      filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.699));
+    }
+  }
   .btn-nav {
     position: absolute;
     top: 12%;
     left: 20%;
   }
 
-  .formulaire1 {
+  .formulaire {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -95,7 +101,7 @@ $poppin-police: "Poppins", sans-serif;
       top: 25%;
       left: 2%;
     }
-    .formulaire1 {
+    .formulaire {
       height: 50%;
       width: 90%;
       .champs {
