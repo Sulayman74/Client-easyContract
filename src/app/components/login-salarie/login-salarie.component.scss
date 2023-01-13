@@ -1,74 +1,106 @@
 $primary-color: #0275d8;
 $secondary-color: #0274d881;
-$main-police : 'Roboto',
-sans-serif;
-$second-police : 'Montserrat',
-sans-serif;
-$poppin-police : 'Poppins',
-sans-serif;
+$main-police: "Roboto", sans-serif;
+$second-police: "Montserrat", sans-serif;
+$poppin-police: "Poppins", sans-serif;
 
-.titre {
-    margin-top: 60px;
-    padding: 30px 0;
+.h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  .titre {
+    padding-top: 20px;
     text-align: center;
-    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.699));
+    transition: all ease 0.3s;
+    width: 50%;
+    &:hover {
+      transform: scale(1.05);
+      color: white;
+      filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.699));
+    }
+  }
 }
 
-.main-content{
+.main-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  width: 100%;
+  position: relative;
+
+  .btn-nav {
+    position: absolute;
+    top: 12%;
+    left: 20%;
+  }
+
+  .formulaire1 {
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 80vh;
-    width: 100%;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 60%;
+    height: 80%;
     border-radius: 5px;
-   
+    background-color: #0275d8;
+    // background-position: center;
 
-    .formulaire {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        flex-direction: column;
-        // width: 50%;
-        height: 50%;
-        // background-position: center;
-
-        .champs {
-            width: 100%;
-            background-color: transparent;
-            font-family: $main-police;
-        }
-
-        .btns {
-            display: flex;
-            justify-content: space-evenly;
-            width: 100%;
-            button {
-                font-family: $poppin-police;
-                font-weight: 500;
-                transition: all ease 0.3s;
-                &:hover{
-                    transform: scale(1.1);
-                    color: black;
-                }
-            }
-        }
+    .champs {
+      width: 30%;
+      background-color: transparent;
+      font-family: $main-police;
+      color: wheat;
     }
 
-}
-
-.btn-nav {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 25%;
-
-
+    .btns {
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+      button {
+        font-family: $poppin-police;
+        font-weight: 500;
+        transition: all ease 0.3s;
+        &:hover {
+          transform: scale(1.1);
+          color: black;
+        }
+      }
+    }
+  }
 }
 
 .spinner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media screen and (min-width: 1000px) {
+  .espace-salarie {
+    display: none;
   }
-  
+}
+
+@media screen and (max-width: 480px) {
+  .titre {
+    display: none;
+  }
+  .main-content {
+    height: 100vh;
+    .btn-nav {
+      position: absolute;
+      top: 25%;
+      left: 2%;
+    }
+    .formulaire1 {
+      height: 50%;
+      width: 90%;
+      .champs {
+        width: 60%;
+      }
+    }
+  }
+}

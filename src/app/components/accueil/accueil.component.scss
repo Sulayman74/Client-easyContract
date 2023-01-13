@@ -1,69 +1,73 @@
 $primary-color: #225805;
 $secondary-color: #d85f0280;
-$main-police : 'Roboto',
-sans-serif;
-$second-police : 'Montserrat',
-sans-serif;
-$poppin-police : 'Poppins',
-sans-serif;
+$main-police: "Roboto", sans-serif;
+$second-police: "Montserrat", sans-serif;
+$poppin-police: "Poppins", sans-serif;
 
 .toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 0;
-    margin: 10px 0;
-    border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  margin: 10px 0;
+  border-radius: 3px;
 
-    .titre {
-        font-family: $main-police;
-        transition: all ease 0.4s;
+  .titre {
+    font-family: $main-police;
+    transition: all ease 0.4s;
 
-        &:hover {
-            color: black;
-            transform: scale(1.08);
-        }
+    &:hover {
+      color: black;
+      transform: scale(1.08);
     }
+  }
 }
 
-.container {
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(128, 128, 128, 0.528);
+  backdrop-filter: blur(20px);
+  border-radius: 3px;
+  height: 100vh;
+  flex-direction: column;
+
+  .title {
+    font-family: $second-police;
+    transition: all linear 0.4s;
+
+    &:hover {
+      color: whitesmoke;
+    }
+  }
+
+  .boutons {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(128, 128, 128, 0.528);
-    backdrop-filter: blur(20px);
-    border-radius: 3px;
-    height: 80vh;
     flex-direction: column;
+    align-content: center;
+    justify-content: space-evenly;
+    width: fit-content;
+    height: 13%;
+    width: 50%;
 
-    .title {
-        font-family: $second-police;
-        transition: all linear 0.4s;
+    button {
+      box-sizing: border-box;
 
-        &:hover {
-            color: whitesmoke;
-            
-        }
+      font-family: $poppin-police;
+      font-weight: 500;
+      transition: all ease 0.3s;
+
+      &:hover {
+        transform: scale(1.1);
+        color: black;
+      }
     }
+  }
+}
 
-    .boutons {
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        justify-content: space-evenly;
-        width: fit-content;
-        height: 13%;
-
-        button {
-            box-sizing: border-box;
-            font-family: $poppin-police;
-            font-weight: 500;
-            transition: all ease 0.3s;
-
-            &:hover {
-                transform: scale(1.1);
-                color: black;
-            }
-        }
-    }
+@media screen and (max-width: 480px) {
+  .toolbar {
+    padding-top: 150px;
+  }
 }
