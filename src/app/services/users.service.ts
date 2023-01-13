@@ -19,8 +19,8 @@ export class UsersService {
   loggedUser = new Subject<any>()
 
   constructor(
-    private _router: Router,
-    private _http: HttpClient) { }
+    private _http: HttpClient
+  ) { }
 
   getProfileWorker(): Observable<any> {
     return this._http.get(`${this._apiUrl}/profileWorker`)
@@ -51,9 +51,9 @@ export class UsersService {
     const isAuth = localStorage.getItem('token')
     return !!isAuth
   }
-  
-  getRole(): boolean{
-    const role:boolean = (localStorage.getItem('role') == 'true')
+
+  getRole(): boolean {
+    const role: boolean = (localStorage.getItem('role') == 'true')
     return role
   }
 

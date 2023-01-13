@@ -1,9 +1,9 @@
 .toolbar {
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: fit-content;
+  height: auto;
+  width: 100%;
 
   .titres {
     p {
@@ -24,12 +24,11 @@
   }
 }
 
-.container-fluid {
+.main-container {
+  padding: 0;
+  margin: 0;
   width: 100%;
-  height: 100vh;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  background-color: rgba(245, 245, 245, 0.506);
-  border-radius: 3px;
+  height: 88vh;
 
   .sidenav-content {
     display: flex;
@@ -39,31 +38,47 @@
   }
 
   .tiroir {
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column wrap;
-    max-width: 230px;
+    width: 25%;
     padding: 20px;
-    background-color: beige;
     border-radius: 3px;
 
     .contenu-tiroir {
-      display: block;
-      margin: 50px 0;
-      padding: 5px;
-    }
+      display: flex;
+      background-color: #fff;
+      height: 50%;
+      width: auto;
+      justify-content: space-around;
+      align-items: center;
+      flex-flow: column wrap;
+      .btn {
+        width: 100%;
+      }
+      #deconnexion {
+        margin: 0 5px;
+        align-self: flex-end;
+      }
 
-    button {
-      margin-top: 15px;
-
-
+      button {
+        margin: 5px 0;
+      }
     }
   }
 }
 
-#contrat {
-  padding: 3px 0;
- white-space: pre-line;
-  font-size: 1em;
-  line-height: 18px;
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 480px) {
+  .toolbar {
+    margin-top: 35px;
+  }
+  .main-container {
+    .tiroir {
+      width: 100%;
+    }
+  }
 }

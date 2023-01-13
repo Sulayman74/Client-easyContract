@@ -10,7 +10,7 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./overview-entreprise.component.scss']
 })
 export class OverviewEntrepriseComponent implements OnInit {
-
+  show = true
   monProfil = false;
   mesDocs = false;
   profil = false;
@@ -29,7 +29,10 @@ export class OverviewEntrepriseComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe(({ profilSociety }) => {
-      this.entreprise = profilSociety.society
+      if (profilSociety) {
+        this.show = false
+        this.entreprise = profilSociety.society
+      }
     })
   }
 

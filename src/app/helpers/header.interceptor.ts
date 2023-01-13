@@ -17,8 +17,8 @@ export class HeaderInterceptor implements HttpInterceptor {
 
 
 
-  regex = new RegExp('https://backend-easy.onrender.com');
-  // regex = new RegExp('localhost:8080');
+  // regex = new RegExp('https://backend-easy.onrender.com');
+  regex = new RegExp('localhost:8080');
   // ** je fais un regex pour vérirification avec les headers de l'url pour les requêtes dans la base de données avec modification où je rajoute le token, sinon l'interceptor laisse passer sans rien changer */
 
   constructor(private _snackbar: MatSnackBar) { }

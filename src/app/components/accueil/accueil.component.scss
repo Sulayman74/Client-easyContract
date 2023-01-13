@@ -9,7 +9,7 @@ $poppin-police: "Poppins", sans-serif;
   align-items: center;
   justify-content: center;
   padding: 10px 0;
-  margin: 10px 0;
+  // margin: 10px 0;
   border-radius: 3px;
 
   .titre {
@@ -28,7 +28,6 @@ $poppin-police: "Poppins", sans-serif;
   justify-content: center;
   align-items: center;
   background-color: rgba(128, 128, 128, 0.528);
-  backdrop-filter: blur(20px);
   border-radius: 3px;
   height: 100vh;
   flex-direction: column;
@@ -42,18 +41,17 @@ $poppin-police: "Poppins", sans-serif;
     }
   }
 
-  .boutons {
+  .btns {
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: space-evenly;
     width: fit-content;
     height: 13%;
-    width: 50%;
+    width: 20%;
 
     button {
-      box-sizing: border-box;
-
+      width: 100%;
       font-family: $poppin-police;
       font-weight: 500;
       transition: all ease 0.3s;
@@ -68,6 +66,11 @@ $poppin-police: "Poppins", sans-serif;
 
 @media screen and (max-width: 480px) {
   .toolbar {
-    padding-top: 150px;
+    margin-top: 40px;
+  }
+  .main-content {
+    .btns {
+      width: 60%;
+    }
   }
 }

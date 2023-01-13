@@ -2,15 +2,16 @@
   <button type="button" mat-button (click)="drawer.toggle()">
     <mat-icon> menu</mat-icon>
   </button>
+
   <div class="titres">
     <p class="h4">Portail Entreprise</p>
     <p>{{ entreprise.raison_sociale }}</p>
   </div>
 </mat-toolbar>
-<mat-drawer-container class="container-fluid" autosize>
+<mat-drawer-container class="main-container" autosize>
   <mat-drawer #drawer class="tiroir" mode="push">
     <div class="contenu-tiroir">
-      <button (click)="monProfil = !monProfil" mat-raised-button>
+      <button class="btn" (click)="monProfil = !monProfil" mat-raised-button>
         Paramètres du compte
       </button>
 
@@ -25,7 +26,7 @@
         Gérer mon profil
       </button>
 
-      <button mat-raised-button (click)="mesDocs = !mesDocs">
+      <button class="btn" mat-raised-button (click)="mesDocs = !mesDocs">
         Mes documents
       </button>
 
@@ -47,7 +48,7 @@
         id="contrat"
         color="accent"
       >
-        Visualiser les informations contrats
+        Informations contrats
       </button>
       <button
         *ngIf="mesDocs"
@@ -59,7 +60,7 @@
       >
         Mes Salaries
       </button>
-      <div class="deconnexion">
+      <div id="deconnexion">
         <button mat-mini-fab color="warn" (click)="onLogOut()">
           <mat-icon>close</mat-icon>
         </button>
@@ -68,6 +69,9 @@
   </mat-drawer>
 
   <div class="sidenav-content">
+    <div class="spinner" *ngIf="show">
+      <mat-spinner mode="indeterminate"> </mat-spinner>
+    </div>
     <div *ngIf="profil" class="entreprise-profil">
       <app-profil-entreprise
         [profilEntreprise]="entreprise"

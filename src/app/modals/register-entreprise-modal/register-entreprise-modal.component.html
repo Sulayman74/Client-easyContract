@@ -1,9 +1,9 @@
-<section class="container-fluid">
-  <h1 id="title">Formulaire d'inscription</h1>
-  <form [formGroup]="registerSociety">
+<h1 id="title">Formulaire d'inscription</h1>
+<section class="main-container">
+  <form class="formulaire" [formGroup]="registerSociety">
     <mat-form-field appearance="outline">
       <mat-label>Civilité</mat-label>
-     <mat-select formControlName="civilite" *ngFor="let item of civilites">
+      <mat-select formControlName="civilite" *ngFor="let item of civilites">
         <mat-option [value]="item.title1">Monsieur</mat-option>
         <mat-option [value]="item.title2">Madame</mat-option>
       </mat-select>
@@ -122,16 +122,15 @@
       <mat-icon matSuffix>home</mat-icon>
     </mat-form-field>
   </form>
-  
-      <button
-        class="valider"
-        (click)="onSubmit()"
-        mat-raised-button
-        color="primary"
-        [disabled]="registerSociety.invalid"
-      >
-        Valider
-      </button>
+  <button
+    class="valider"
+    (click)="onSubmit()"
+    mat-raised-button
+    color="primary"
+    [disabled]="registerSociety.invalid"
+  >
+    Valider
+  </button>
 </section>
 
 <!-- TODO option disabled du bouton [disabled]="registerSociety.invalid" -->

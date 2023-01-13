@@ -2,31 +2,45 @@
   <button type="button" mat-button (click)="drawer.toggle()">
     <mat-icon> menu</mat-icon>
   </button>
+
   <div class="titres">
     <p class="h4">Portail Salarie</p>
     <p>{{ salarie.nom }}</p>
     <p>{{ salarie.prenom }}</p>
   </div>
 </mat-toolbar>
-<mat-drawer-container class="container-fluid" autosize>
+
+<mat-drawer-container class="main-content" autosize>
   <mat-drawer #drawer class="tiroir" mode="over">
     <div class="contenu-tiroir">
-      <button (click)="monProfil = !monProfil" mat-raised-button>
+      <button class="btn" (click)="monProfil = !monProfil" mat-raised-button>
         Paramètres du compte
       </button>
 
-      <button *ngIf="monProfil" (click)="onProfil()" (click)="drawer.toggle()" mat-flat-button id="profil" color="warn">
+      <button
+        *ngIf="monProfil"
+        (click)="onProfil()"
+        (click)="drawer.toggle()"
+        mat-flat-button
+        color="warn"
+      >
         Gérer mon profil
       </button>
 
-      <button mat-raised-button (click)="mesDocs = !mesDocs">
+      <button class="btn" mat-raised-button (click)="mesDocs = !mesDocs">
         Mes documents
       </button>
 
-      <button *ngIf="mesDocs" (click)="onDocs()" (click)="drawer.toggle()" mat-flat-button id="docs" color="accent">
+      <button
+        *ngIf="mesDocs"
+        (click)="onDocs()"
+        (click)="drawer.toggle()"
+        mat-flat-button
+        color="accent"
+      >
         Gérer mes documents
       </button>
-      <div class="deconnexion">
+      <div id="deconnexion">
         <button mat-mini-fab color="warn" (click)="onLogOut()">
           <mat-icon>close</mat-icon>
         </button>
@@ -34,12 +48,10 @@
     </div>
   </mat-drawer>
 
-  <div class="sidenav-content">
+  <div class="tiroir-content">
     <div class="spinner" *ngIf="show">
-      <mat-spinner mode="indeterminate">
-      </mat-spinner>
+      <mat-spinner mode="indeterminate"> </mat-spinner>
     </div>
-    <!-- <div class="bgi"></div> -->
     <div *ngIf="profil" class="salarie-profil">
       <!-- <router-outlet></router-outlet> -->
       <app-profil-salarie [profilSalarie]="salarie"></app-profil-salarie>
