@@ -4,12 +4,12 @@ $main-police: "Roboto", sans-serif;
 $second-police: "Montserrat", sans-serif;
 $poppin-police: "Poppins", sans-serif;
 
-.h2 {
+.titre {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  .titre {
+  .h2 {
     padding-top: 20px;
     text-align: center;
     transition: all ease 0.3s;

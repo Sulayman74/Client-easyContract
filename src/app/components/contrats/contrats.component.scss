@@ -1,30 +1,27 @@
+$primary-color: #6e76a3c5;
 .contenant {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh;
-  width:70vw;
-
+  height: auto;
+  width: 100%;
   .formulaire {
     display: flex;
     justify-content: center;
-    background-color: rgba(255, 235, 205, 0.435);
-    backdrop-filter: blur(20px);
-    border-radius: 3px;
+    align-items: center;
     height: 100%;
-    width: 100%;
-
+    width: 100vw;
     form {
-      color: rgb(2, 28, 28);
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      height: 100%;
-      width: 100%;
+      flex-flow: column wrap;
+      height: auto;
+      width: 60%;
+      color: rgb(2, 28, 28);
 
       .mat-form-field {
-        width: 30%;
+        width: 100%;
       }
 
       .radio {
