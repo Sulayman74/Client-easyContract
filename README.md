@@ -23,11 +23,11 @@ EasyContract est construit avec les technologies suivantes:
 ### J'ai pu travailler pour la mise en place du projet avec une équipe, un trello a été mise en place
 
       https://trello.com/b/YGQwhjk6/easycontract
-
+![alt text](https://github.com/Sulayman74/EasyContract/blob/main/images/trello_EasyContract.jpg?raw=true)
 ### Une partie maquettage a été effectué en amont avec l'outil Figma :
 
       https://www.figma.com/file/x4FHRk62L5dWYjU1JWWmvB/Easy-Contract?node-id=0%3A1&t=PCbDjvH50qx9tD3a-0
-      
+![alt text](https://github.com/Sulayman74/Client-easyContract/blob/main/maquettage/Figma/Accueil.png?raw=true)
 On pourra voir en cliquant sur le lien l'idée de départ de l'application en matière d'UI partie Desktop et Mobile
 * J'ai aussi pushé un dossier sur le repo avec des images format PDF
 
