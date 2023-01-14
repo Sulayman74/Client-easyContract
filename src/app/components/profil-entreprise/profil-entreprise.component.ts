@@ -25,8 +25,8 @@ export class ProfilEntrepriseComponent implements OnInit {
 
   onEdit() {
     let dialogRef = this._dialog.open(EditSocietyComponent, {
-      width: "50%",
-      height: "80%",
+      width: "100%",
+      height: "100%",
       data: this.profilEntreprise
     })
     dialogRef.afterClosed().subscribe((profil: any) => {

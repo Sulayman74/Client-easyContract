@@ -3,10 +3,13 @@
     margin: 0;
     padding: 0;
   }
-  height: 90vh;
-  width: 90vw;
+  .titre {
+    color: black;
+  }
+  height: auto;
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
   #main-container {
@@ -15,8 +18,7 @@
     justify-content: space-around;
     align-items: center;
     height: 100%;
-    width: 100%;
-    background-color: rgba(205, 134, 63, 0.148);
+    width: 60%;
     border-radius: 3px;
     .adresse {
       .mat-form-field {
@@ -28,14 +30,14 @@
     .mat-form-field {
       padding: 0 80px;
     }
-    .button-edition {
-      padding: 0;
-      margin: 0;
-    }
+  }
+  .button-edition {
+    padding: 0;
+    margin: 0;
   }
 }
 #edit {
-  margin-top: 5px;
+  margin-top: 15px;
   padding: 5px 45px;
   transition: all ease 0.4s;
 
