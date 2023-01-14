@@ -1,5 +1,5 @@
 # EasyContract
-## le côté Frontend via Angular
+### Le côté Frontend via Angular
 EasyContract est une application web entièrement gérée qui facilite la création des contrats de travail entre entreprise et salariés. Il est conçu pour aider les entreprises à créer des contrats basés sur leurs besoins et à les conserver en toute sécurité.
 
 ## Fonctionnalités
@@ -18,6 +18,18 @@ EasyContract est construit avec les technologies suivantes:
 - Express
 - Angular
 - Postgresql
+
+
+### Une partie maquettage a été effectué en amont avec l'outil Figma :
+
+      https://www.figma.com/file/x4FHRk62L5dWYjU1JWWmvB/Easy-Contract?node-id=0%3A1&t=PCbDjvH50qx9tD3a-0
+      
+On pourra voir en cliquant sur le lien l'idée de départ de l'application en matière d'UI partie Desktop et Mobile
+* J'ai aussi pushé un dossier sur le repo avec des images format PDF
+
+      https://client-easycontrat.onrender.com
+      
+Ce lien mène a un aperçu deplyoé sur render
 
 ## Client side fait en angular
 
