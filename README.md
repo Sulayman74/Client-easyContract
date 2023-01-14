@@ -20,6 +20,10 @@ EasyContract est construit avec les technologies suivantes:
 - Postgresql
 
 
+### J'ai pu travailler pour la mise en place du projet avec une équipe, un trello a été mise en place
+
+      https://trello.com/b/YGQwhjk6/easycontract
+
 ### Une partie maquettage a été effectué en amont avec l'outil Figma :
 
       https://www.figma.com/file/x4FHRk62L5dWYjU1JWWmvB/Easy-Contract?node-id=0%3A1&t=PCbDjvH50qx9tD3a-0
