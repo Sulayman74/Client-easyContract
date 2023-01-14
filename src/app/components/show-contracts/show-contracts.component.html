@@ -1,11 +1,15 @@
 <section class="main">
-  <div class="search_box">
+  <mat-form-field appearance="outline" class="search_box"
+    ><mat-label>Recherche</mat-label>
+    <input
+      matInput
+      placeholder="Recherchez un nom.."
+      class="search"
+      [formControl]="searchBar"
+  /></mat-form-field>
 
-    <input matInput type="search" placeholder="Recherchez un contrat..." class="search" [formControl]="searchBar" />
-
-</div>
-  <h1>Mes Contrats</h1>
-  <div class="container">
+  <p class="h2">Mes Contrats</p>
+  <div class="contenant">
     <div class="cards">
       <div *ngFor="let item of contratTab">
         <mat-card class="card">
@@ -32,10 +36,11 @@
               au {{ item.date_fin | date : "dd/MM/yyyy" }}
             </mat-card-subtitle>
           </mat-card-header>
-          <button id="btn-detail" mat-raised-button (click)="onDetails()">details</button>
+          <button id="btn-detail" mat-raised-button (click)="onDetails()">
+            details
+          </button>
         </mat-card>
       </div>
     </div>
   </div>
- 
 </section>
