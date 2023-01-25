@@ -1,4 +1,7 @@
+import * as fr from '@angular/common/locales/fr';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { DetailsModalComponent } from 'src/app/modals/details-modal/details-modal.component';
@@ -23,8 +26,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { registerLocaleData } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -82,6 +85,11 @@ import { RouterModule } from '@angular/router';
     MatToolbarModule,
     FormsModule,
     MatRadioModule
-  ]
+  ],
+  providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
 })
-export class SharedModule { }
+export class SharedModule {
+  constructor() {
+    registerLocaleData(fr.default);
+  }
+}
