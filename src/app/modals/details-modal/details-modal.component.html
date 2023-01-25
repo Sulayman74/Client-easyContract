@@ -1,90 +1,105 @@
-<p>contratails-modal works!</p>
+<section class="main-content">
+  <h1>Contrat de travail</h1>
 
-<div *ngFor="let item of contrat" >
+  <h5>Entre les soussignés :</h5>
+  <p>D'une part :</p>
+  <ul *ngIf="society && society.raison_sociale">
+    <li>
+      La société <strong>{{ society.raison_sociale }}</strong
+      >,
+    </li>
+    <li>
+      Sise à <strong>{{ society.rue }}</strong
+      >, <strong>{{ society.ville }}</strong
+      >, <strong>{{ society.cp }}</strong
+      >.
+    </li>
+    <li>
+      Immatriculée au registre du commerce et des sociétés sous le numéro
+      <strong>{{ society.siret }}</strong> et code APE numéro
+      <strong>{{ society.code_ape }}</strong>
+    </li>
+  </ul>
 
-    <p>{{item.civilite}}</p>
-    <p>{{item.nom}}</p>
-    <p>{{item.prenom}}</p>
-    <p>{{item.fonction}}</p>
-</div>
+  <p>D'autre part :</p>
+  <ul *ngIf="salarie && salarie.nom">
+    <li>
+      {{ salarie.civilite }} <strong>{{ salarie.nom }}</strong
+      >,
+    </li>
+    <li>
+      Né le <strong>{{ salarie.date_naissance | date : "dd-MMMM-yyyy" }}</strong
+      >,
+    </li>
+    <li *ngIf="salarie.nom_jeune_fille">
+      Nom de jeune fille <strong>{{ salarie.nom_jeune_fille }}</strong>
+    </li>
+    <li>
+      Demeurant <strong>{{ salarie.rue }}</strong
+      >, <strong>{{ salarie.ville }}</strong
+      >, <strong>{{ salarie.cp }}</strong
+      >.
+    </li>
+  </ul>
 
-<div class="container">
-    <h2 mat-dialog-title>Contrat de Travail</h2>
-  <mat-dialog-content class="mat-typography">
-    <h3>Fait à Annemasse le <strong>{{todayString | date:'dd MMMM yyyy'}}</strong>  </h3>
-   <!-- <div *ngFor="let salarie of allSalarie" >
-    <p *ngIf="contrat.con == salarie.salarie_id" >
-      Ce contrat a été établi entre la société : 
-      <strong>{{entreprise.raison_sociale}}</strong> représenté par 
-      <strong>{{entreprise.civilite }} {{entreprise.nom }} {{entreprise.prenom }}</strong>, 
-      d'une part, et 
-      <strong>{{salarie.civilite }} {{salarie.nom }} {{salarie.prenom}}</strong>
-      , d'autre part.
+  <h5>Il est convenu ce qui suit :</h5>
+
+  <p *ngIf="salarie && society && contrat.fonction">
+    <strong>Article 1 : Objet</strong><br />
+    {{ salarie.civilite }} <strong>{{ salarie.nom }}</strong> est engagé(e) par
+    la société <strong>{{ society.raison_sociale }}</strong> à compter du
+    <strong>{{ contrat.date_debut | date : "dd-MMMM-yyyy" }}</strong
+    >, pour occuper le poste de <strong>{{ contrat.fonction }}</strong
+    >.
+  </p>
+
+  <div>
+    <strong>Article 2 : Durée</strong><br />
+    Le présent contrat est conclu selon un :
+    <p *ngIf="contrat.is_fulltime">
+      {{ CDI }}
     </p>
-   </div> -->
-  
-    <h3>Type de contrat de travail</h3>
-    <p>
-      Le type de contrat de travail sera un  <strong>{{contrat.type_contrat}}</strong>
+    <p *ngIf="!contrat.is_fulltime">
+      {{ CDD }}
     </p>
-  
-    <h3>Durée hebdomadaire</h3>
-    <p *ngIf="contrat.is_fulltime" >
-      Il est convenu que la durée de travail mensuel sera à <strong>Temp Plein</strong>
-    </p>
-    <p *ngIf="!contrat.is_fulltime" >
-      Il est convenu que la durée de travail mensuel sera à <strong>Temp Partiel</strong>
-    </p>
-  
-    <h3>Date de début du contrat</h3>
-    <p>Le contrat débutera le : <strong>{{contrat.date_debut | date: 'dd MM YYYY'}}</strong>
-  
-    </p>
-  
-    <h3 *ngIf="contrat.date_fin" >Date de fin du contrat</h3>
-  
-    <p *ngIf="contrat.date_fin">
-      Etant convenu qu'il s'agit d'un contrat en CDD, Ce dernier prendra fin le <strong>{{contrat.date_fin | date: 'dd MM YYYY'}}</strong> 
-    </p>
-  
-    <h3>Periode d'essai</h3>
-  
-    <p>La période d'essai pour ce travail est de : <strong>{{contrat.periode_essai}}</strong> </p>
-  
-    <p>
-      Au cours de cette période, le contrat pourra être rompu par l'une
-      ou l'autre partie, à tout moment, sous réserve du respect du délai
-      de prévenance prévu.</p>
-  
-    <h3>Motif</h3>
-  
-    <p>
-      Le présent contrat a été crée suite a un(e) : <strong> {{contrat.motif}} </strong>
-    </p>
-  
-    <h3>Rémunération</h3>
-    
-    <p>
-      Le salaire mensuel Brut sera de : <strong> {{contrat.remuneration}} </strong>
-    </p>
-  
-    <h3>Fonction occupée</h3>
-  
-    <p>La fonction occupée pour ce travail sera : <strong> {{contrat.fonction}} </strong> </p>
-  
-    <h3>Statut</h3>
-  
-    <p>
-      Vous aurez le statut de : <strong> {{contrat.statut}} </strong>, sous réserve d'évolution de votre carrière.
-    </p>
-  
-  
-    
-  </mat-dialog-content>
-  <mat-dialog-actions align="end">
-    <!-- <button mat-button mat-dialog-close>Annuler</button> -->
-    <button mat-button [mat-dialog-close]="true">Fermer</button>
-    <button mat-button (click)="printPage()" >Imprimer</button>
-    <button mat-button>Télécharger</button>
-  </mat-dialog-actions>
   </div>
+
+  <p *ngIf="salarie && contrat && society">
+    <strong>Article 3 : Rémunération</strong><br />
+    Le salaire de {{ salarie.civilite }}
+    <strong>{{ salarie.nom }}</strong> s'élève à
+    <strong>{{ contrat.remuneration }}</strong> brut mensuel, à verser par la
+    société <strong>{{ society.raison_sociale }}</strong> chaque mois.
+  </p>
+
+  <p *ngIf="salarie">
+    Le présent contrat est signé le <strong>Date de signature</strong>, en deux
+    exemplaires, dont un est remis à {{ salarie.civilite }}
+    <strong>{{ salarie.nom }}</strong
+    >.
+  </p>
+
+  <p>
+    Fait à <strong>Annemasse</strong>, le <strong>Date de signature</strong>.
+  </p>
+
+  <div id="entreprise" *ngIf="society">
+    <p>{{ society.civilite }}</p>
+    <p>{{ society.nom }}</p>
+    <p>
+      <strong>{{ society.raison_sociale }}</strong>
+    </p>
+  </div>
+
+  <div id="salarie" *ngIf="salarie">
+    <p>{{ salarie.civilite }}</p>
+    <strong>{{ salarie.nom }}</strong>
+  </div>
+</section>
+
+<mat-dialog-actions [ngClass]="{ show: notShow }" align="end">
+  <!-- <button mat-button mat-dialog-close>Annuler</button> -->
+  <button mat-button [mat-dialog-close]="true">Fermer</button>
+  <button mat-button (click)="printPage()">Imprimer</button>
+  <button mat-button>Télécharger</button>
+</mat-dialog-actions>

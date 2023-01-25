@@ -1,0 +1,38 @@
+.main-content {
+  h1 {
+    text-align: center;
+    padding: 10px 0;
+  }
+  h5 {
+    padding: 10px 5px;
+    text-align: center;
+  }
+  div {
+    p {
+      padding: 0;
+      margin: 0;
+    }
+  }
+  #entreprise {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    p {
+      padding: 5px;
+      margin: 0;
+    }
+  }
+  #salarie {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    p {
+      padding: 5px;
+      margin: 0;
+    }
+  }
+}
+
+.show {
+  display: none;
+}
