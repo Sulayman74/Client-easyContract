@@ -23,7 +23,7 @@
       <mat-icon matSuffix> person_outline</mat-icon>
     </mat-form-field>
 
-    <mat-form-field class="champs" appearance="outline">
+    <!-- <mat-form-field class="champs" appearance="outline">
       <mat-label>Password</mat-label>
       <input
         matInput
@@ -34,7 +34,17 @@
       />
       <mat-hint>entre 8 et 12 caractères</mat-hint>
       <mat-icon matSuffix>how_to_reg</mat-icon>
-    </mat-form-field>
+    </mat-form-field> -->
+
+    <mat-form-field class="champs" appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'"  formControlName="mdp">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    <mat-hint>entre 8 et 12 caractères</mat-hint>
+  </mat-form-field>
 
     <mat-card-actions class="btns">
       <button
@@ -53,12 +63,11 @@
         [disabled]="loginFormSociety.invalid"
         color="warn"
       >
-        Sign in
+      <mat-icon class="spinner" *ngIf="show" >
+        <mat-progress-spinner strokeWidth="10" diameter="20" mode="indeterminate"> </mat-progress-spinner>
+      </mat-icon>
+        Sign in 
       </button>
     </mat-card-actions>
-
-    <div class="spinner" *ngIf="show">
-      <mat-progress-spinner mode="indeterminate"> </mat-progress-spinner>
-    </div>
   </form>
 </section>

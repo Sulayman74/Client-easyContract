@@ -17,6 +17,7 @@ export class LoginEntrepriseComponent implements OnInit {
   show: boolean = false
   loginFormSociety !: FormGroup<any>;
   entreprise = new Entreprise();
+  hide=true
 
   constructor(
     private _fb: FormBuilder,
@@ -47,11 +48,12 @@ export class LoginEntrepriseComponent implements OnInit {
   }
   onSignIn(): void {
 
-    this.show = true
 
     let loggedUser = this.loginFormSociety.value
 
     this.entreprise = Object.assign(this.entreprise, loggedUser)
+
+
 
     this._entrepriseService.loginEntreprise(loggedUser).subscribe((results: any) => {
 
@@ -61,10 +63,10 @@ export class LoginEntrepriseComponent implements OnInit {
         localStorage.setItem('role', role)
         this._router.navigate(['/overview-entreprise'])
       }
-
-
     })
-
+    
+    this.show = true
+    setTimeout(() => this.show = false, 5000);
   }
 
 
