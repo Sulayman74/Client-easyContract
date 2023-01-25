@@ -10,6 +10,7 @@ export class Salarie {
     ville !: string
     email !: string
     mdp !: string
+    confirmPassword !: string
     role !: boolean
     nom_jeune_fille !: string
     num_ss !: number
