@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Salarie } from 'src/app/models/salarie';
 import { UsersService } from 'src/app/services/users.service';
@@ -24,7 +25,8 @@ export class OverviewSalarieComponent implements OnInit {
   constructor(
     private _router: Router,
     public route: ActivatedRoute,
-    private _salarieService: UsersService) { }
+    private _salarieService: UsersService,
+    private _snackbar:MatSnackBar) { }
 
   ngOnInit(): void {
     this.route.data.subscribe(({ profile }) => {
@@ -34,9 +36,9 @@ export class OverviewSalarieComponent implements OnInit {
 
         this.salarie = profile.worker
 
-      }
-      // console.log(profile, "test ici profile", this.salarie);
+      }     
     })
+    this._snackbar.open(`Bienvenue!! ${this.salarie.civilite} ${this.salarie.prenom}`, "OK",{duration:1300, verticalPosition:'top', horizontalPosition: 'start'})
   }
 
   onProfil(): void {

@@ -2,6 +2,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
 
 import { Entreprise } from 'src/app/models/entreprise';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./overview-entreprise.component.scss']
 })
 export class OverviewEntrepriseComponent implements OnInit {
+ 
   show = true
   monProfil = false;
   mesDocs = false;
@@ -25,7 +27,8 @@ export class OverviewEntrepriseComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
     private _router: Router,
-    private _entrepriseService: UsersService) { }
+    private _entrepriseService: UsersService,
+    private _snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.route.data.subscribe(({ profilSociety }) => {
@@ -34,6 +37,7 @@ export class OverviewEntrepriseComponent implements OnInit {
         this.entreprise = profilSociety.society
       }
     })
+    this._snackbar.open(`Bienvenue ${this.entreprise.civilite} ${this.entreprise.nom}`,"OK",{duration:2000,verticalPosition:'top',horizontalPosition:'start'})
   }
 
   onProfil(): void {
