@@ -92,7 +92,7 @@
       <mat-icon matSuffix>mail</mat-icon>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <!-- <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>
       <input
         type="password"
@@ -107,6 +107,37 @@
       <mat-error *ngIf="password.invalid">{{
         getErrorMessagePassword()
       }}</mat-error>
+    </mat-form-field> -->
+
+    <mat-form-field  appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput 
+      placeholder="Votre password"
+      [type]="hide ? 'password' : 'text'" formControlName="mdp" required>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-hint>entre 8 et 12 caractères</mat-hint>
+      <mat-error *ngIf="password.invalid">{{
+        getErrorMessagePassword()
+        }}</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field class="champs" appearance="outline">
+      <mat-label>Confirmer votre mot de passe</mat-label>
+      <input matInput [type]="mdpConfirm ? 'password' : 'text'" placeholder="Confirmer" formControlName="confirmPassword"
+        required />
+      <button mat-icon-button matSuffix (click)="mdpConfirm = !mdpConfirm" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="mdpConfirm">
+        <mat-icon matSuffix>{{mdpConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-hint>entre 8 et 12 caractères</mat-hint>
+
+      <mat-error *ngIf="confirmPassword.invalid">{{
+        getErrorMessageConfirmPassword()
+        }}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -130,7 +161,7 @@
         formControlName="date_naissance"
         />
       </mat-form-field>
-      <!--  -->
+     
 
     <mat-form-field appearance="outline">
       <mat-label>Pays de naissance</mat-label>
@@ -139,8 +170,17 @@
         type="text"
         placeholder="Pays de naissance"
         formControlName="pays_naissance"
+        [matAutocomplete]="auto"
       />
       <mat-icon matSuffix>home</mat-icon>
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let option of filteredOptions$ | async"
+          [value]="option"
+        >
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Lieu de naissance</mat-label>
@@ -149,8 +189,17 @@
         type="text"
         placeholder="ville de naissance"
         formControlName="lieu_naissance"
+        
       />
       <mat-icon matSuffix>home</mat-icon>
+      <!-- <mat-autocomplete autoActiveFirstOption #city="matAutocomplete">
+        <mat-option
+          *ngFor="let option of filteredOptions$ | async"
+          [value]="option"
+        >
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete> -->
     </mat-form-field>
   </form>
   <button
@@ -168,6 +217,8 @@
 <!-- [disabled]="registerSalarie.invalid" -->
 
 <!--TODO pour après le MVP rajouter un autocomplete qui cherche sur une API les pays-->
+
+
 
 <!-- <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Pays</mat-label>

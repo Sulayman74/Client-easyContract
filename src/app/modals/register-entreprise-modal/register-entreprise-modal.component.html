@@ -56,8 +56,23 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Ville</mat-label>
-      <input type="text" matInput placeholder="ville" formControlName="ville" />
+      <input
+        type="text"
+        matInput
+        placeholder="ville"
+        formControlName="ville"
+        [matAutocomplete]="auto"
+        (keyup)="onKeyUp()"
+      />
       <mat-icon matSuffix> streetview</mat-icon>
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let option of filteredOptions$ | async"
+          [value]="option"
+        >
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -73,7 +88,7 @@
       <mat-icon matSuffix>mail</mat-icon>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <!-- <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>
       <input
         type="password"
@@ -85,8 +100,55 @@
       <mat-icon matSuffix>fingerprint</mat-icon>
 
       <mat-hint> entre 8 et 12 caractères</mat-hint>
-      <mat-error *ngIf="password.invalid">{{
+      <mat-error *ngIf="mdp.invalid">{{
         getErrorMessagePassword()
+      }}</mat-error>
+    </mat-form-field> -->
+
+    <mat-form-field class="champs" appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        formControlName="mdp"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-hint>entre 8 et 12 caractères</mat-hint>
+      <mat-error *ngIf="mdp.invalid">{{ getErrorMessagePassword() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="champs" appearance="outline">
+      <mat-label>Confirmer votre mot de passe</mat-label>
+      <input
+        matInput
+        [type]="mdpConfirm ? 'password' : 'text'"
+        placeholder="Confirmer"
+        formControlName="confirmPassword"
+        required
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="mdpConfirm = !mdpConfirm"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="mdpConfirm"
+      >
+        <mat-icon matSuffix>{{
+          mdpConfirm ? "visibility_off" : "visibility"
+        }}</mat-icon>
+      </button>
+      <mat-hint>entre 8 et 12 caractères</mat-hint>
+
+      <mat-error *ngIf="confirmPassword.invalid">{{
+        getErrorMessageConfirmPassword()
       }}</mat-error>
     </mat-form-field>
 
