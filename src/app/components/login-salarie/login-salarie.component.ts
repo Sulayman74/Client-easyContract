@@ -17,6 +17,7 @@ export class LoginSalarieComponent implements OnInit {
   show: boolean = false
   loginFormSalarie !: FormGroup<any>;
   salarie = new Salarie();
+  hide=true
 
   constructor(
     private _fb: FormBuilder,
@@ -55,8 +56,8 @@ export class LoginSalarieComponent implements OnInit {
     this.salarie = Object.assign(this.salarie, loggedUser)
 
     this._salarieService.loginSalarie(loggedUser).subscribe((results: any) => {
-      this.show = true
       let role = results.datas.role
+
       if (results) {
         localStorage.setItem('token', results.token)
         localStorage.setItem('role', role)
@@ -66,7 +67,8 @@ export class LoginSalarieComponent implements OnInit {
 
     })
 
-
+    this.show = true
+    setTimeout(() => this.show = false, 5000);
   }
 
 }
