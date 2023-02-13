@@ -1,4 +1,4 @@
-<section class="main-content">
+<section id="download" class="main-content">
   <h1>Contrat de travail</h1>
 
   <h5>Entre les soussignés :</h5>
@@ -101,5 +101,5 @@
   <!-- <button mat-button mat-dialog-close>Annuler</button> -->
   <button mat-button [mat-dialog-close]="true">Fermer</button>
   <button mat-button (click)="printPage()">Imprimer</button>
-  <button mat-button>Télécharger</button>
+  <button mat-button (click)="download()">Télécharger</button>
 </mat-dialog-actions>

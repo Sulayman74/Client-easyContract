@@ -37,6 +37,19 @@ export class ShowContractsComponent implements OnInit {
       // console.log("le profil de l'entreprise", this.society);
     })
 
+
+    this._userService.getWorkers().subscribe((worker: any) => {
+      // console.warn("mes salaries", worker);
+      let tableauWorker = worker.salaries.map((value: any) => {
+        console.log("test", this.onlyMyContracts[0].salarie_id, value.salarie_id);
+        if (value.salarie_id == this.onlyMyContracts[0].salarie_id) {
+          console.log("le salarie correspondant", value);
+          this.salarie = value
+        }
+        return this.salarie
+      })
+    })
+
     /** Je récupère ici tous les contrats et je map et filtre pour recevoir que les contrats correspondant à l'id de l'entreprise */
 
     this._dataService.searchAll().subscribe((contrats: any) => {
@@ -58,17 +71,6 @@ export class ShowContractsComponent implements OnInit {
       this.contratTab = [...this.onlyMyContracts]
     })
 
-    this._userService.getWorkers().subscribe((worker: any) => {
-      // console.warn("mes salaries", worker);
-      let tableauWorker = worker.salaries.map((value: any) => {
-        // console.log("this.onlyMyContracts[0].salarie_id", value.salarie_id);
-        if (value.salarie_id == this.onlyMyContracts[0].salarie_id) {
-          console.log("le salarie correspondant", value);
-          this.salarie = value
-        }
-        return this.salarie
-      })
-    })
     /**  la Search bar */
     this.searchBar.valueChanges.subscribe((resultSearch: any) => {
       this.contratTab = this.onlyMyContracts.filter((infoContrat: any) => {
