@@ -45,7 +45,7 @@
   <h5>Il est convenu ce qui suit :</h5>
 
   <p *ngIf="salarie && society && contrat.fonction">
-    <strong>Article 1 : Objet</strong><br />
+    <strong class="article">Article 1 : Objet</strong><br />
     {{ salarie.civilite }} <strong>{{ salarie.nom }}</strong> est engagé(e) par
     la société <strong>{{ society.raison_sociale }}</strong> à compter du
     <strong>{{ contrat.date_debut | date : "dd-MMMM-yyyy" }}</strong
@@ -53,19 +53,19 @@
     >.
   </p>
 
-  <div>
-    <strong>Article 2 : Durée</strong><br />
+  <p>
+    <strong class="article">Article 2 : Durée</strong><br />
     Le présent contrat est conclu selon un :
-    <p *ngIf="contrat.is_fulltime">
+    <strong *ngIf="contrat.is_fulltime">
       {{ CDI }}
-    </p>
-    <p *ngIf="!contrat.is_fulltime">
+    </strong>
+    <strong *ngIf="!contrat.is_fulltime">
       {{ CDD }}
-    </p>
-  </div>
+    </strong>
+  </p>
 
   <p *ngIf="salarie && contrat && society">
-    <strong>Article 3 : Rémunération</strong><br />
+    <strong class="article">Article 3 : Rémunération</strong><br />
     Le salaire de {{ salarie.civilite }}
     <strong>{{ salarie.nom }}</strong> s'élève à
     <strong>{{ contrat.remuneration }}</strong> brut mensuel, à verser par la
