@@ -6,6 +6,7 @@ import { RegisterSalarieModalComponent } from 'src/app/modals/register-salarie-m
 import { Router } from '@angular/router';
 import { Salarie } from 'src/app/models/salarie';
 import { UsersService } from 'src/app/services/users.service';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-login-salarie',
@@ -17,7 +18,7 @@ export class LoginSalarieComponent implements OnInit {
   show: boolean = false
   loginFormSalarie !: FormGroup<any>;
   salarie = new Salarie();
-  hide=true
+  hide = true
 
   constructor(
     private _fb: FormBuilder,
@@ -51,24 +52,39 @@ export class LoginSalarieComponent implements OnInit {
 
   }
 
+  async getUser(user: any): Promise<any> {
+    try {
+      let reponse = await lastValueFrom(this._salarieService.loginSalarie(user))
+      return reponse
+    } catch (err) {
+      console.log(err);
+    }
+
+  }
+
   onSignIn(): void {
     let loggedUser = this.loginFormSalarie.value
     this.salarie = Object.assign(this.salarie, loggedUser)
 
-    this._salarieService.loginSalarie(loggedUser).subscribe((results: any) => {
-      let role = results.datas.role
+    this.getUser(loggedUser).then((results: any) => {
+
 
       if (results) {
+        let role = results.datas.role
         localStorage.setItem('token', results.token)
         localStorage.setItem('role', role)
         this.router.navigate(['/overview-salarie'])
 
       }
-
+      else { this.show = false }
     })
+    // this._salarieService.loginSalarie(loggedUser).subscribe((results: any) => {
+
+
+    // })
 
     this.show = true
-    setTimeout(() => this.show = false, 5000);
+    // setTimeout(() => this.show = false, 5000);
   }
 
 }

@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { RegisterEntrepriseModalComponent } from 'src/app/modals/register-entreprise-modal/register-entreprise-modal.component';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-login-entreprise',
@@ -17,7 +18,7 @@ export class LoginEntrepriseComponent implements OnInit {
   show: boolean = false
   loginFormSociety !: FormGroup<any>;
   entreprise = new Entreprise();
-  hide=true
+  hide = true
 
   constructor(
     private _fb: FormBuilder,
@@ -46,27 +47,40 @@ export class LoginEntrepriseComponent implements OnInit {
       });
 
   }
+
+
+
+  async getUser(user: any): Promise<any> {
+    try {
+      let reponse = await lastValueFrom(this._entrepriseService.loginEntreprise(user))
+      return reponse
+    } catch (err) {
+      console.log(err);
+    }
+
+  }
+
   onSignIn(): void {
-
-
     let loggedUser = this.loginFormSociety.value
-
     this.entreprise = Object.assign(this.entreprise, loggedUser)
 
+    this.getUser(loggedUser).then((results: any) => {
 
-
-    this._entrepriseService.loginEntreprise(loggedUser).subscribe((results: any) => {
-
-      let role = results.datas.role
       if (results) {
+        let role = results.datas.role
         localStorage.setItem('token', results.token)
         localStorage.setItem('role', role)
         this._router.navigate(['/overview-entreprise'])
+
       }
+      else { this.show = false }
     })
-    
+
+
+
+
     this.show = true
-    setTimeout(() => this.show = false, 5000);
+    // setTimeout(() => this.show = false, 5000);
   }
 
 
