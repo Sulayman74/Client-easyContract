@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from './modules/shared/shared.module';
+import { StoreModule } from "@ngrx/store";
 import { TokenInterceptorProvider } from './helpers/header.interceptor';
 
 @NgModule({
@@ -22,7 +23,9 @@ import { TokenInterceptorProvider } from './helpers/header.interceptor';
     BrowserModule,
     BrowserAnimationsModule,
     NgbModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forRoot({})
+
 
   ],
   providers: [TokenInterceptorProvider,
