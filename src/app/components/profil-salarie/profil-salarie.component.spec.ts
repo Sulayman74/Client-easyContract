@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 
 import { ActivatedRoute } from '@angular/router';
@@ -28,4 +29,37 @@ describe('ProfilSalarieComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+});
+
+describe('UsersService', () => {
+  let httpTestingController: HttpTestingController;
+  let service: UsersService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [UsersService]
+    });
+    httpTestingController = TestBed.inject(HttpTestingController);
+    service = TestBed.inject(UsersService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+
+  it('should have the getProfileWorker function', () => {
+    expect(service.getProfileWorker).toBeTruthy();
+  });
+
+  it('should return an Observable<any>', () => {
+    service.getProfileWorker().subscribe(response => {
+      expect(response).toBeTruthy();
+    });
+    const req = httpTestingController.expectOne("https://backend-easy.onrender.com/api/users/profileWorker");
+    expect(req.request.method).toEqual('GET');
+    req.flush({});
+
+  });
+
 });
