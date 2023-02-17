@@ -29,6 +29,9 @@ $poppin-police: "Poppins", sans-serif;
   height: 80vh;
   width: 100%;
   position: relative;
+  background-image: url("../../../assets/images/salarie-bg.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
   .espace-salarie {
     transition: all ease-out 0.3s;
     &:hover {
@@ -50,7 +53,8 @@ $poppin-police: "Poppins", sans-serif;
     width: 60%;
     height: 80%;
     border-radius: 5px;
-    background-color: #0275d8;
+    background-color: #0274d8c6;
+    box-shadow: 1px 1px 4px black;
 
     .champs {
       width: 30%;

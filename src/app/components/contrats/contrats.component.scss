@@ -11,7 +11,9 @@ $primary-color: #6e76a3c5;
     align-items: center;
     height: 100%;
     width: 100vw;
+    background-color: rgba(250, 235, 215, 0.535);
     form {
+      padding: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -19,6 +21,7 @@ $primary-color: #6e76a3c5;
       height: auto;
       width: 60%;
       color: rgb(2, 28, 28);
+      font-weight: 400;
 
       .mat-form-field {
         width: 100%;

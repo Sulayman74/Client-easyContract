@@ -68,7 +68,6 @@ export class LoginSalarieComponent implements OnInit {
 
     this.getUser(loggedUser).then((results: any) => {
 
-
       if (results) {
         let role = results.datas.role
         localStorage.setItem('token', results.token)
@@ -79,8 +78,6 @@ export class LoginSalarieComponent implements OnInit {
       else { this.show = false }
     })
     // this._salarieService.loginSalarie(loggedUser).subscribe((results: any) => {
-
-
     // })
 
     this.show = true

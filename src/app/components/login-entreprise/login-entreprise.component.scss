@@ -30,6 +30,9 @@ $poppin-police: "Poppins", sans-serif;
   height: 80vh;
   width: 100%;
   position: relative;
+  background-image: url("../../../assets/images/entreprise-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   .espace-entreprise {
     transition: all ease-out 0.3s;
     &:hover {
@@ -51,7 +54,8 @@ $poppin-police: "Poppins", sans-serif;
     width: 60%;
     height: 80%;
     border-radius: 5px;
-    background-color: #044074;
+    background-color: #0440749c;
+    box-shadow: 1px 2px 4px black;
 
     .champs {
       width: 30%;

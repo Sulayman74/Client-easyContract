@@ -2,6 +2,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
+
   .search_box {
     display: flex;
     justify-content: flex-start;
@@ -13,6 +14,13 @@
   }
   .h2 {
     padding: 0 10px;
+    color: antiquewhite;
+    transition: all ease 0.3s;
+    &:hover {
+      transform-origin: left;
+      transform: scale(1.05);
+      color: black;
+    }
   }
   .contenant {
     display: flex;

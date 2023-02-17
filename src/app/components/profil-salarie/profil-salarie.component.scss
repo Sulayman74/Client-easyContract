@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  background-color: rgba(250, 235, 215, 0.657);
 
   .formulaire {
     display: flex;
@@ -22,7 +23,6 @@
     .mat-form-field {
       padding: 0 80px;
     }
-
   }
 
   .btn-edit {
@@ -35,11 +35,10 @@
       padding: 0 50px;
     }
   }
-
 }
 
-@media screen and (max-width : 480px) {
+@media screen and (max-width: 480px) {
   #main-container {
-    margin-top:250px;
+    margin-top: 250px;
   }
 }
