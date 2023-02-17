@@ -6,6 +6,7 @@ import { DetailsModalComponent } from 'src/app/modals/details-modal/details-moda
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { UsersService } from 'src/app/services/users.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-show-contracts',
@@ -37,39 +38,37 @@ export class ShowContractsComponent implements OnInit {
       // console.log("le profil de l'entreprise", this.society);
     })
 
-
-    this._userService.getWorkers().subscribe((worker: any) => {
-      // console.warn("mes salaries", worker);
-      let tableauWorker = worker.salaries.map((value: any) => {
-        console.log("test", this.onlyMyContracts[0].salarie_id, value.salarie_id);
-        if (value.salarie_id == this.onlyMyContracts[0].salarie_id) {
-          console.log("le salarie correspondant", value);
-          this.salarie = value
-        }
-        return this.salarie
-      })
-    })
-
-    /** Je récupère ici tous les contrats et je map et filtre pour recevoir que les contrats correspondant à l'id de l'entreprise */
-
-    this._dataService.searchAll().subscribe((contrats: any) => {
-      // console.log("Voici le test demandé pour savoir c'est quoi contrats", contrats);
+    //* Le forkJoin permet de fusionner plusieurs Observables de manière synchrone. Il attend que tous les Observables soient complétés avant de retourner un tableau avec les valeurs résultantes. Dans le code ci-dessus, nous attendons que les deux Observables (`dataServiceObs` et `userServiceObs`) soient complétés avant de récupérer les résultats des deux souscriptions dans un tableau. */
+    /**
+     * @param  {} ;constuserServiceObs$=this._userService.getWorkers(
+     * @param  {} ;forkJoin([dataServiceObs$
+     * @param  {} userServiceObs$]
+     * @param  {} .subscribe(([contrats workers]
+     * @param  {any} =>{this.mesContrats=contrats.contracts;lettableau=this.mesContrats.map((value
+     */
+    const dataServiceObs$ = this._dataService.searchAll();
+    const userServiceObs$ = this._userService.getWorkers();
+    forkJoin([dataServiceObs$, userServiceObs$]).subscribe(([contrats, workers]) => {
       this.mesContrats = contrats.contracts;
       let tableau = this.mesContrats.map((value: any) => {
-        // console.log("Voici le test demandé pour savoir c'est quoi value de mesContrats.map", value);
         this.entreprise = value.entreprise_id
         return this.entreprise
-      })
-
+      });
       this.onlyMyContracts = this.mesContrats.filter((val: any) => {
         if (val.entreprise_id == this.society.entreprise_id) {
           return this.onlyMyContracts = val
         }
       })
-      // console.log("tableauFiltre", this.onlyMyContracts);
-      // Spread du tableau pour la search bar et j'itere dessus pour l'html //
       this.contratTab = [...this.onlyMyContracts]
-    })
+      let tableauWorker = workers.salaries.map((value: any) => {
+        this.salarie = value
+        console.log("test", this.onlyMyContracts[0].salarie_id, value.salarie_id);
+        if (value.salarie_id == this.onlyMyContracts[0].salarie_id) {
+          console.log("le salarie correspondant", this.salarie);
+        }
+        return this.salarie
+      })
+    });
 
     /**  la Search bar */
     this.searchBar.valueChanges.subscribe((resultSearch: any) => {
