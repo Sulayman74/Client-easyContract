@@ -35,10 +35,11 @@ export class ContratsComponent implements OnInit {
     public snackbar: MatSnackBar,
     private _countriesService: DataService) { }
 
-  ngOnInit(): void {
-    // console.log(this.formatDate);
+  ngOnInit() {
+    this.contrat.fki_entreprise = this.profilEntreprise.entreprise_id
+
     this.formContrat = this._fb.group({
-      fki_entreprise: this.profilEntreprise.entreprise_id,
+      fki_entreprise: this.contrat.fki_entreprise,
       fki_salarie: [this.contrat.fki_salarie, Validators.required],
       type_contrat: this.contrat.type_contrat,
       is_fulltime: this.contrat.is_fulltime,

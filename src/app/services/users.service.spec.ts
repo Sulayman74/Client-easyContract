@@ -14,7 +14,7 @@ describe('UsersService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [UsersService, { provide: ActivatedRoute, useValue: {} }, { provide: HttpClient, useValue: {} }, { provide: MAT_DIALOG_DATA, useValue: {} }, { provide: MatSnackBar, useValue: {} }, { provide: FormBuilder, useValue: {} }, { provide: MatDialog, useValue: {} }, { provide: MatDialogRef, useValue: {} }]
+      providers: [UsersService, { provide: ActivatedRoute, useValue: {} }, { provide: HttpClient, useValue: {} }, { provide: MAT_DIALOG_DATA, useValue: {} }, { provide: MatSnackBar, useValue: {} }, { provide: FormBuilder, useValue: {} }, { provide: MatDialog, useValue: {} }, { provide: MatDialogRef, useValue: {} }, { provide: HttpClientTestingModule, useValue: {} }, { provide: HttpTestingController, useValue: {} }, { provide: Observable, useValue: {} }]
     });
     service = TestBed.inject(UsersService);
   });
@@ -26,22 +26,5 @@ describe('UsersService', () => {
 
 
 });
-describe('UsersService', () => {
-  let service: UsersService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [UsersService, { provide: ActivatedRoute, useValue: {} }, { provide: HttpClient, useValue: {} }, { provide: MAT_DIALOG_DATA, useValue: {} }, { provide: MatSnackBar, useValue: {} }, { provide: FormBuilder, useValue: {} }, { provide: MatDialog, useValue: {} }]
-    });
-    service = TestBed.inject(UsersService);
-  });
-
-  it('should return datas from Database', () => {
-    const response = service.getProfileWorker();
-    expect(response).toEqual(response);
-  });
-
-
-
-});
 
