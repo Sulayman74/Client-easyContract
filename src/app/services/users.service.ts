@@ -23,7 +23,9 @@ export class UsersService {
   ) { }
 
   getProfileWorker(): Observable<any> {
-    return this._http.get(`${this._apiUrl}/profileWorker`)
+
+    let getProfile = this._http.get(`${this._apiUrl}/profileWorker`)
+    return getProfile
   }
 
   getProfileSociety(): Observable<any> {
@@ -46,6 +48,14 @@ export class UsersService {
     localStorage.setItem('token', token)
 
   }
+
+
+  /**
+   * isAuthenticated()
+   * 
+   * @returns {boolean} - Returns true if there is a token in localStorage, otherwise returns false.
+   * 
+   * This code checks if there is a token stored in localStorage, and returns a boolean value depending on the result.*/
 
   isAuthenticated(): boolean {
     const isAuth = localStorage.getItem('token')
