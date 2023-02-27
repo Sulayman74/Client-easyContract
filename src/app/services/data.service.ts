@@ -38,5 +38,7 @@ export class DataService {
   searchAll(): Observable<any> {
     return this._http.get(`${this._apiUrl}/allContracts`)
   }
-
+getContrat(): Observable<any> {
+  return this._http.get(`${this._apiUrl}/contrat`)
+}
 }
