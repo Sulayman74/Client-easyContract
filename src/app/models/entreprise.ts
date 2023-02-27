@@ -9,6 +9,7 @@ export class Entreprise {
     ville !: string
     email !: string
     mdp !: string
+    entreprise_id !: number
     confirmPassword !: string
     role !: boolean
     siret !: number
