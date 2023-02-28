@@ -9,19 +9,16 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class MesSalariesComponent implements OnInit {
   @Input() profilEntreprise !: any
-  displayedColumns = ['name', 'salary'];
-  dataSource = [
-    { name: 'John', salary: '$5000' },
-    { name: 'Jane', salary: '$4000' },
-    { name: 'Jill', salary: '$3000' },
-  ];
+  displayedColumns = ['Civilite', 'Nom',"Prenom","Fonction","Statut","Remuneration"];
+  dataSource : any [] =[];
 
 
   constructor(private _userService : UsersService) { }
 
   ngOnInit(): void {
     this._userService.getMyWorkers().subscribe((worker:any)=>{
-      console.log("mon worker",worker);
+      console.log("mon worker",worker.datasworker);
+      this.dataSource = worker.datasworker
     })
     console.log("profilEntrprise",this.profilEntreprise);
   }

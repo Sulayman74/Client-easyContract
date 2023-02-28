@@ -3,14 +3,31 @@
 
     <mat-table [dataSource]="dataSource">
         
-        <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef> Nom </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        <ng-container matColumnDef="Civilite">
+            <mat-header-cell *matHeaderCellDef> Civilite </mat-header-cell>
+            <mat-cell *matCellDef="let salarie"> {{salarie.civilite}}
+            </mat-cell>
         </ng-container>
         
-        <ng-container matColumnDef="salary">
-            <mat-header-cell *matHeaderCellDef> Salaire </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.salary}} </mat-cell>
+        <ng-container matColumnDef="Nom">
+            <mat-header-cell *matHeaderCellDef> Nom </mat-header-cell>
+            <mat-cell *matCellDef="let salarie"> <strong>{{salarie.nom}}</strong> </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Prenom">
+            <mat-header-cell *matHeaderCellDef> Prenom </mat-header-cell>
+            <mat-cell  *matCellDef="let salarie"> {{salarie.prenom}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Fonction">
+            <mat-header-cell *matHeaderCellDef> Fonction </mat-header-cell>
+            <mat-cell *matCellDef="let salarie"> {{salarie.fonction}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Statut">
+            <mat-header-cell *matHeaderCellDef> Statut </mat-header-cell>
+            <mat-cell *matCellDef="let salarie"> {{salarie.statut}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Remuneration">
+            <mat-header-cell *matHeaderCellDef> Remuneration </mat-header-cell>
+            <mat-cell style="color: coral;" *matCellDef="let salarie"> {{salarie.remuneration}} €/mois</mat-cell>
         </ng-container>
         
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
