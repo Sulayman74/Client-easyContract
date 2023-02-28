@@ -12,7 +12,7 @@
   <div class="contenant">
     <div class="cards">
       <div *ngFor="let item of mesContrats">
-        {{ item | json }}
+       
         <mat-card class="card" *ngIf="item && item.civilite">
           <mat-card-title class="titre-main">Aperçu du Contrat</mat-card-title>
           <mat-card-header>

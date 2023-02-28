@@ -102,6 +102,9 @@ export class UsersService {
     return this._http.get(`${this._apiUrl}/workers`)
 
   }
+  getMyWorkers(): Observable<any> {
+    return this._http.get(`${this._apiUrl}/myWorkers`)
+  }
   // **  Je recupère toutes les entreprises  */
 
   getSocieties(): Observable<any> {
