@@ -1,1 +1,19 @@
-<p>mes-salaries works!</p>
+
+<div id="ma-table">
+
+    <mat-table [dataSource]="dataSource">
+        
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Nom </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="salary">
+            <mat-header-cell *matHeaderCellDef> Salaire </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.salary}} </mat-cell>
+        </ng-container>
+        
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
