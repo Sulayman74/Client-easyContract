@@ -13,40 +13,37 @@ import * as html2pdf from "html2pdf.js"
 })
 export class DetailsModalComponent implements OnInit {
   user !: any
-  utilisateur !: any
+  utilisateur !: Salarie
   society !: Entreprise
-  salarie!: Salarie
+  salarie_id!: Number
   contrat !: Contrat
   CDI = "Contrat à durée indeterminée"
   CDD = "Contrat à durée determinée"
   notShow = false
-  test !: any[]
+  tableauContrat !: any[]
   constructor(
     @Inject(MAT_DIALOG_DATA) public contratDatas: any,
     private _userService: UsersService) { }
 
   ngOnInit(): void {
+
+    /** 
+ *  Récupère le profil de l'entreprise et les informations du salarie 
+ *  pour afficher le tableau des contrats
+ */
     this._userService.getProfileSociety().subscribe((entreprise: any) => {
-      console.log("entreprise", entreprise.society);
 
       this.society = entreprise.society
     })
-    //     this.contratDatas = this.contratDatas.filter((value: any) => {
-
-    // })
-    this.salarie = this.contratDatas.id
-    this._userService.getOne(this.salarie).subscribe((user: any) => {
-      this.utilisateur = user
-      console.log(this.utilisateur);
+    
+    this.salarie_id = this.contratDatas.id
+    this._userService.getOne(this.salarie_id).subscribe((salarie: any) => {
+      this.utilisateur = salarie.salarie
+      console.log(this.utilisateur.civilite,this.utilisateur.prenom);
     })
-    this._userService.getCurrentUser().subscribe((value: any) => {
-      this.user = value
-      console.log(this.user);
-    })
-    console.log(this.salarie);
-    this.test = this.contratDatas.monContrat
-    console.log(this.test);
-    this.test.map((value: any) => {
+  
+    this.tableauContrat = this.contratDatas.monContrat
+    this.tableauContrat.map((value: any) => {
 
       this.contrat = value
     })

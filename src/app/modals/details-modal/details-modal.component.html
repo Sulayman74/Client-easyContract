@@ -22,31 +22,30 @@
   </ul>
 
   <p>D'autre part :</p>
-  <ul *ngIf="salarie && salarie.nom">
+  <ul *ngIf="utilisateur && utilisateur.nom">
     <li>
-      {{ salarie.civilite }} <strong>{{ salarie.nom }}</strong
+      {{ utilisateur.civilite }} <strong>{{ utilisateur.nom }}</strong
       >,
     </li>
     <li>
-      Né le <strong>{{ salarie.date_naissance | date : "dd-MMMM-yyyy" }}</strong
+      Né le <strong>{{ utilisateur.date_naissance | date : "dd-MMMM-yyyy" }}</strong
       >,
     </li>
-    <li *ngIf="salarie.nom_jeune_fille">
-      Nom de jeune fille <strong>{{ salarie.nom_jeune_fille }}</strong>
+    <li *ngIf="utilisateur.nom_jeune_fille">
+      Nom de jeune fille <strong>{{ utilisateur.nom_jeune_fille }}</strong>
     </li>
     <li>
-      Demeurant <strong>{{ salarie.rue }}</strong
-      >, <strong>{{ salarie.ville }}</strong
-      >, <strong>{{ salarie.cp }}</strong
+      Demeurant <strong>{{ utilisateur.rue }}</strong
+      >, <strong>{{ utilisateur.ville }}</strong
+      >, <strong>{{ utilisateur.cp }}</strong
       >.
     </li>
   </ul>
 
   <h5>Il est convenu ce qui suit :</h5>
-
-  <p *ngIf="salarie && society && contrat.fonction">
+  <p *ngIf="utilisateur && society && contrat.fonction">
     <strong class="article">Article 1 : Objet</strong><br />
-    {{ salarie.civilite }} <strong>{{ salarie.nom }}</strong> est engagé(e) par
+    {{ utilisateur.civilite }} <strong>{{ utilisateur.nom }}</strong> est engagé(e) par
     la société <strong>{{ society.raison_sociale }}</strong> à compter du
     <strong>{{ contrat.date_debut | date : "dd-MMMM-yyyy" }}</strong
     >, pour occuper le poste de <strong>{{ contrat.fonction }}</strong
@@ -64,18 +63,18 @@
     </strong>
   </p>
 
-  <p *ngIf="salarie && contrat && society">
+  <p *ngIf="utilisateur && contrat && society">
     <strong class="article">Article 3 : Rémunération</strong><br />
-    Le salaire de {{ salarie.civilite }}
-    <strong>{{ salarie.nom }}</strong> s'élève à
+    Le salaire de {{ utilisateur.civilite }}
+    <strong>{{ utilisateur.nom }}</strong> s'élève à
     <strong>{{ contrat.remuneration }}</strong> brut mensuel, à verser par la
     société <strong>{{ society.raison_sociale }}</strong> chaque mois.
   </p>
 
-  <p *ngIf="salarie">
+  <p *ngIf="utilisateur">
     Le présent contrat est signé le <strong>Date de signature</strong>, en deux
-    exemplaires, dont un est remis à {{ salarie.civilite }}
-    <strong>{{ salarie.nom }}</strong
+    exemplaires, dont un est remis à {{ utilisateur.civilite }}
+    <strong>{{ utilisateur.nom }}</strong
     >.
   </p>
 
@@ -91,9 +90,9 @@
     </p>
   </div>
 
-  <div id="salarie" *ngIf="salarie">
-    <p>{{ salarie.civilite }}</p>
-    <strong>{{ salarie.nom }}</strong>
+  <div id="salarie" *ngIf="utilisateur">
+    <p>{{ utilisateur.civilite }}</p>
+    <strong>{{ utilisateur.nom }}</strong>
   </div>
 </section>
 
