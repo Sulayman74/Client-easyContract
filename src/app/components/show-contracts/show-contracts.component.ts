@@ -41,11 +41,17 @@ export class ShowContractsComponent implements OnInit {
     })
     this.contrats$ = this._dataService.getContrat();
     this.contrats$.subscribe((value: Contrat[]) => {
-      this.mesContrats = value.map((contrat: Contrat) => this.contrat = contrat
-      )
-    })
-    
+      this.mesContrats = value
+      this.contratFiltred = [... this.mesContrats]
 
+    })
+
+    /**  la Search bar */
+    this.searchBar.valueChanges.subscribe((resultSearch: any) => {
+      this.mesContrats = this.contratFiltred.filter((infoContrat: any) => {
+        return infoContrat.fonction.toLowerCase().includes(resultSearch.toLowerCase()) || infoContrat.nom.toLowerCase().includes(resultSearch.toLowerCase()) || infoContrat.prenom.toLowerCase().includes(resultSearch.toLowerCase())
+      })
+    })
     //* Le forkJoin permet de fusionner plusieurs Observables de manière synchrone. Il attend que tous les Observables soient complétés avant de retourner un tableau avec les valeurs résultantes. Dans le code ci-dessus, nous attendons que les deux Observables (`dataServiceObs` et `userServiceObs`) soient complétés avant de récupérer les résultats des deux souscriptions dans un tableau. */
     /**
      * @param  {} ;constuserServiceObs$=this._userService.getWorkers(
@@ -85,25 +91,22 @@ export class ShowContractsComponent implements OnInit {
     // })
     // });
 
-    /**  la Search bar */
-    this.contratFiltred = this.mesContrats.filter((val:any)=>{
-      console.log(val);
-      return this.contratFiltred = val
-    })
-    this.mesContrats = [... this.contratFiltred]
-    this.searchBar.valueChanges.subscribe((resultSearch: any) => {
-      this.mesContrats = this.contratFiltred.filter((infoContrat: any) => {
-        return infoContrat.fonction.toLowerCase().includes(resultSearch.toLowerCase()) || infoContrat.nom.toLowerCase().includes(resultSearch.toLowerCase()) || infoContrat.prenom.toLowerCase().includes(resultSearch.toLowerCase())
-      })
-    })
+
+
+
   }
 
-  onDetails(): void {
+  onDetails(id: any): void {
     let dialog = this._matDialog.open(DetailsModalComponent,
       {
         height: '100%',
         width: '100%',
-        data: { monContrat: this.mesContrats }
+        data: { monContrat: this.mesContrats, id }
+      })
+      .afterClosed().subscribe((user: any) => {
+        if (user) {
+          this._userService.setCurrentUser(id)
+        }
       })
   }
 }

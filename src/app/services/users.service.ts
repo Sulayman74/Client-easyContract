@@ -92,6 +92,11 @@ export class UsersService {
 
   }
 
+  // ** Je récupère un salarie */
+  getOne(id: any): Observable<any> {
+    return this._http.get(`${this._apiUrl}/oneSalarie/${id}`)
+  }
+
   // **  Je recupère tous les salaries*/
   getWorkers(): Observable<any> {
     return this._http.get(`${this._apiUrl}/workers`)

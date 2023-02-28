@@ -21,6 +21,10 @@ export class DataService {
     return this._http.get(this.urlCountries)
   }
 
+  getPostalCode(codePostal: string) {
+    return this._http.get<any>(`https://geo.api.gouv.fr/communes/${codePostal}`);
+  }
+
   // getCity(zipCode:number): Observable<any> {
   //   let parameters = new HttpParams()
   //     .append("", zipCode)
@@ -38,7 +42,7 @@ export class DataService {
   searchAll(): Observable<any> {
     return this._http.get(`${this._apiUrl}/allContracts`)
   }
-getContrat(): Observable<any> {
-  return this._http.get(`${this._apiUrl}/contrat`)
-}
+  getContrat(): Observable<any> {
+    return this._http.get(`${this._apiUrl}/contrat`)
+  }
 }
