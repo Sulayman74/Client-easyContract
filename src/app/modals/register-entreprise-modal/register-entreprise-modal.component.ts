@@ -121,9 +121,14 @@ export class RegisterEntrepriseModalComponent implements OnInit {
   onKeyUp() {
 
     const searchText = this.registerSociety.value.ville;
+    const zipCode = this.registerSociety.value.cp
     this._dataService.getAutocompleterGeo(searchText).subscribe(data => {
       this.addresses = data;
+      console.log("données ville", this.addresses[0].code);
       this.options = this.sortCities()
+      this._dataService.getPostalCode(this.addresses[0].code).subscribe((cp: any) => {
+        console.log(cp);
+      })
     });
   }
   sortCities(): string[] {

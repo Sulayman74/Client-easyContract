@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, LOCALE_ID } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Contrat } from 'src/app/models/contrat';
 import { Entreprise } from 'src/app/models/entreprise';
@@ -12,29 +12,44 @@ import * as html2pdf from "html2pdf.js"
   styleUrls: ['./details-modal.component.scss']
 })
 export class DetailsModalComponent implements OnInit {
-
+  user !: any
+  utilisateur !: any
   society !: Entreprise
   salarie!: Salarie
   contrat !: Contrat
   CDI = "Contrat à durée indeterminée"
   CDD = "Contrat à durée determinée"
   notShow = false
-
+  test !: any[]
   constructor(
     @Inject(MAT_DIALOG_DATA) public contratDatas: any,
-    private _profilEntreprise: UsersService) { }
+    private _userService: UsersService) { }
 
   ngOnInit(): void {
-    this._profilEntreprise.getProfileSociety().subscribe((entreprise: any) => {
+    this._userService.getProfileSociety().subscribe((entreprise: any) => {
       console.log("entreprise", entreprise.society);
+
       this.society = entreprise.society
     })
+    //     this.contratDatas = this.contratDatas.filter((value: any) => {
 
-    this.salarie = this.contratDatas.monSalarie
-    console.log("mon salarie", this.salarie);
+    // })
+    this.salarie = this.contratDatas.id
+    this._userService.getOne(this.salarie).subscribe((user: any) => {
+      this.utilisateur = user
+      console.log(this.utilisateur);
+    })
+    this._userService.getCurrentUser().subscribe((value: any) => {
+      this.user = value
+      console.log(this.user);
+    })
+    console.log(this.salarie);
+    this.test = this.contratDatas.monContrat
+    console.log(this.test);
+    this.test.map((value: any) => {
 
-    console.log("contrats", this.contratDatas.monContrat);
-    this.contrat = this.contratDatas.monContrat[0]
+      this.contrat = value
+    })
   }
 
 

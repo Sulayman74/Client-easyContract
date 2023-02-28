@@ -12,6 +12,7 @@
   <div class="contenant">
     <div class="cards">
       <div *ngFor="let item of mesContrats">
+        {{ item | json }}
         <mat-card class="card" *ngIf="item && item.civilite">
           <mat-card-title class="titre-main">Aperçu du Contrat</mat-card-title>
           <mat-card-header>
@@ -36,7 +37,11 @@
               au {{ item.date_fin | date : "dd/MM/yyyy" }}
             </mat-card-subtitle>
           </mat-card-header>
-          <button id="btn-detail" mat-raised-button (click)="onDetails()">
+          <button
+            id="btn-detail"
+            mat-raised-button
+            (click)="onDetails(item.salarie_id)"
+          >
             details
           </button>
         </mat-card>
