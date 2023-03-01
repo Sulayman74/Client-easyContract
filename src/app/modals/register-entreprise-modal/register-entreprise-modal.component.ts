@@ -19,10 +19,10 @@ export class RegisterEntrepriseModalComponent implements OnInit {
   entreprise = new Entreprise()
   hide = true
   mdpConfirm = true
-
+  laRue !: any
   options: string[] = []
+  zipCode !: any
   addresses!: any
-
 
   filteredOptions$ !: Observable<string[]> | undefined
 
@@ -30,6 +30,9 @@ export class RegisterEntrepriseModalComponent implements OnInit {
     title1: "Monsieur",
     title2: "Madame"
   }]
+
+  lat!: number
+  lng!: number
 
   email = new FormControl('', [Validators.required, Validators.email]);
   mdp = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]);
@@ -63,6 +66,8 @@ export class RegisterEntrepriseModalComponent implements OnInit {
 
     })
 
+
+
     this.filteredOptions$ = this.registerSociety?.get('ville')?.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value || ''))
@@ -70,7 +75,6 @@ export class RegisterEntrepriseModalComponent implements OnInit {
 
     this.onKeyUp()
   }
-
 
 
   private _filter(value: string): string[] {
@@ -127,12 +131,33 @@ export class RegisterEntrepriseModalComponent implements OnInit {
       console.log("données ville", this.addresses[0].code);
       this.options = this.sortCities()
       this._dataService.getPostalCode(this.addresses[0].code).subscribe((cp: any) => {
-        console.log(cp);
+        console.log(cp.codesPostaux
+        [0]);
+        this.zipCode = cp.codesPostaux
+        [0]
       })
     });
   }
+
   sortCities(): string[] {
     return this.addresses.map((value: any) => value.nom)
+  }
+  geoloc() {
+    console.log("hello");
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.lat = position.coords.latitude
+        this.lng = position.coords.longitude
+        this._dataService.getGeoLocation(this.lat, this.lng).subscribe((location: any) => {
+          console.log("location", location.features[0].properties.name);
+          this.laRue = location.features[0].properties.name
+        })
+      })
+    }
+  }
+
+  handleClick(event: Event) {
+    event.preventDefault();
   }
 
 

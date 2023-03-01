@@ -39,19 +39,10 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Rue</mat-label>
-      <input type="text" matInput placeholder="la rue" formControlName="rue" />
-      <mat-icon matSuffix>location_on</mat-icon>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Code Postale</mat-label>
-      <input
-        type="text"
-        matInput
-        placeholder="code postal"
-        formControlName="cp"
-      />
-      <mat-icon matSuffix> map</mat-icon>
+      <input type="text" matInput [value]="laRue" formControlName="rue" />
+      <button (click)="handleClick($event)" mat-icon-button matSuffix>
+        <mat-icon (click)="geoloc()"> location_on</mat-icon>
+      </button>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -73,6 +64,13 @@
           {{ option }}
         </mat-option>
       </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Code Postale</mat-label>
+
+      <input type="text" matInput [value]="zipCode" formControlName="cp" />
+      <mat-icon matSuffix> map</mat-icon>
     </mat-form-field>
 
     <mat-form-field appearance="outline">

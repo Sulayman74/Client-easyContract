@@ -12,7 +12,11 @@ export class DataService {
 
   private _apiUrl = `${environment.API_URL}/api/contracts`
   urlCountries = "https://cors-anywhere.herokuapp.com/https://restcountries.com/v3.1/all"
+
   urlCities = "https://geo.api.gouv.fr/communes?codePostal="
+
+  urlGeoLoc = "https://cors-anywhere.herokuapp.com/https://api-adresse.data.gouv.fr/reverse/"
+
   constructor(
     private _http: HttpClient
   ) { }
@@ -44,5 +48,12 @@ export class DataService {
   }
   getContrat(): Observable<any> {
     return this._http.get(`${this._apiUrl}/contrat`)
+  }
+  getGeoLocation(lat: number, lon: number): Observable<any> {
+    let parameters = new HttpParams()
+      .append("lat", lat)
+      .append("lon", lon)
+    return this._http.get(this.urlGeoLoc,
+      { params: parameters })
   }
 }
