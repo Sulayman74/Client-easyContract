@@ -39,10 +39,13 @@ export class HeaderInterceptor implements HttpInterceptor {
           let message = ""
           switch (error.status) {
             case 400:
-              message = "Bad Request, je viens de l'interceptor"
+              message = "Bad Request, une erreur s'est produite"
               break;
             case 401:
               message = "Password or mail not correct"
+              break;
+            case 403:
+              message = "Forbidden request" + error.message
               break;
             case 404:
               message = "Vous n'êtes pas bien connecté"
