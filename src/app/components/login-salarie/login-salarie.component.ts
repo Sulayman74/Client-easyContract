@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { HttpErrorResponse } from '@angular/common/http'
 import { MatDialog } from '@angular/material/dialog';
 import { RegisterSalarieModalComponent } from 'src/app/modals/register-salarie-modal/register-salarie-modal.component';
 import { Router } from '@angular/router';
@@ -19,7 +20,7 @@ export class LoginSalarieComponent implements OnInit {
   loginFormSalarie !: FormGroup<any>;
   salarie = new Salarie();
   hide = true
-
+  error !: HttpErrorResponse
   constructor(
     private _fb: FormBuilder,
     private _dialog: MatDialog,
@@ -74,6 +75,7 @@ export class LoginSalarieComponent implements OnInit {
         localStorage.setItem('role', role)
         this.router.navigate(['/overview-salarie'])
 
+        
       }
       else { this.show = false }
     })
