@@ -42,7 +42,7 @@ export class HeaderInterceptor implements HttpInterceptor {
               message = "Bad Request, une erreur s'est produite" + ' ' + error.error.message
               break;
             case 401:
-              message = "Password or mail not correct"
+              message = error.error.error
               break;
             case 403:
               message = "Forbidden request" + ' ' + error.error.message /** error message venant de la base de données récupéré dans mes catch des controllers avec un StatusCode 403 Forbidden  */
