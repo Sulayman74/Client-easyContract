@@ -10,8 +10,9 @@ $poppin-police: "Poppins", sans-serif;
   justify-content: center;
   padding: 10px 0;
   // margin: 10px 0;
-  border-radius: 3px;
-
+  background: linear-gradient(to right, #264872a6, #f86c0eb2);
+  backdrop-filter: blur(10px);
+  color: whitesmoke;
   .titre {
     font-family: $main-police;
     transition: all ease 0.4s;
@@ -24,6 +25,21 @@ $poppin-police: "Poppins", sans-serif;
 }
 
 .main-content {
+  .paragraphe {
+    background: linear-gradient(to right, #26487283, #f86c0e6b);
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+    color: whitesmoke;
+    font-family: $poppin-police;
+    font-size: 1.2em;
+    width: 70%;
+    padding: 10px;
+    margin-top: 10px;
+    p {
+      line-break: auto;
+      text-align: justify;
+    }
+  }
   display: flex;
   justify-content: center;
   align-items: center;
